@@ -1,9 +1,11 @@
 import { Timeline } from "tabler-icons-react";
 import Layout from "../components/Layout";
+import { trpc } from "../utils/trpc";
 import { NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
-  return <>asd</>;
+  const timestamp = trpc.useQuery(["timestamp"]);
+  return <>Timestamp: {JSON.stringify(timestamp.data, null, 2)}</>;
 };
 
 Home.getLayout = (page) => (

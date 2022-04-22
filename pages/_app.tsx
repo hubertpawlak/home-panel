@@ -3,6 +3,8 @@ import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
+import { withTRPC } from "@trpc/next";
+import { AppRouter } from "./api/trpc/[trpc]";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -42,4 +44,13 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   );
 };
 
-export default App;
+export default withTRPC<AppRouter>({
+  config({ ctx }) {
+    const url = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}/api/trpc`
+      : "http://localhost:3000/api/trpc";
+    return {
+      url,
+    };
+  },
+})(App);

@@ -4,7 +4,7 @@ import { MantineProvider } from "@mantine/core";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 import { withTRPC } from "@trpc/next";
-import { AppRouter } from "./api/trpc/[trpc]";
+import { AppRouter } from "../server/routers/_app";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

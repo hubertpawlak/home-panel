@@ -4,7 +4,7 @@ import { trpc } from "../utils/trpc";
 import { NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
-  const timestamp = trpc.useQuery(["timestamp"]);
+  const timestamp = trpc.useQuery(["test.timestamp"]);
   return <>Timestamp: {JSON.stringify(timestamp.data, null, 2)}</>;
 };
 

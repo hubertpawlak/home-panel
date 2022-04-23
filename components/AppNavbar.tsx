@@ -1,21 +1,18 @@
 import { Dispatch, SetStateAction } from "react";
-import {
-  Divider,
-  Group,
-  Navbar,
-  ScrollArea,
-  Text,
-  ThemeIcon,
-  UnstyledButton,
-} from "@mantine/core";
+import { Divider, Navbar, ScrollArea } from "@mantine/core";
+import { AppNavbarLink, IAppNavbarLink } from "./AppNavbarLink";
 import { Timeline } from "tabler-icons-react";
 
 interface AppNavbarProps {
   navOpened: boolean;
-  // setNavOpened: Dispatch<SetStateAction<boolean>>
+  setNavOpened: Dispatch<SetStateAction<boolean>>;
 }
 
-export const AppNavbar = ({ navOpened }: AppNavbarProps) => (
+const links: IAppNavbarLink[] = [
+  { href: "/", Icon: Timeline, title: "Panel Sterowania" },
+];
+
+export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => (
   <Navbar
     p="md"
     hiddenBreakpoint="xl"
@@ -23,14 +20,13 @@ export const AppNavbar = ({ navOpened }: AppNavbarProps) => (
     width={{ xs: "100%", sm: 300 }}
   >
     <Navbar.Section grow component={ScrollArea} offsetScrollbars>
-      <UnstyledButton>
-        <Group>
-          <ThemeIcon>
-            <Timeline fontSize="inherit" />
-          </ThemeIcon>
-          <Text>Panel sterowania</Text>
-        </Group>
-      </UnstyledButton>
+      {links.map((props) => (
+        <AppNavbarLink
+          {...props}
+          key={props.title}
+          setNavOpened={setNavOpened}
+        />
+      ))}
     </Navbar.Section>
     <Navbar.Section>
       <Divider

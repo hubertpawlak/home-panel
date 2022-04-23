@@ -28,7 +28,7 @@ const Layout = ({
       <AppShell
         fixed
         navbarOffsetBreakpoint="xl"
-        navbar={<AppNavbar {...{ navOpened }} />}
+        navbar={<AppNavbar {...{ navOpened, setNavOpened }} />}
         header={
           <AppHeader
             {...{ navOpened, setNavOpened, icon, title, doesSessionExist }}

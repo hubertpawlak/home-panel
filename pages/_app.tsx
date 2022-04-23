@@ -5,6 +5,8 @@ import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 import { withTRPC } from "@trpc/next";
 import { AppRouter } from "../server/routers/_app";
+import SuperTokensReact from "supertokens-auth-react";
+import { frontendConfig } from "../config/frontendConfig";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -13,6 +15,11 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
+
+if (typeof window !== "undefined") {
+  // We only want to call this init function on the frontend
+  SuperTokensReact.init(frontendConfig());
+}
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);

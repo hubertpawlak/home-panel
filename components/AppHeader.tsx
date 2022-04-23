@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   ActionIcon,
   Breadcrumbs,
@@ -9,13 +9,17 @@ import {
   ScrollArea,
 } from "@mantine/core";
 import { Home, Login, QuestionMark, UserCircle } from "tabler-icons-react";
+import {
+  redirectToAuth,
+  signOut,
+} from "supertokens-auth-react/recipe/thirdparty";
 
 interface AppHeaderProps {
   navOpened: boolean;
   setNavOpened: Dispatch<SetStateAction<boolean>>;
   icon?: JSX.Element;
   title?: string;
-  isLoggedIn?: boolean;
+  doesSessionExist?: boolean;
 }
 
 export const AppHeader = ({
@@ -23,38 +27,66 @@ export const AppHeader = ({
   setNavOpened,
   icon,
   title,
-  isLoggedIn,
-}: AppHeaderProps) => (
-  <Header height={40} p="md">
-    <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
-      <MediaQuery largerThan="xl" styles={{ display: "none" }}>
-        <Burger
-          opened={navOpened}
-          onClick={() => setNavOpened((o) => !o)}
-          size="sm"
-          mr="xs"
-        />
-      </MediaQuery>
-      <ScrollArea offsetScrollbars scrollbarSize={2} sx={{ flexGrow: 1 }}>
-        <Breadcrumbs sx={{ alignItems: "center" }}>
-          <Button variant="subtle" compact color="dark" leftIcon={<Home />}>
-            Dom
-          </Button>
-          <Button
-            variant="subtle"
-            compact
-            color="dark"
-            leftIcon={icon ?? <QuestionMark />}
+  doesSessionExist,
+}: AppHeaderProps) => {
+  const [userLoading, setUserLoading] = useState(false);
+  return (
+    <Header height={40} p="md">
+      <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+        <MediaQuery largerThan="xl" styles={{ display: "none" }}>
+          <Burger
+            opened={navOpened}
+            onClick={() => setNavOpened((o) => !o)}
+            size="sm"
+            mr="xs"
+          />
+        </MediaQuery>
+        <ScrollArea offsetScrollbars scrollbarSize={2} sx={{ flexGrow: 1 }}>
+          <Breadcrumbs sx={{ alignItems: "center" }}>
+            <Button variant="subtle" compact color="dark" leftIcon={<Home />}>
+              Dom
+            </Button>
+            <Button
+              variant="subtle"
+              compact
+              color="dark"
+              leftIcon={icon ?? <QuestionMark />}
+            >
+              {title ?? "Bez tytułu"}
+            </Button>
+          </Breadcrumbs>
+        </ScrollArea>
+        {doesSessionExist ? (
+          <ActionIcon
+            title="Akcje zalogowanego użytkownika"
+            disabled={userLoading}
+            loading={userLoading}
+            onClick={async () => {
+              setUserLoading(true);
+              signOut()
+                .then(() => {
+                  location.reload(); // Force UI update
+                })
+                .finally(() => {
+                  setUserLoading(false);
+                });
+            }}
           >
-            {title ?? "Bez tytułu"}
-          </Button>
-        </Breadcrumbs>
-      </ScrollArea>
-      <ActionIcon
-        title={isLoggedIn ? "Akcje zalogowanego użytkownika" : "Zaloguj się"}
-      >
-        {isLoggedIn ? <UserCircle /> : <Login />}
-      </ActionIcon>
-    </div>
-  </Header>
-);
+            <UserCircle />
+          </ActionIcon>
+        ) : (
+          <ActionIcon
+            title="Zaloguj się"
+            loading={userLoading}
+            onClick={() => {
+              setUserLoading(true);
+              redirectToAuth({ redirectBack: true });
+            }}
+          >
+            <Login />
+          </ActionIcon>
+        )}
+      </div>
+    </Header>
+  );
+};

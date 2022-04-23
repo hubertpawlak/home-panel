@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import SuperTokens from "supertokens-auth-react";
 import { redirectToAuth } from "supertokens-auth-react/recipe/thirdparty";
+import Head from "next/head";
 
 const SuperTokensComponentNoSSR = dynamic(
   new Promise((res) => res(SuperTokens.getRoutingComponent)) as any,
@@ -16,5 +17,12 @@ export default function Auth() {
     }
   }, []);
 
-  return <SuperTokensComponentNoSSR />;
+  return (
+    <>
+      <Head>
+        <title>Logowanie - Zdalne zarządzanie domem</title>
+      </Head>
+      <SuperTokensComponentNoSSR />
+    </>
+  );
 }

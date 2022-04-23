@@ -26,7 +26,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <>
       <Head>
-        <title>Sterowanie Domem</title>
+        <title>Zdalne zarządzanie domem</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"

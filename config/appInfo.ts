@@ -6,7 +6,7 @@ export const appBaseUrl = env.NEXT_PUBLIC_VERCEL_URL
 
 export const appInfo = {
   // More on https://supertokens.com/docs/thirdparty/appinfo
-  appName: "Home Panel",
+  appName: "Logowanie - Zdalne zarządzanie domem",
   websiteDomain: appBaseUrl,
   apiDomain: appBaseUrl,
   websiteBasePath: "/auth",

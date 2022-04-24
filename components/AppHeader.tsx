@@ -6,9 +6,16 @@ import {
   Button,
   Header,
   MediaQuery,
+  Menu,
   ScrollArea,
 } from "@mantine/core";
-import { Home, Login, QuestionMark, UserCircle } from "tabler-icons-react";
+import {
+  Home,
+  Login,
+  Logout,
+  QuestionMark,
+  UserCircle,
+} from "tabler-icons-react";
 import {
   redirectToAuth,
   signOut,
@@ -64,26 +71,35 @@ export const AppHeader = ({
           </Breadcrumbs>
         </ScrollArea>
         {doesSessionExist ? (
-          // TODO: dropdown menu
-          <ActionIcon
-            title="Akcje zalogowanego użytkownika"
-            disabled={userLoading}
-            loading={userLoading}
-            onClick={async () => {
-              setUserLoading(true);
-              signOut()
-                .then(() => {
-                  setDoesSessionExist(false); // Restore sign in button
-                  invalidateQueries(); // Make tRPC forget possibly secret content
-                  router.push("/"); // Redirect to homepage
-                })
-                .finally(() => {
-                  setUserLoading(false);
-                });
-            }}
+          <Menu
+            control={
+              <ActionIcon
+                title="Akcje zalogowanego użytkownika"
+                loading={userLoading}
+              >
+                <UserCircle />
+              </ActionIcon>
+            }
           >
-            <UserCircle />
-          </ActionIcon>
+            <Menu.Item
+              icon={<Logout />}
+              disabled={userLoading}
+              onClick={async () => {
+                setUserLoading(true);
+                signOut()
+                  .then(() => {
+                    setDoesSessionExist(false); // Restore sign in button
+                    invalidateQueries(); // Make tRPC forget possibly secret content
+                    router.push("/"); // Redirect to homepage
+                  })
+                  .finally(() => {
+                    setUserLoading(false);
+                  });
+              }}
+            >
+              Wyloguj się
+            </Menu.Item>
+          </Menu>
         ) : (
           <ActionIcon
             title="Zaloguj się"

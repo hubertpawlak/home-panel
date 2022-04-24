@@ -13,6 +13,8 @@ import {
   redirectToAuth,
   signOut,
 } from "supertokens-auth-react/recipe/thirdparty";
+import { useRouter } from "next/router";
+import { trpc } from "../utils/trpc";
 
 interface AppHeaderProps {
   navOpened: boolean;
@@ -20,6 +22,7 @@ interface AppHeaderProps {
   icon?: JSX.Element;
   title?: string;
   doesSessionExist?: boolean;
+  setDoesSessionExist: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AppHeader = ({
@@ -28,8 +31,12 @@ export const AppHeader = ({
   icon,
   title,
   doesSessionExist,
+  setDoesSessionExist,
 }: AppHeaderProps) => {
   const [userLoading, setUserLoading] = useState(false);
+  const { invalidateQueries } = trpc.useContext();
+  const router = useRouter();
+
   return (
     <Header height={40} p="md">
       <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
@@ -57,6 +64,7 @@ export const AppHeader = ({
           </Breadcrumbs>
         </ScrollArea>
         {doesSessionExist ? (
+          // TODO: dropdown menu
           <ActionIcon
             title="Akcje zalogowanego użytkownika"
             disabled={userLoading}
@@ -65,7 +73,9 @@ export const AppHeader = ({
               setUserLoading(true);
               signOut()
                 .then(() => {
-                  location.reload(); // Force UI update
+                  setDoesSessionExist(false); // Restore sign in button
+                  invalidateQueries(); // Make tRPC forget possibly secret content
+                  router.push("/"); // Redirect to homepage
                 })
                 .finally(() => {
                   setUserLoading(false);

@@ -31,7 +31,14 @@ const Layout = ({
         navbar={<AppNavbar {...{ navOpened, setNavOpened }} />}
         header={
           <AppHeader
-            {...{ navOpened, setNavOpened, icon, title, doesSessionExist }}
+            {...{
+              navOpened,
+              setNavOpened,
+              icon,
+              title,
+              doesSessionExist,
+              setDoesSessionExist,
+            }}
           />
         }
       >

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Divider, Navbar, ScrollArea } from "@mantine/core";
 import { AppNavbarLink, IAppNavbarLink } from "./AppNavbarLink";
-import { Timeline } from "tabler-icons-react";
+import { useClickOutside } from "@mantine/hooks";
 
 interface AppNavbarProps {
   navOpened: boolean;
@@ -12,8 +12,12 @@ const links: IAppNavbarLink[] = [
   { href: "/", Icon: Timeline, title: "Panel Sterowania" },
 ];
 
-export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => (
+export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => {
+  const ref = useClickOutside(() => setNavOpened(false));
+
+  return (
   <Navbar
+      ref={ref}
     p="md"
     hiddenBreakpoint="xl"
     hidden={!navOpened}
@@ -42,5 +46,6 @@ export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => (
     </Navbar.Section>
   </Navbar>
 );
+};
 
 export default AppNavbar;

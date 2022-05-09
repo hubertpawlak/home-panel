@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
+import { trpc } from "../utils/trpc";
+import { useRouter } from "next/router";
 import {
   ActionIcon,
   Breadcrumbs,
@@ -20,8 +22,6 @@ import {
   redirectToAuth,
   signOut,
 } from "supertokens-auth-react/recipe/thirdparty";
-import { useRouter } from "next/router";
-import { trpc } from "../utils/trpc";
 
 interface AppHeaderProps {
   navOpened: boolean;

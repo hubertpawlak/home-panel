@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "db:proxy",
+			"problemMatcher": [],
+			"label": "npm: db:proxy",
+			"detail": "pscale connect planet dev --port 3309"
+		}
+	]
+}

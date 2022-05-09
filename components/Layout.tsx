@@ -1,9 +1,15 @@
+import Head from "next/head";
+import Session from "supertokens-auth-react/recipe/session";
 import { AppHeader } from "../components/AppHeader";
 import { AppNavbar } from "../components/AppNavbar";
 import { AppShell } from "@mantine/core";
-import { PropsWithChildren, useEffect, useState } from "react";
-import Head from "next/head";
-import Session from "supertokens-auth-react/recipe/session";
+import {
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useState
+  } from "react";
+import { useEventListener } from "@mantine/hooks";
 
 const Layout = ({
   title,
@@ -12,6 +18,10 @@ const Layout = ({
 }: PropsWithChildren<{ title: string; icon: JSX.Element }>) => {
   const [navOpened, setNavOpened] = useState(false);
   const [doesSessionExist, setDoesSessionExist] = useState(false);
+
+  // Close navbar if user hovers over content
+  const closeCallback = useCallback(() => setNavOpened(false), []);
+  const childrenRef = useEventListener("mouseenter", closeCallback);
 
   useEffect(() => {
     Session.doesSessionExist().then((exists) => setDoesSessionExist(exists));
@@ -42,7 +52,14 @@ const Layout = ({
           />
         }
       >
-        {children}
+        <div
+          ref={childrenRef}
+          style={{
+            minHeight: "100%",
+          }}
+        >
+          {children}
+        </div>
       </AppShell>
     </>
   );

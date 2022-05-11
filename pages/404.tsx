@@ -1,7 +1,9 @@
 import Head from "next/head";
-import { MoodSad } from "tabler-icons-react";
+import { FileUnknown, MoodSad } from "tabler-icons-react";
+import Layout from "../components/Layout";
+import { NextPageWithLayout } from "./_app";
 
-export default function Custom404() {
+const Custom404: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -11,4 +13,12 @@ export default function Custom404() {
       <MoodSad />
     </>
   );
-}
+};
+
+Custom404.getLayout = (page) => (
+  <Layout title="404" icon={<FileUnknown />}>
+    {page}
+  </Layout>
+);
+
+export default Custom404;

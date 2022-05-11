@@ -1,20 +1,24 @@
-import { Timeline } from "tabler-icons-react";
 import Layout from "../components/Layout";
-import { trpc } from "../utils/trpc";
 import { NextPageWithLayout } from "./_app";
+import { ThirdPartyAuthNoSSR } from "../components/ThirdPartyAuthNoSSR";
+import { Timeline } from "tabler-icons-react";
+import { useSessionContext } from "supertokens-auth-react/recipe/session";
 
 const Home: NextPageWithLayout = () => {
-  const userInfo = trpc.useQuery(["test.userInfo"], { refetchInterval: 1000 });
+  const session = useSessionContext();
+
   return (
     <>
-      <p>User: {JSON.stringify(userInfo.data, null, 2)}</p>
+      <p>session: {JSON.stringify(session, null, 2)}</p>
     </>
   );
 };
 
 Home.getLayout = (page) => (
   <Layout title="Panel sterowania" icon={<Timeline />}>
-    {page}
+    <ThirdPartyAuthNoSSR requireAuth={false} key="IndexPage">
+      {page}
+    </ThirdPartyAuthNoSSR>
   </Layout>
 );
 

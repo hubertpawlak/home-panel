@@ -1,12 +1,20 @@
-import { Group, Text, ThemeIcon, UnstyledButton } from "@mantine/core";
-import { Icon as IconType, Timeline } from "tabler-icons-react";
-import { NextLink } from "@mantine/next";
+import { AccessTokenPayload } from "../types/AccessTokenPayload";
 import { Dispatch, SetStateAction } from "react";
-
+import {
+  Group,
+  Text,
+  ThemeIcon,
+  UnstyledButton
+  } from "@mantine/core";
+import { Icon as IconType } from "tabler-icons-react";
+import { NextLink } from "@mantine/next";
+import { useSessionContext } from "supertokens-auth-react/recipe/session";
 export interface IAppNavbarLink {
   href: string;
   Icon: IconType;
   title: string;
+  userOnly?: boolean;
+  adminOnly?: boolean;
 }
 
 interface AppNavbarLinkProps extends IAppNavbarLink {
@@ -18,7 +26,18 @@ export function AppNavbarLink({
   Icon,
   title,
   setNavOpened,
+  userOnly,
+  adminOnly,
 }: AppNavbarLinkProps) {
+  const session = useSessionContext();
+  const { doesSessionExist } = session;
+  const accessTokenPayload: AccessTokenPayload = session.accessTokenPayload;
+  const { admin } = accessTokenPayload;
+
+  // Don't render useless buttons
+  if (userOnly && !doesSessionExist) return null;
+  if (adminOnly && !admin) return null;
+
   return (
     <NextLink href={href}>
       <UnstyledButton

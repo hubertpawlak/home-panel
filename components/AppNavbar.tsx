@@ -1,6 +1,7 @@
 import { AppNavbarLink, IAppNavbarLink } from "./AppNavbarLink";
 import { Dispatch, SetStateAction } from "react";
 import { Divider, Navbar, ScrollArea } from "@mantine/core";
+import { ThirdPartyAuthNoSSR } from "./ThirdPartyAuthNoSSR";
 import {
   Cookie,
   DatabaseImport,
@@ -18,13 +19,28 @@ interface AppNavbarProps {
 const links: IAppNavbarLink[] = [
   { href: "/", Icon: Timeline, title: "Panel Sterowania" },
   // TODO: create, revoke, rename tokens for sensors
-  { href: "/sources", Icon: DatabaseImport, title: "Źródła danych" },
+  {
+    href: "/sources",
+    Icon: DatabaseImport,
+    title: "Źródła danych",
+    userOnly: true,
+  },
   // TODO: on/off signup flag
   // maybe merge with users?
   // maybe add a whitelist of thirdparty provider + id
-  { href: "/admin/whitelist", Icon: UserCheck, title: "Biała lista" },
+  {
+    href: "/admin/whitelist",
+    Icon: UserCheck,
+    title: "Biała lista",
+    adminOnly: true,
+  },
   // TODO: Table; search, delete
-  { href: "/admin/users", Icon: Users, title: "Użytkownicy" },
+  {
+    href: "/admin/users",
+    Icon: Users,
+    title: "Użytkownicy",
+    adminOnly: true,
+  },
   // TODO: as is
   { href: "/tos", Icon: SectionSign, title: "Warunki Korzystania" },
   // TODO: cookie notice
@@ -40,13 +56,15 @@ export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => {
       width={{ xs: "100%", sm: 300 }}
     >
       <Navbar.Section grow component={ScrollArea} offsetScrollbars>
-        {links.map((props) => (
-          <AppNavbarLink
-            {...props}
-            key={props.title}
-            setNavOpened={setNavOpened}
-          />
-        ))}
+        <ThirdPartyAuthNoSSR requireAuth={false} key="AppNavbarLinks">
+          {links.map((props) => (
+            <AppNavbarLink
+              {...props}
+              key={props.title}
+              setNavOpened={setNavOpened}
+            />
+          ))}
+        </ThirdPartyAuthNoSSR>
       </Navbar.Section>
       <Navbar.Section>
         <Divider

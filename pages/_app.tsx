@@ -1,12 +1,14 @@
-import { AppProps } from "next/app";
 import Head from "next/head";
+import SuperTokensReact from "supertokens-auth-react";
+import { AppProps } from "next/app";
+import { AppRouter } from "../server/routers/_app";
+import { createTheme, ThemeProvider as MuiThemeProvider } from "@mui/material";
+import { frontendConfig } from "../config/frontendConfig";
 import { MantineProvider } from "@mantine/core";
 import { NextPage } from "next";
+import { NotificationsProvider } from "@mantine/notifications";
 import { ReactElement, ReactNode } from "react";
 import { withTRPC } from "@trpc/next";
-import { AppRouter } from "../server/routers/_app";
-import SuperTokensReact from "supertokens-auth-react";
-import { frontendConfig } from "../config/frontendConfig";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -20,6 +22,8 @@ if (typeof window !== "undefined") {
   // We only want to call this init function on the frontend
   SuperTokensReact.init(frontendConfig());
 }
+
+const muiTheme = createTheme({ palette: { mode: "dark" } });
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -38,15 +42,19 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         />
       </Head>
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          colorScheme: "dark",
-        }}
-      >
-        {getLayout(<Component {...pageProps} />)}
-      </MantineProvider>
+      <MuiThemeProvider theme={muiTheme}>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            colorScheme: "dark",
+          }}
+        >
+          <NotificationsProvider>
+            {getLayout(<Component {...pageProps} />)}
+          </NotificationsProvider>
+        </MantineProvider>
+      </MuiThemeProvider>
     </>
   );
 };

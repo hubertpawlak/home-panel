@@ -25,9 +25,6 @@ const links: IAppNavbarLink[] = [
     title: "Źródła danych",
     userOnly: true,
   },
-  // TODO: on/off signup flag
-  // maybe merge with users?
-  // maybe add a whitelist of thirdparty provider + id
   {
     href: "/admin/whitelist",
     Icon: UserCheck,

@@ -1,9 +1,10 @@
-import { TRPCError } from "@trpc/server";
-import { env } from "process";
-import { z } from "zod";
-import { createRouter } from "../createRouter";
 import supertokens from "supertokens-node";
 import { backendConfig } from "../../config/backendConfig";
+import { createRouter } from "../createRouter";
+import { env } from "process";
+import { prisma } from "../../prisma/client";
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 
 /**
  * Remember that whenever we want to use any functions from the supertokens-node lib,
@@ -18,15 +19,37 @@ export const testRouter = createRouter()
     }
     return next();
   })
+  .query("getInfNumbers", {
+    input: z.object({
+      cursor: z
+        .string()
+        .default("0")
+        .transform((s) => Number(s)),
+    }),
+    resolve({ input }) {
+      return {
+        v: [input.cursor],
+        nextCursor: input.cursor > 2 ? null : String(input.cursor + 1),
+      };
+    },
+  })
+  // DEMO: Populate
+  .query("tempSensors", {
+    input: z.undefined(),
+    output: z.any().optional(),
+    async resolve({}) {
+      // const x = await prisma.temperatureSensor.findFirst({
+      //   include: { device: true },
+      // });
+      // x?.device.name
+      return [];
+    },
+  })
   .query("userInfo", {
     input: z.undefined(),
-    output: z
-      .object({
-        id: z.string().optional(),
-      })
-      .optional(),
+    output: z.any().optional(),
     resolve({ ctx }) {
-      return ctx.user;
+      return ctx;
     },
   })
   .query("timestamp", {

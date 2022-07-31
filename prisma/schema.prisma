@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("PLANETSCALE_DB")
+  referentialIntegrity = "prisma"
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+enum Role {
+  GUEST
+  USER
+  ADMIN
+}
+
+model Whitelist {
+  entryId      String @id @default(cuid())
+  userProvider String
+  userId       String
+  role         Role   @default(GUEST)
+}
+
+// A Source is a trusted server authorized to report data from any Device
+model Source {
+  sourceId String  @id @default(cuid())
+  token    String  @unique
+  name     String?
+}
+
+model Device {
+  hwId              String             @id
+  name              String?
+  temperatureSensor TemperatureSensor?
+}
+
+model TemperatureSensor {
+  id          String    @id @default(cuid())
+  temperature Int?
+  changedOn   DateTime?
+
+  device     Device @relation(fields: [deviceHwId], references: [hwId])
+  deviceHwId String @unique
+}
+
+model ConfigString {
+  key   String @id
+  value String
+}
+
+model ConfigFlag {
+  key   String  @id
+  value Boolean
+}

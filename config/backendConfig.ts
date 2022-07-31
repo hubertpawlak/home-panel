@@ -3,7 +3,12 @@ import ThirdPartyNode from "supertokens-node/recipe/thirdparty";
 import { AccessTokenPayload } from "../types/AccessTokenPayload";
 import { appInfo } from "./appInfo";
 import { env } from "process";
+import { prisma } from "../prisma/client";
+import { Role } from "@prisma/client";
 import { TypeInput } from "supertokens-node/types";
+
+const notOnWhitelist =
+  "Nie jesteś na białej liście lub masz zbyt niskie uprawnienia";
 
 export const backendConfig = (): TypeInput => {
   if (
@@ -37,14 +42,20 @@ export const backendConfig = (): TypeInput => {
           functions: (originalImplementation) => {
             return {
               ...originalImplementation,
+              refreshSession: async function (input) {
+                return originalImplementation.refreshSession(input);
+              },
               createNewSession: async function (input) {
                 // Prepare payload
                 const { userId } = input;
-                // TODO: call db to check if admin
+                // TODO: whitelist check (wait for supertokens update)
+                // TODO: call db to check role
+                const isAdmin =
+                  env.NODE_ENV === "development" &&
+                  userId === "a95812ad-ca41-4987-93e9-7208d23bd25b";
                 const injectedPayload: AccessTokenPayload = {
-                  admin:
-                    env.NODE_ENV === "development" &&
-                    userId === "ff317e72-1b01-4994-b9b5-41cf01427c86",
+                  admin: isAdmin, // FIXME: Obsolete
+                  role: isAdmin ? Role.ADMIN : Role.USER,
                 };
                 input.accessTokenPayload = {
                   ...input.accessTokenPayload,

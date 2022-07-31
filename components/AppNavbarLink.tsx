@@ -32,6 +32,7 @@ export function AppNavbarLink({
   const session = useSessionContext();
   const { doesSessionExist } = session;
   const accessTokenPayload: AccessTokenPayload = session.accessTokenPayload;
+  // TODO: checks should use role
   const { admin } = accessTokenPayload;
 
   // Don't render useless buttons

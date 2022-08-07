@@ -2,7 +2,6 @@ import supertokens from "supertokens-node";
 import { backendConfig } from "../../config/backendConfig";
 import { createRouter } from "../createRouter";
 import { env } from "process";
-import { prisma } from "../../prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
@@ -31,18 +30,6 @@ export const testRouter = createRouter()
         v: [input.cursor],
         nextCursor: input.cursor > 2 ? null : String(input.cursor + 1),
       };
-    },
-  })
-  // DEMO: Populate
-  .query("tempSensors", {
-    input: z.undefined(),
-    output: z.any().optional(),
-    async resolve({}) {
-      // const x = await prisma.temperatureSensor.findFirst({
-      //   include: { device: true },
-      // });
-      // x?.device.name
-      return [];
     },
   })
   .query("userInfo", {

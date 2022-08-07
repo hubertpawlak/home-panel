@@ -1,6 +1,5 @@
 import * as trpc from "@trpc/server";
 import * as trpcNext from "@trpc/server/adapters/next";
-import { AccessTokenPayload } from "../types/AccessTokenPayload";
 import { SessionRequest } from "supertokens-node/framework/express";
 import { superTokensNextWrapper } from "supertokens-node/nextjs";
 import { verifySession } from "supertokens-node/recipe/session/framework/express";
@@ -24,14 +23,11 @@ export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
   );
 
   const userId = req.session?.getUserId();
-  const accessTokenPayload: AccessTokenPayload =
-    req.session?.getAccessTokenPayload();
 
   return {
     user: {
       id: userId,
     },
-    accessTokenPayload,
   };
 }
 

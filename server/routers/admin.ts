@@ -1,13 +1,8 @@
+import supertokens from "supertokens-node";
 import { backendConfig } from "../../config/backendConfig";
 import { createRouter } from "../createRouter";
 import { TRPCError } from "@trpc/server";
 import { usersRouter } from "./admin/users";
-import { whitelistRouter } from "./admin/whitelist";
-import { z } from "zod";
-import supertokens, {
-  getUserCount,
-  getUsersNewestFirst,
-} from "supertokens-node";
 
 /**
  * Remember that whenever we want to use any functions from the supertokens-node lib,
@@ -22,5 +17,4 @@ export const adminRouter = createRouter()
     }
     return next();
   })
-  .merge("users.", usersRouter)
-  .merge("whitelist.", whitelistRouter);
+  .merge("users.", usersRouter);

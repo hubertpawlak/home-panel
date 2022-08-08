@@ -22,7 +22,6 @@ export const backendConfig = (): TypeInput => {
     },
     appInfo,
     recipeList: [
-      UserRoles.init(),
       ThirdPartyNode.init({
         signInAndUpFeature: {
           providers: [
@@ -34,6 +33,7 @@ export const backendConfig = (): TypeInput => {
         },
       }),
       SessionNode.init(),
+      UserRoles.init(),
     ],
     telemetry: false,
     isInServerlessEnv: true,

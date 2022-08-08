@@ -10,11 +10,4 @@ import { usersRouter } from "./admin/users";
  */
 supertokens.init(backendConfig());
 
-export const adminRouter = createRouter()
-  .middleware(async ({ ctx, next }) => {
-    if (!ctx.accessTokenPayload?.admin) {
-      throw new TRPCError({ code: "FORBIDDEN" });
-    }
-    return next();
-  })
-  .merge("users.", usersRouter);
+export const adminRouter = createRouter().merge("users.", usersRouter);

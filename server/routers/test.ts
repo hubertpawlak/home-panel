@@ -1,3 +1,4 @@
+import supabase from "../../utils/supabase";
 import supertokens from "supertokens-node";
 import { backendConfig } from "../../config/backendConfig";
 import { createRouter } from "../createRouter";
@@ -37,6 +38,12 @@ export const testRouter = createRouter()
     output: z.any().optional(),
     resolve({ ctx }) {
       return ctx;
+    },
+  })
+  .query("getFlags", {
+    input: z.any(),
+    async resolve({}) {
+      return (await supabase.from("flags").select("*")).data;
     },
   })
   .query("timestamp", {

@@ -1,5 +1,6 @@
 import UserRoles from "supertokens-node/recipe/userroles";
 import { createRouter } from "../createRouter";
+import { SharedMax } from "../../types/SharedMax";
 import { z } from "zod";
 
 export const seedRouter = createRouter()
@@ -36,7 +37,7 @@ export const seedRouter = createRouter()
   })
   .mutation("addRootRole", {
     input: z.object({
-      id: z.string().min(1),
+      id: z.string().min(1).max(SharedMax),
     }),
     output: z.object({
       success: z.boolean(),

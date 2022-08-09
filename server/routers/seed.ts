@@ -1,5 +1,6 @@
 import UserRoles from "supertokens-node/recipe/userroles";
 import { createRouter } from "../createRouter";
+import { getUserById } from "supertokens-node/recipe/thirdparty";
 import { SharedMax } from "../../types/SharedMax";
 import { z } from "zod";
 
@@ -58,8 +59,16 @@ export const seedRouter = createRouter()
           success: false,
           status: "ROOT_ACCOUNT_EXISTS",
         };
-      // Try to add role to provided user
       const { id } = input;
+      // Check if user exists
+      const userWithProvidedId = await getUserById(id);
+      if (!userWithProvidedId) {
+        return {
+          success: false,
+          status: "INVALID_USER_ID",
+        };
+      }
+      // Add role
       const addRoleResponse = await UserRoles.addRoleToUser(id, "root");
       return {
         success: addRoleResponse.status === "OK",

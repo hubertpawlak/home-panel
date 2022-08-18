@@ -1,7 +1,6 @@
 import supertokens from "supertokens-node";
 import { backendConfig } from "../../config/backendConfig";
-import { createRouter } from "../createRouter";
-import { TRPCError } from "@trpc/server";
+import { createProtectedRouter } from "../createProtectedRouter";
 import { usersRouter } from "./admin/users";
 
 /**
@@ -10,4 +9,6 @@ import { usersRouter } from "./admin/users";
  */
 supertokens.init(backendConfig());
 
-export const adminRouter = createRouter().merge("users.", usersRouter);
+export const adminRouter = createProtectedRouter({
+  minRequiredRole: "admin",
+}).merge("users.", usersRouter);

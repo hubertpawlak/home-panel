@@ -9,27 +9,32 @@ export const seedRouter = createRouter()
     input: z.null().optional(),
     output: z.boolean(),
     async resolve({}) {
+      // No permissions for now - keep checks simple
       // Nobody
-      const nobodyPerms: string[] = [];
       const nobodyResponse = await UserRoles.createNewRoleOrAddPermissions(
         "nobody",
-        nobodyPerms
+        []
       );
       if (nobodyResponse.createdNewRole === false) return false;
 
       // User
-      const userPerms = [...nobodyPerms, "whitelisted"];
       const userResponse = await UserRoles.createNewRoleOrAddPermissions(
         "user",
-        userPerms
+        []
       );
       if (userResponse.createdNewRole === false) return false;
 
+      // Admin
+      const adminResponse = await UserRoles.createNewRoleOrAddPermissions(
+        "admin",
+        []
+      );
+      if (adminResponse.createdNewRole === false) return false;
+
       // Root
-      const rootPerms = [...userPerms, "*"];
       const rootResponse = await UserRoles.createNewRoleOrAddPermissions(
         "root",
-        rootPerms
+        []
       );
       if (rootResponse.createdNewRole === false) return false;
 

@@ -80,4 +80,12 @@ export const seedRouter = createRouter()
         status: addRoleResponse.status,
       };
     },
+  })
+  .query("getMyId", {
+    input: z.null().optional(),
+    async resolve({ ctx }) {
+      if (!ctx.user) return null;
+      if (!ctx.user.id) return null;
+      return ctx.user.id;
+    },
   });

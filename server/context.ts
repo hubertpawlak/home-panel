@@ -12,6 +12,7 @@ export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
   const req = opts.req as any as SessionRequest;
   const res = opts.res as any;
 
+  // Inject SuperTokens functions
   await superTokensNextWrapper(
     async (next) => {
       // Don't require session to prevent rejecting all requests from guests
@@ -22,9 +23,15 @@ export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
     res
   );
 
+  // Bypass security checks flag
+  const hasBypassHeader = !!req.headers.bypass;
+  const bypassProtection =
+    process.env.NODE_ENV !== "production" && hasBypassHeader;
+
   const userId = req.session?.getUserId();
 
   return {
+    bypassProtection,
     user: {
       id: userId,
     },

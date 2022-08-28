@@ -21,6 +21,18 @@ export function createProtectedRouter({
   minRequiredRole,
 }: ProtectedRouterChecks) {
   return createRouter().middleware(async ({ ctx, next }) => {
+    if (ctx.bypassProtection)
+      return next({
+        ctx: {
+          ...ctx,
+          user: {
+            id: "fakeRoot",
+            roles: ["root"],
+            power: rolePower["root"],
+          },
+        },
+      });
+    // Extract values
     const user = ctx.user;
     const userId = user?.id;
     // Deny guest access

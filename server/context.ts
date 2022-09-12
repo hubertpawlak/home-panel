@@ -23,6 +23,9 @@ export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
     res
   );
 
+  // JWT string used by machines (data sources)
+  const authorization = req.headers.authorization;
+
   // Bypass security checks flag
   const hasBypassHeader = !!req.headers.bypass;
   const bypassProtection =
@@ -32,6 +35,7 @@ export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
 
   return {
     bypassProtection,
+    authorization,
     user: {
       id: userId,
     },

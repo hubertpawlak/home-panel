@@ -1,5 +1,5 @@
 import Session from "supertokens-node/recipe/session";
-import { createRouter } from "../../createRouter";
+import { createProtectedRouter } from "../../createProtectedRouter";
 import { SharedMax } from "../../../types/SharedMax";
 import { z } from "zod";
 import {
@@ -8,7 +8,7 @@ import {
   getUsersNewestFirst,
 } from "supertokens-node";
 
-export const usersRouter = createRouter()
+export const usersRouter = createProtectedRouter()
   .query("getCount", {
     input: z.undefined(),
     output: z.number().min(0),

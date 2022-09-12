@@ -1,6 +1,8 @@
 import supertokens from "supertokens-node";
+import { _createProtectedRouter } from "../createProtectedRouter";
 import { backendConfig } from "../../config/backendConfig";
-import { createProtectedRouter } from "../createProtectedRouter";
+import { sensorsRouter } from "./admin/sensors";
+import { sourcesRouter } from "./admin/sources";
 import { usersRouter } from "./admin/users";
 
 /**
@@ -9,6 +11,9 @@ import { usersRouter } from "./admin/users";
  */
 supertokens.init(backendConfig());
 
-export const adminRouter = createProtectedRouter({
+export const adminRouter = _createProtectedRouter({
   minRequiredRole: "admin",
-}).merge("users.", usersRouter);
+})
+  .merge("users.", usersRouter)
+  .merge("sources.", sourcesRouter)
+  .merge("sensors.", sensorsRouter);

@@ -1,10 +1,24 @@
 import UserRoles from "supertokens-node/recipe/userroles";
 import { createRouter } from "../createRouter";
+import { generateKeyPair } from "jose";
 import { getUserById } from "supertokens-node/recipe/thirdparty";
+import { jwtPrivateKeyToBase64, jwtPublicKeyToBase64 } from "../../utils/jwt";
 import { SharedMax } from "../../types/SharedMax";
 import { z } from "zod";
 
 export const seedRouter = createRouter()
+  .query("generateKeys", {
+    input: z.undefined(),
+    async resolve({}) {
+      if (process.env.NODE_ENV === "production") return {};
+      const { publicKey, privateKey } = await generateKeyPair("ES512");
+      // Use helper functions to convert keys into an easy to store format
+      return {
+        publicKey: await jwtPublicKeyToBase64(publicKey),
+        privateKey: await jwtPrivateKeyToBase64(privateKey),
+      };
+    },
+  })
   .mutation("createDefaultRoles", {
     input: z.null().optional(),
     output: z.boolean(),

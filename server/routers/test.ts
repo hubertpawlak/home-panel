@@ -1,5 +1,6 @@
 import supabase from "../../utils/supabase";
 import supertokens from "supertokens-node";
+import UserRoles from "supertokens-node/recipe/userroles";
 import { backendConfig } from "../../config/backendConfig";
 import { createRouter } from "../createRouter";
 import { env } from "process";
@@ -44,6 +45,14 @@ export const testRouter = createRouter()
     input: z.any(),
     async resolve({}) {
       return (await supabase.from("flags").select("*")).data;
+    },
+  })
+  .query("getRoles", {
+    input: z.any(),
+    async resolve({}) {
+      return {
+        roles: await UserRoles.getAllRoles(),
+      };
     },
   })
   .query("timestamp", {

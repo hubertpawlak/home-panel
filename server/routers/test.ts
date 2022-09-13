@@ -3,6 +3,7 @@ import supertokens from "supertokens-node";
 import UserRoles from "supertokens-node/recipe/userroles";
 import { backendConfig } from "../../config/backendConfig";
 import { createRouter } from "../createRouter";
+import { definitions } from "../../types/supabase";
 import { env } from "process";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
@@ -41,10 +42,14 @@ export const testRouter = createRouter()
       return ctx;
     },
   })
-  .query("getFlags", {
+  .query("getTemperatureSensors", {
     input: z.any(),
     async resolve({}) {
-      return (await supabase.from("flags").select("*")).data;
+      return (
+        await supabase
+          .from<definitions["temperature_sensors"]>("temperature_sensors")
+          .select("*")
+      ).data;
     },
   })
   .query("getRoles", {

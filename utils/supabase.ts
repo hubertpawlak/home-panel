@@ -6,5 +6,5 @@ if (!process.env.SUPABASE_KEY) throw new Error("Missing SUPABASE_KEY");
 export default createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_KEY!,
-  { schema: "private" }
+  { schema: "public" }
 );

@@ -10,12 +10,13 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
+    "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.4",
-    "@mantine/core": "^4.2.6",
-    "@mantine/form": "^4.2.6",
-    "@mantine/hooks": "^4.2.6",
-    "@mantine/next": "^4.2.6",
-    "@mantine/notifications": "^4.2.6",
+    "@mantine/core": "^5.3.0",
+    "@mantine/form": "^5.3.0",
+    "@mantine/hooks": "^5.3.0",
+    "@mantine/next": "^5.3.0",
+    "@mantine/notifications": "^5.3.0",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.5",
     "@mui/x-data-grid": "^5.17.2",
@@ -37,7 +38,7 @@
     "zod": "^3.19.1"
   },
   "devDependencies": {
-    "@types/node": "18.7.17",
+    "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",

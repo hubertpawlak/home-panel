@@ -1,4 +1,3 @@
-import { AccessTokenPayload } from "../types/AccessTokenPayload";
 import { Dispatch, SetStateAction } from "react";
 import {
   Group,
@@ -27,17 +26,16 @@ export function AppNavbarLink({
   title,
   setNavOpened,
   userOnly,
+  // FIXME: adminOnly links
   adminOnly,
 }: AppNavbarLinkProps) {
   const session = useSessionContext();
-  const { doesSessionExist } = session;
-  const accessTokenPayload: AccessTokenPayload = session.accessTokenPayload;
-  // TODO: checks should use role
-  const { admin } = accessTokenPayload;
+  const doesSessionExist = !session.loading && session.doesSessionExist;
 
   // Don't render useless buttons
   if (userOnly && !doesSessionExist) return null;
-  if (adminOnly && !admin) return null;
+  // FIXME: adminOnly links
+  // if (adminOnly && !admin) return null;
 
   return (
     <NextLink href={href}>

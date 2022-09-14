@@ -2,7 +2,6 @@ import { DeleteForever } from "@mui/icons-material";
 import { GridSelectionModel } from "@mui/x-data-grid";
 import { IconButton, Tooltip, Zoom } from "@mui/material";
 import { UseMutationResult } from "react-query";
-import { useStatusNotification } from "../utils/notifications";
 
 interface DataGridDeleteButtonProps {
   text?: string;

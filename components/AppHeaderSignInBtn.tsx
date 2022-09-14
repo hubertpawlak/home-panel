@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ActionIcon, Menu } from "@mantine/core";
 import { Login, Logout, UserCircle } from "tabler-icons-react";
 import { trpc } from "../utils/trpc";
+import { useLogger } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import {
@@ -11,23 +12,34 @@ import {
 
 export function AppHeaderSignInBtn() {
   const [userLoading, setUserLoading] = useState(false);
-  const { doesSessionExist } = useSessionContext();
+  const session = useSessionContext();
+  const doesSessionExist = !session.loading && session.doesSessionExist;
   const { invalidateQueries } = trpc.useContext();
   const router = useRouter();
 
   return (
     <>
-      {doesSessionExist ? (
-        <Menu
-          control={
-            <ActionIcon
-              title="Akcje zalogowanego użytkownika"
-              loading={userLoading}
-            >
-              <UserCircle />
-            </ActionIcon>
-          }
-        >
+      <Menu width={200}>
+        <Menu.Target>
+          <ActionIcon
+            title={
+              doesSessionExist
+                ? "Akcje zalogowanego użytkownika"
+                : "Zaloguj się"
+            }
+            loading={userLoading}
+            onClick={() => {
+              if (doesSessionExist) return;
+              setUserLoading(true);
+              redirectToAuth({
+                redirectBack: true,
+              });
+            }}
+          >
+            {doesSessionExist ? <UserCircle /> : <Login />}
+          </ActionIcon>
+        </Menu.Target>
+        <Menu.Dropdown>
           <Menu.Item
             icon={<Logout />}
             disabled={userLoading}
@@ -45,21 +57,8 @@ export function AppHeaderSignInBtn() {
           >
             Wyloguj się
           </Menu.Item>
-        </Menu>
-      ) : (
-        <ActionIcon
-          title="Zaloguj się"
-          loading={userLoading}
-          onClick={() => {
-            setUserLoading(true);
-            redirectToAuth({
-              redirectBack: true,
-            });
-          }}
-        >
-          <Login />
-        </ActionIcon>
-      )}
+        </Menu.Dropdown>
+      </Menu>
     </>
   );
 }

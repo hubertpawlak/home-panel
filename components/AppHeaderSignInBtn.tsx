@@ -13,9 +13,11 @@ import {
 export function AppHeaderSignInBtn() {
   const [userLoading, setUserLoading] = useState(false);
   const session = useSessionContext();
-  const doesSessionExist = !session.loading && session.doesSessionExist;
   const { invalidateQueries } = trpc.useContext();
   const router = useRouter();
+
+  if (session.loading) return null;
+  const doesSessionExist = session.doesSessionExist;
 
   return (
     <>

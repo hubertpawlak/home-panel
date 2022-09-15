@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ActionIcon, Menu } from "@mantine/core";
 import { Login, Logout, UserCircle } from "tabler-icons-react";
 import { trpc } from "../utils/trpc";
-import { useLogger } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import {

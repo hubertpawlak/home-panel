@@ -7,13 +7,13 @@ import {
   } from "@mantine/core";
 import { Icon as IconType } from "tabler-icons-react";
 import { NextLink } from "@mantine/next";
+import { trpc } from "../utils/trpc";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 export interface IAppNavbarLink {
   href: string;
   Icon: IconType;
   title: string;
-  userOnly?: boolean;
-  adminOnly?: boolean;
+  requiredPower?: number;
 }
 
 interface AppNavbarLinkProps extends IAppNavbarLink {
@@ -25,17 +25,20 @@ export function AppNavbarLink({
   Icon,
   title,
   setNavOpened,
-  userOnly,
-  // FIXME: adminOnly links
-  adminOnly,
+  requiredPower,
 }: AppNavbarLinkProps) {
   const session = useSessionContext();
   const doesSessionExist = !session.loading && session.doesSessionExist;
+  const userPowerQuery = trpc.useQuery(["self.getPower"], {
+    placeholderData: 0,
+    // Don't ask the server for userPower if there is no user session
+    enabled: doesSessionExist,
+  });
+  const userPower = userPowerQuery.data!;
 
   // Don't render useless buttons
-  if (userOnly && !doesSessionExist) return null;
-  // FIXME: adminOnly links
-  // if (adminOnly && !admin) return null;
+  if (requiredPower && !doesSessionExist) return null;
+  if ((requiredPower ?? 0) > userPower) return null;
 
   return (
     <NextLink href={href}>

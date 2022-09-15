@@ -1,13 +1,13 @@
 import { AppNavbarLink, IAppNavbarLink } from "./AppNavbarLink";
 import { Dispatch, SetStateAction } from "react";
 import { Divider, Navbar, ScrollArea } from "@mantine/core";
+import { rolePower } from "../types/RolePower";
 import { ThirdPartyAuthNoSSR } from "./ThirdPartyAuthNoSSR";
 import {
   Cookie,
   DatabaseImport,
   SectionSign,
   Timeline,
-  UserCheck,
   Users,
 } from "tabler-icons-react";
 
@@ -18,25 +18,19 @@ interface AppNavbarProps {
 
 const links: IAppNavbarLink[] = [
   { href: "/", Icon: Timeline, title: "Panel Sterowania" },
-  // TODO: create, revoke, rename tokens for sensors
+  // TODO: create tokens for sensors
   {
     href: "/sources",
     Icon: DatabaseImport,
     title: "Źródła danych",
-    userOnly: true,
-  },
-  {
-    href: "/admin/whitelist",
-    Icon: UserCheck,
-    title: "Biała lista",
-    adminOnly: true,
+    requiredPower: rolePower["admin"],
   },
   // TODO: Table; search, delete
   {
     href: "/admin/users",
     Icon: Users,
     title: "Użytkownicy",
-    adminOnly: true,
+    requiredPower: rolePower["admin"],
   },
   // TODO: as is
   { href: "/tos", Icon: SectionSign, title: "Warunki Korzystania" },

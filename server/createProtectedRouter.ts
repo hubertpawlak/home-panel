@@ -1,6 +1,6 @@
 import UserRoles from "supertokens-node/recipe/userroles";
-import { Context } from "./context";
 import { createRouter } from "./createRouter";
+import { rolePower } from "../types/RolePower";
 import { router, TRPCError } from "@trpc/server";
 import { UserRole } from "../types/UserRole";
 
@@ -15,16 +15,6 @@ interface ProtectedRouterContext {
     power?: number;
   };
 }
-
-type UserRolePower = {
-  [key in UserRole]: number;
-};
-
-const rolePower: UserRolePower = {
-  user: 1,
-  admin: 2,
-  root: Infinity,
-};
 
 /**
  * Create a router guarding access by requiring a certain role (or higher)

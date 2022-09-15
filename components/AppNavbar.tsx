@@ -71,7 +71,6 @@ export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => {
             component: "a",
             href: "https://hubertpawlak.dev",
             target: "_blank",
-            variant: "link",
           }}
         />
       </Navbar.Section>

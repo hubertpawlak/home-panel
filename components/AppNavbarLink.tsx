@@ -1,13 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
-import {
-  Group,
-  Text,
-  ThemeIcon,
-  UnstyledButton
-  } from "@mantine/core";
 import { Icon as IconType } from "tabler-icons-react";
+import { NavLink, ThemeIcon } from "@mantine/core";
 import { NextLink } from "@mantine/next";
 import { trpc } from "../utils/trpc";
+import { useRouter } from "next/router";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 export interface IAppNavbarLink {
   href: string;
@@ -27,6 +23,7 @@ export function AppNavbarLink({
   setNavOpened,
   requiredPower,
 }: AppNavbarLinkProps) {
+  const router = useRouter();
   const session = useSessionContext();
   const doesSessionExist = !session.loading && session.doesSessionExist;
   const userPowerQuery = trpc.useQuery(["self.getPower"], {
@@ -36,38 +33,23 @@ export function AppNavbarLink({
     // Don't ask the server for userPower if there is no user session
     enabled: doesSessionExist,
   });
-  const userPower = userPowerQuery.data!;
+  const userPower = userPowerQuery.data ?? 0;
 
-  // Don't render useless buttons
-  if (requiredPower && !doesSessionExist) return null;
-  if ((requiredPower ?? 0) > userPower) return null;
+  // Disable useless buttons
+  const disabled =
+    (!!requiredPower && !doesSessionExist) ||
+    (!!requiredPower && requiredPower > userPower);
 
   return (
-    <NextLink href={href}>
-      <UnstyledButton
-        p="xs"
-        sx={(theme) => ({
-          width: "100%",
-          padding: theme.spacing.xs,
-          borderRadius: theme.radius.sm,
-          color:
-            theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-          "&:hover": {
-            backgroundColor:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[6]
-                : theme.colors.gray[0],
-          },
-        })}
-        onClick={() => setNavOpened(false)}
-      >
-        <Group>
-          <ThemeIcon>
-            <Icon fontSize="inherit" />
-          </ThemeIcon>
-          <Text>{title}</Text>
-        </Group>
-      </UnstyledButton>
-    </NextLink>
+    <NavLink
+      component={NextLink}
+      disabled={disabled}
+      href={href}
+      label={title}
+      active={router.pathname === href}
+      variant="light"
+      icon={<Icon />}
+      onClick={() => setNavOpened(false)}
+    />
   );
 }

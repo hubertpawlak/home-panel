@@ -31,6 +31,8 @@ export function AppNavbarLink({
   const doesSessionExist = !session.loading && session.doesSessionExist;
   const userPowerQuery = trpc.useQuery(["self.getPower"], {
     placeholderData: 0,
+    // Reduce the amount of queries
+    staleTime: 60 * 1000, // 1 min
     // Don't ask the server for userPower if there is no user session
     enabled: doesSessionExist,
   });

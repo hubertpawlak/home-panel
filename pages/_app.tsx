@@ -2,13 +2,16 @@ import Head from "next/head";
 import SuperTokensReact from "supertokens-auth-react";
 import { AppProps } from "next/app";
 import { AppRouter } from "../server/routers/_app";
-import { createTheme, ThemeProvider as MuiThemeProvider } from "@mui/material";
 import { frontendConfig } from "../config/frontendConfig";
 import { MantineProvider } from "@mantine/core";
 import { NextPage } from "next";
 import { NotificationsProvider } from "@mantine/notifications";
 import { ReactElement, ReactNode } from "react";
 import { withTRPC } from "@trpc/next";
+import {
+  createTheme,
+  ThemeProvider as MuiThemeProvider,
+} from "@mui/material/styles";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -42,25 +45,25 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         />
       </Head>
 
-      <MuiThemeProvider theme={muiTheme}>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            colorScheme: "dark",
-          }}
-        >
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{
+          colorScheme: "dark",
+        }}
+      >
+        <MuiThemeProvider theme={muiTheme}>
           <NotificationsProvider>
             {getLayout(<Component {...pageProps} />)}
           </NotificationsProvider>
-        </MantineProvider>
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </MantineProvider>
     </>
   );
 };
 
 export default withTRPC<AppRouter>({
-  config({ ctx }) {
+  config() {
     const url = process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}/api/trpc`
       : "http://localhost:3000/api/trpc";

@@ -1,15 +1,18 @@
 import Layout from "../components/Layout";
 import { NextPageWithLayout } from "./_app";
+import { TemperatureGrid } from "../components/TemperatureGrid";
 import { ThirdPartyAuthNoSSR } from "../components/ThirdPartyAuthNoSSR";
 import { Timeline } from "tabler-icons-react";
-import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import { trpc } from "../utils/trpc";
 
 const Home: NextPageWithLayout = () => {
-  const session = useSessionContext();
+  const temps = trpc.useQuery(["sensors.getTemperatures"], {
+    refetchInterval: 3000,
+  });
 
   return (
     <>
-      <p>session: {JSON.stringify(session, null, 2)}</p>
+      <TemperatureGrid temps={temps.data} />
     </>
   );
 };

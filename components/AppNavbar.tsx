@@ -4,6 +4,7 @@ import { Divider, Navbar, ScrollArea } from "@mantine/core";
 import { rolePower } from "../types/RolePower";
 import { ThirdPartyAuthNoSSR } from "./ThirdPartyAuthNoSSR";
 import {
+  Bell,
   Cookie,
   DatabaseImport,
   SectionSign,
@@ -18,6 +19,12 @@ interface AppNavbarProps {
 
 const links: IAppNavbarLink[] = [
   { href: "/", Icon: Timeline, title: "Panel Sterowania" },
+  {
+    href: "/notifications",
+    Icon: Bell,
+    title: "Powiadomienia",
+    requiredPower: rolePower["user"],
+  },
   // TODO: create tokens for sensors
   {
     href: "/sources",

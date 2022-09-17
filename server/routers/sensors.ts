@@ -2,6 +2,8 @@ import supabase from "../../utils/supabase";
 import { createRouter } from "../createRouter";
 import { definitions } from "../../types/supabase";
 import { SharedMax } from "../../types/SharedMax";
+import { sub } from "date-fns";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 export const publicSensorsRouter = createRouter().query("getTemperatures", {
@@ -19,9 +21,12 @@ export const publicSensorsRouter = createRouter().query("getTemperatures", {
     )
     .nullable(),
   async resolve() {
+    // Don't send old readings
+    const twoHoursAgo = sub(new Date(), { hours: 2 });
     const { data } = await supabase
       .from<definitions["temperature_sensors"]>("temperature_sensors")
       .select("hwId,temperature,resolution,updated_at,name,updated_by")
+      .gte("updated_at", twoHoursAgo.toISOString())
       .order("hwId", { ascending: true });
     return data ?? [];
   },

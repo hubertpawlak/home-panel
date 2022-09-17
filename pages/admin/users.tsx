@@ -18,10 +18,7 @@ function rowKeyGetter(row: any) {
 }
 
 const UniversalDataGrid = dynamic(
-  () => import("../../components/UniversalDataGrid"),
-  {
-    suspense: true,
-  }
+  () => import("../../components/UniversalDataGrid")
 );
 
 const UsersPage: NextPageWithLayout = () => {
@@ -50,46 +47,46 @@ const UsersPage: NextPageWithLayout = () => {
         </Text>
       </>
       <Suspense fallback={<Skeleton height={200} />}>
-      <Box py="md">
-        <Switch
-          label="Pokaż adresy email"
-          checked={showEmails}
-          onChange={(e) => {
-            setShowEmails(e.currentTarget.checked);
-          }}
+        <Box py="md">
+          <Switch
+            label="Pokaż adresy email"
+            checked={showEmails}
+            onChange={(e) => {
+              setShowEmails(e.currentTarget.checked);
+            }}
+          />
+        </Box>
+        <UniversalDataGrid
+          columns={[
+            { field: "id", headerName: "id", minWidth: 330 },
+            { field: "tpProvider", headerName: "tpProvider" },
+            { field: "tpUserId", headerName: "tpUserId" },
+            { field: "timeJoined", headerName: "timeJoined", minWidth: 150 },
+            {
+              field: "email",
+              headerName: "email",
+              minWidth: 300,
+              // Hide emails if switch is disabled
+              renderCell: showEmails
+                ? undefined
+                : ({ value: email }) => {
+                    const emailParts = (email as string).split("@");
+                    // Get the user part and censor it
+                    const user = "*".repeat(emailParts.shift()?.length ?? 3);
+                    const domain = emailParts.join("@") ?? "MISSING_DOMAIN";
+                    return (
+                      <>
+                        {user}@{domain}
+                      </>
+                    );
+                  },
+            },
+          ]}
+          infiniteQuery={usersQuery}
+          getRowId={rowKeyGetter}
+          deleteText="Usuń konta"
+          deleteMutation={deleteUsersMutation}
         />
-      </Box>
-      <UniversalDataGrid
-        columns={[
-          { field: "id", headerName: "id", minWidth: 330 },
-          { field: "tpProvider", headerName: "tpProvider" },
-          { field: "tpUserId", headerName: "tpUserId" },
-          { field: "timeJoined", headerName: "timeJoined", minWidth: 150 },
-          {
-            field: "email",
-            headerName: "email",
-            minWidth: 300,
-            // Hide emails if switch is disabled
-            renderCell: showEmails
-              ? undefined
-              : ({ value: email }) => {
-                  const emailParts = (email as string).split("@");
-                  // Get the user part and censor it
-                  const user = "*".repeat(emailParts.shift()?.length ?? 3);
-                  const domain = emailParts.join("@") ?? "MISSING_DOMAIN";
-                  return (
-                    <>
-                      {user}@{domain}
-                    </>
-                  );
-                },
-          },
-        ]}
-        infiniteQuery={usersQuery}
-        getRowId={rowKeyGetter}
-        deleteText="Usuń konta"
-        deleteMutation={deleteUsersMutation}
-      />
       </Suspense>
     </>
   );

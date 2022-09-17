@@ -1,19 +1,28 @@
+import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
 import {
   Box,
   Loader,
+  Skeleton,
   Switch,
   Text
   } from "@mantine/core";
 import { NextPageWithLayout } from "./../_app";
+import { Suspense } from "react";
 import { trpc } from "../../utils/trpc";
-import { UniversalDataGrid } from "../../components/UniversalDataGrid";
 import { useLocalStorage } from "@mantine/hooks";
 import { Users } from "tabler-icons-react";
 
 function rowKeyGetter(row: any) {
   return row.id;
 }
+
+const UniversalDataGrid = dynamic(
+  () => import("../../components/UniversalDataGrid"),
+  {
+    suspense: true,
+  }
+);
 
 const UsersPage: NextPageWithLayout = () => {
   const [showEmails, setShowEmails] = useLocalStorage({
@@ -40,6 +49,7 @@ const UsersPage: NextPageWithLayout = () => {
           {isLoadingUserCount ? <Loader variant="dots" /> : userCount}
         </Text>
       </>
+      <Suspense fallback={<Skeleton height={200} />}>
       <Box py="md">
         <Switch
           label="Pokaż adresy email"
@@ -80,6 +90,7 @@ const UsersPage: NextPageWithLayout = () => {
         deleteText="Usuń konta"
         deleteMutation={deleteUsersMutation}
       />
+      </Suspense>
     </>
   );
 };

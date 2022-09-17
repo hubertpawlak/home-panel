@@ -110,3 +110,5 @@ export const UniversalDataGrid = ({
     />
   );
 };
+
+export default UniversalDataGrid;

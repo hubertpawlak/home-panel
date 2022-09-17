@@ -44,7 +44,7 @@ export const testRouter = createRouter()
   })
   .query("getTemperatureSensors", {
     input: z.any(),
-    async resolve({}) {
+    async resolve() {
       return (
         await supabase
           .from<definitions["temperature_sensors"]>("temperature_sensors")
@@ -54,7 +54,7 @@ export const testRouter = createRouter()
   })
   .query("getRoles", {
     input: z.any(),
-    async resolve({}) {
+    async resolve() {
       return {
         roles: await UserRoles.getAllRoles(),
       };
@@ -63,7 +63,7 @@ export const testRouter = createRouter()
   .query("timestamp", {
     input: z.undefined(),
     output: z.number(),
-    resolve({}) {
+    resolve() {
       return Date.now();
     },
   });

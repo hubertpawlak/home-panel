@@ -12,7 +12,7 @@ export const usersRouter = createProtectedRouter()
   .query("getCount", {
     input: z.undefined(),
     output: z.number().min(0),
-    async resolve({}) {
+    async resolve() {
       const count = await getUserCount();
       return count;
     },

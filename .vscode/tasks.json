@@ -1,4 +1,16 @@
 {
 	"version": "2.0.0",
-	"tasks": []
+	"tasks": [
+		{
+			"type": "eslint",
+			"presentation": {
+				"reveal": "silent",
+				"clear": true
+			},
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"label": "eslint"
+		},
+	]
 }

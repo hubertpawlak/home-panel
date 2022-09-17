@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Icon as IconType } from "tabler-icons-react";
-import { NavLink, ThemeIcon } from "@mantine/core";
+import { NavLink } from "@mantine/core";
 import { NextLink } from "@mantine/next";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";

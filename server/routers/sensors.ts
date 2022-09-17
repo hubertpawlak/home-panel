@@ -3,7 +3,6 @@ import { createRouter } from "../createRouter";
 import { definitions } from "../../types/supabase";
 import { SharedMax } from "../../types/SharedMax";
 import { sub } from "date-fns";
-import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 export const publicSensorsRouter = createRouter().query("getTemperatures", {

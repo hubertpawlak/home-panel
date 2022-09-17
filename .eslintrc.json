@@ -23,5 +23,8 @@
         "no-undef": "off"
       }
     }
+  ],
+  "ignorePatterns": [
+    "types/supabase.ts"
   ]
 }

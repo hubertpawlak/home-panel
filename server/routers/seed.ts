@@ -9,7 +9,7 @@ import { z } from "zod";
 export const seedRouter = createRouter()
   .query("generateKeys", {
     input: z.undefined(),
-    async resolve({}) {
+    async resolve() {
       if (process.env.NODE_ENV === "production") return {};
       const { publicKey, privateKey } = await generateKeyPair("ES512");
       // Use helper functions to convert keys into an easy to store format
@@ -22,7 +22,7 @@ export const seedRouter = createRouter()
   .mutation("createDefaultRoles", {
     input: z.null().optional(),
     output: z.boolean(),
-    async resolve({}) {
+    async resolve() {
       // No permissions for now - keep checks simple
       // Nobody
       const nobodyResponse = await UserRoles.createNewRoleOrAddPermissions(

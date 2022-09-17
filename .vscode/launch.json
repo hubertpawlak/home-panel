@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "npm:debug",
+      "request": "launch",
+      "runtimeArgs": [
+        "--node-options",
+        "--inspect=13333",
+        "run",
+        "dev"
+      ],
+      "attachSimplePort": 13333,
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+  ]
+}

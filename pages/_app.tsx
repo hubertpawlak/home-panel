@@ -2,11 +2,15 @@ import Head from "next/head";
 import SuperTokensReact from "supertokens-auth-react";
 import { AppProps } from "next/app";
 import { AppRouter } from "../server/routers/_app";
+import { cacheableQueries } from "../types/CacheableQueries";
 import { frontendConfig } from "../config/frontendConfig";
+import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
+import { httpLink } from "@trpc/client/links/httpLink";
 import { MantineProvider } from "@mantine/core";
 import { NextPage } from "next";
 import { NotificationsProvider } from "@mantine/notifications";
 import { ReactElement, ReactNode } from "react";
+import { splitLink } from "@trpc/client/links/splitLink";
 import { withTRPC } from "@trpc/next";
 import {
   createTheme,
@@ -68,7 +72,18 @@ export default withTRPC<AppRouter>({
       ? `https://${process.env.VERCEL_URL}/api/trpc`
       : "http://localhost:3000/api/trpc";
     return {
-      url,
+      links: [
+        // Disable request batching for cacheable queries
+        splitLink({
+          condition({ type, path }) {
+            const isQuery = type === "query";
+            const isCacheable = (cacheableQueries[path] ?? 0) > 0;
+            return isQuery && isCacheable;
+          },
+          true: httpLink({ url }),
+          false: httpBatchLink({ url }),
+        }),
+      ],
     };
   },
 })(App);

@@ -2,6 +2,7 @@ import Head from "next/head";
 import { AppHeader } from "../components/AppHeader";
 import { AppNavbar } from "../components/AppNavbar";
 import { AppShell } from "@mantine/core";
+import { CookieNotice } from "./CookieNotice";
 import { PropsWithChildren, useCallback, useState } from "react";
 import { useEventListener } from "@mantine/hooks";
 
@@ -24,6 +25,7 @@ const Layout = ({
         </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <CookieNotice />
       <AppShell
         fixed
         navbarOffsetBreakpoint="xl"

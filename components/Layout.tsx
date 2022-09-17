@@ -2,12 +2,7 @@ import Head from "next/head";
 import { AppHeader } from "../components/AppHeader";
 import { AppNavbar } from "../components/AppNavbar";
 import { AppShell } from "@mantine/core";
-import {
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useState
-  } from "react";
+import { PropsWithChildren, useCallback, useState } from "react";
 import { useEventListener } from "@mantine/hooks";
 
 const Layout = ({

@@ -18,6 +18,7 @@ import {
 } from "@mui/material/styles";
 
 export type NextPageWithLayout = NextPage & {
+  // eslint-disable-next-line no-unused-vars
   getLayout?: (page: ReactElement) => ReactNode;
 };
 

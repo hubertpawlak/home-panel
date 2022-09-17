@@ -5,7 +5,7 @@ import { useState } from "react";
 
 interface DataGridAddButtonProps {
   text?: string;
-  Modal?: ({}: SharedModalProps) => JSX.Element;
+  Modal?: ({ open, setOpen }: SharedModalProps) => JSX.Element;
 }
 
 export const DataGridAddButton = ({ text, Modal }: DataGridAddButtonProps) => {

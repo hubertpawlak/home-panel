@@ -16,7 +16,7 @@ interface UniversalDataGridProps {
   infiniteQuery: UseInfiniteQueryResult<any>; // Used to easily fetch data and handle pagination
   getRowId: GridRowIdGetter<any>;
   addText?: string;
-  AddModal?: ({}: SharedModalProps) => JSX.Element;
+  AddModal?: ({ open, setOpen }: SharedModalProps) => JSX.Element;
   editMutation?: UseMutationResult<any, any, any>;
   deleteText?: string;
   deleteMutation?: UseMutationResult<any, any, any>;

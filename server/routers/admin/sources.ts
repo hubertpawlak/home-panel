@@ -21,7 +21,7 @@ export const sourcesRouter = createProtectedRouter().mutation("signToken", {
       });
     // Create a signed JWT
     const { sourceId } = input;
-    const jwt = new SignJWT({})
+    const jwt = await new SignJWT({})
       .setProtectedHeader({ alg: JwtAlg })
       .setIssuedAt()
       .setIssuer(JWT_ISSUER)

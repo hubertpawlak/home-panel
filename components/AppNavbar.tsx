@@ -7,6 +7,7 @@ import {
   Bell,
   Cookie,
   DatabaseImport,
+  Home,
   SectionSign,
   Timeline,
   Users,
@@ -18,7 +19,13 @@ interface AppNavbarProps {
 }
 
 const links: IAppNavbarLink[] = [
-  { href: "/", Icon: Timeline, title: "Panel Sterowania" },
+  { href: "/", Icon: Home, title: "Strona główna" },
+  {
+    href: "/panel",
+    Icon: Timeline,
+    title: "Panel sterowania",
+    requiredPower: rolePower["user"],
+  },
   {
     href: "/notifications",
     Icon: Bell,
@@ -40,9 +47,9 @@ const links: IAppNavbarLink[] = [
     requiredPower: rolePower["admin"],
   },
   // TODO: as is
-  { href: "/tos", Icon: SectionSign, title: "Warunki Korzystania" },
+  { href: "/tos", Icon: SectionSign, title: "Warunki korzystania" },
   // TODO: cookie notice
-  { href: "/privacy", Icon: Cookie, title: "Polityka Prywatności" },
+  { href: "/privacy", Icon: Cookie, title: "Polityka prywatności" },
 ];
 
 export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => {

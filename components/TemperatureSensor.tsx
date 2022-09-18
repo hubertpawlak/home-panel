@@ -34,7 +34,7 @@ export function TemperatureSensor({
   name,
   updated_by,
 }: ITemperatureSensor) {
-  if (!temperature) return null;
+  if (temperature === undefined || temperature === null) return null;
 
   const timestamp = parseISO(updated_at);
   const now = new Date();
@@ -78,7 +78,7 @@ export function TemperatureSensor({
           weight={900}
           color={getColor(temperature)}
         >
-          {temperature ? `${temperature.toFixed(1)}°C` : "N/A"}
+          {`${temperature.toFixed(1)}°C`}
         </Text>
       </Tooltip>
       <Text align="center" size={20}>

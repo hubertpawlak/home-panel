@@ -1,3 +1,1 @@
-export const cacheableQueries: { [path: string]: number } = {
-  "sensors.getTemperatures": 3,
-};
+export const cacheableQueries: { [path: string]: number } = {};

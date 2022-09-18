@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import { Button, Code } from "@mantine/core";
 import { NextPageWithLayout } from "../_app";
 import { TestPipe } from "tabler-icons-react";
+import { ThirdPartyAuth } from "supertokens-auth-react/recipe/thirdparty";
 import { trpc } from "../../utils/trpc";
 import { useEffect, useState } from "react";
 
@@ -57,7 +58,7 @@ const TestPage: NextPageWithLayout = () => {
 
 TestPage.getLayout = (page) => (
   <Layout title="Strona testowa" icon={<TestPipe />}>
-    {page}
+    <ThirdPartyAuth requireAuth>{page}</ThirdPartyAuth>
   </Layout>
 );
 

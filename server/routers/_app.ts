@@ -1,16 +1,16 @@
 import { adminRouter } from "./admin";
 import { createRouter } from "../createRouter";
 import { m2mRouter } from "./m2m";
-import { publicSensorsRouter } from "./sensors";
 import { seedRouter } from "./seed";
 import { selfServiceRouter } from "./self";
+import { sensorsRouter } from "./sensors";
 import { testRouter } from "./test";
 
 export const appRouter = createRouter()
   .merge("test.", testRouter)
   .merge("seed.", seedRouter)
   .merge("m2m.", m2mRouter)
-  .merge("sensors.", publicSensorsRouter)
+  .merge("sensors.", sensorsRouter)
   .merge("self.", selfServiceRouter)
   .merge("admin.", adminRouter);
 

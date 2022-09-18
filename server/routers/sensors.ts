@@ -1,11 +1,13 @@
 import supabase from "../../utils/supabase";
-import { createRouter } from "../createRouter";
+import { _createProtectedRouter } from "../createProtectedRouter";
 import { definitions } from "../../types/supabase";
 import { SharedMax } from "../../types/SharedMax";
 import { sub } from "date-fns";
 import { z } from "zod";
 
-export const publicSensorsRouter = createRouter().query("getTemperatures", {
+export const sensorsRouter = _createProtectedRouter({
+  minRequiredRole: "user",
+}).query("getTemperatures", {
   input: z.null().optional(),
   output: z
     .array(

@@ -20,18 +20,26 @@ export const temperatureRouter = createM2MRouter().mutation(
     async resolve({ ctx, input }) {
       const { sourceId } = ctx;
       // Add sourceId to every reading
-      const _input = input.map((i) => ({ ...i, updated_by: sourceId }));
-      const { data, error, status, statusText } = await supabase
+      type InputWithSource = typeof input[0] & { updated_by: string };
+      const _input: InputWithSource[] = input.map((i) => ({
+        ...i,
+        updated_by: sourceId,
+      }));
+      const { error, status, statusText, count } = await supabase
         .from<definitions["temperature_sensors"]>("temperature_sensors")
         // updated_at is set by "handle_updated_at" DB trigger
-        .upsert(_input);
+        .upsert(_input, {
+          returning: "minimal",
+          count: "exact",
+        });
       if (error)
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
           message: `${status}: ${statusText}`,
         });
       return {
-        data,
+        status,
+        count,
       };
     },
   }

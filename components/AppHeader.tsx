@@ -1,8 +1,6 @@
-import router from "next/router";
 import { AppHeaderSignInBtn } from "./AppHeaderSignInBtn";
 import { Dispatch, SetStateAction } from "react";
 import { Home, QuestionMark } from "tabler-icons-react";
-import { ThirdPartyAuthNoSSR } from "./ThirdPartyAuthNoSSR";
 import {
   Breadcrumbs,
   Burger,
@@ -51,14 +49,7 @@ export const AppHeader = ({
             </Button>
           </Breadcrumbs>
         </ScrollArea>
-        <ThirdPartyAuthNoSSR
-          requireAuth={false}
-          key="AppHeaderSignInBtn"
-          // Go back to home after logout
-          onSessionExpired={() => router.push("/")}
-        >
-          <AppHeaderSignInBtn />
-        </ThirdPartyAuthNoSSR>
+        <AppHeaderSignInBtn />
       </div>
     </Header>
   );

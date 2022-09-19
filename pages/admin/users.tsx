@@ -8,8 +8,8 @@ import {
   Text
   } from "@mantine/core";
 import { NextPageWithLayout } from "./../_app";
+import { rolePower } from "../../types/RolePower";
 import { Suspense } from "react";
-import { ThirdPartyAuth } from "supertokens-auth-react/recipe/thirdparty";
 import { trpc } from "../../utils/trpc";
 import { useLocalStorage } from "@mantine/hooks";
 import { Users } from "tabler-icons-react";
@@ -94,8 +94,12 @@ const UsersPage: NextPageWithLayout = () => {
 };
 
 UsersPage.getLayout = (page) => (
-  <Layout title="Użytkownicy" icon={<Users />}>
-    <ThirdPartyAuth requireAuth>{page}</ThirdPartyAuth>
+  <Layout
+    title="Użytkownicy"
+    icon={<Users />}
+    requiredPower={rolePower["admin"]}
+  >
+    {page}
   </Layout>
 );
 

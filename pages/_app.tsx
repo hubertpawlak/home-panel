@@ -1,5 +1,6 @@
 import Head from "next/head";
-import SuperTokensReact from "supertokens-auth-react";
+import router from "next/router";
+import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
 import { AppProps } from "next/app";
 import { AppRouter } from "../server/routers/_app";
 import { cacheableQueries } from "../types/CacheableQueries";
@@ -59,7 +60,14 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       >
         <MuiThemeProvider theme={muiTheme}>
           <NotificationsProvider>
-            {getLayout(<Component {...pageProps} />)}
+            <SuperTokensWrapper
+              requireAuth={false}
+              onSessionExpired={() => {
+                router.push("/");
+              }}
+            >
+              {getLayout(<Component {...pageProps} />)}
+            </SuperTokensWrapper>
           </NotificationsProvider>
         </MuiThemeProvider>
       </MantineProvider>

@@ -2,7 +2,6 @@ import { AppNavbarLink, IAppNavbarLink } from "./AppNavbarLink";
 import { Dispatch, SetStateAction } from "react";
 import { Divider, Navbar, ScrollArea } from "@mantine/core";
 import { rolePower } from "../types/RolePower";
-import { ThirdPartyAuthNoSSR } from "./ThirdPartyAuthNoSSR";
 import {
   Bell,
   Cookie,
@@ -61,15 +60,13 @@ export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => {
       width={{ xs: "100%", sm: 300 }}
     >
       <Navbar.Section grow component={ScrollArea} offsetScrollbars>
-        <ThirdPartyAuthNoSSR requireAuth={false} key="AppNavbarLinks">
-          {links.map((props) => (
-            <AppNavbarLink
-              {...props}
-              key={props.title}
-              setNavOpened={setNavOpened}
-            />
-          ))}
-        </ThirdPartyAuthNoSSR>
+        {links.map((props) => (
+          <AppNavbarLink
+            {...props}
+            key={props.title}
+            setNavOpened={setNavOpened}
+          />
+        ))}
       </Navbar.Section>
       <Navbar.Section>
         <Divider

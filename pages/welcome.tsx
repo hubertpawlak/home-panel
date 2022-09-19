@@ -1,7 +1,5 @@
 import Layout from "../components/Layout";
 import { NextPageWithLayout } from "./_app";
-import { ThirdPartyAuthNoSSR } from "../components/ThirdPartyAuthNoSSR";
-import { trpc } from "../utils/trpc";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import {
   BrandGithub,
@@ -50,9 +48,7 @@ const WelcomePage: NextPageWithLayout = () => {
       <WelcomeTitle />
       <WelcomeList />
       <WelcomeButtons />
-      <ThirdPartyAuthNoSSR requireAuth={false} key="WelcomePage">
-        <WelcomeDisclaimer />
-      </ThirdPartyAuthNoSSR>
+      <WelcomeDisclaimer />
     </Container>
   );
 };
@@ -143,21 +139,7 @@ function WelcomeButtons() {
 
 function WelcomeDisclaimer() {
   const session = useSessionContext();
-  const doesSessionExist = !session.loading && session.doesSessionExist;
-
   const userId = !session.loading && session.userId;
-
-  const userPowerQuery = trpc.useQuery(["self.getPower"], {
-    placeholderData: 0,
-    // Reduce the amount of queries
-    staleTime: 60 * 1000, // 1 min
-    // Don't ask the server for userPower if there is no user session
-    enabled: doesSessionExist,
-  });
-  const userPower = userPowerQuery.data ?? 0;
-
-  // Hide disclaimer if user is authorized to do anything
-  if (userPower > 0) return null;
 
   return (
     <>

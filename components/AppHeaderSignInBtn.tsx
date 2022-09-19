@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ActionIcon, Menu } from "@mantine/core";
+import { ActionIcon, Loader, Menu } from "@mantine/core";
 import { Login, Logout, UserCircle } from "tabler-icons-react";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
@@ -15,7 +15,8 @@ export function AppHeaderSignInBtn() {
   const { invalidateQueries } = trpc.useContext();
   const router = useRouter();
 
-  if (session.loading) return null;
+  if (session.loading) return <Loader size="sm" color="gray" />;
+
   const doesSessionExist = session.doesSessionExist;
 
   return (

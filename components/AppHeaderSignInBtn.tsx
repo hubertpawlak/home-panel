@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { ActionIcon, Loader, Menu } from "@mantine/core";
 import { Login, Logout, UserCircle } from "tabler-icons-react";
+import { redirectToAuth } from "supertokens-auth-react";
+import { signOut } from "supertokens-auth-react/recipe/thirdparty";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
-import {
-  signOut,
-  redirectToAuth,
-} from "supertokens-auth-react/recipe/thirdparty";
 
 export function AppHeaderSignInBtn() {
   const [userLoading, setUserLoading] = useState(false);

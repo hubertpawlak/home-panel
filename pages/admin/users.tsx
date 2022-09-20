@@ -1,18 +1,20 @@
 import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
 import {
+  ActionIcon,
   Box,
   Loader,
   Skeleton,
   Switch,
   Text
   } from "@mantine/core";
+import { Edit, Users } from "tabler-icons-react";
 import { NextPageWithLayout } from "./../_app";
+import { openContextModal } from "@mantine/modals";
 import { rolePower } from "../../types/RolePower";
 import { Suspense } from "react";
 import { trpc } from "../../utils/trpc";
 import { useLocalStorage } from "@mantine/hooks";
-import { Users } from "tabler-icons-react";
 
 function rowKeyGetter(row: any) {
   return row.id;
@@ -28,9 +30,10 @@ const UsersPage: NextPageWithLayout = () => {
     defaultValue: false,
   });
 
-  const { data: userCount, isLoading: isLoadingUserCount } = trpc.useQuery([
-    "admin.users.getCount",
-  ]);
+  const { data: userCount, isLoading: isLoadingUserCount } = trpc.useQuery(
+    ["admin.users.getCount"],
+    { staleTime: 60 * 1000 }
+  );
   const usersQuery = trpc.useInfiniteQuery(["admin.users.getNewest", {}], {
     getNextPageParam: (data) => data.nextCursor,
   });
@@ -57,6 +60,7 @@ const UsersPage: NextPageWithLayout = () => {
             }}
           />
         </Box>
+        {/* TODO: switch to Table */}
         <UniversalDataGrid
           columns={[
             { field: "id", headerName: "id", minWidth: 330 },
@@ -81,6 +85,29 @@ const UsersPage: NextPageWithLayout = () => {
                       </>
                     );
                   },
+            },
+            {
+              field: "actions",
+              headerName: "actions",
+              align: "center",
+              renderCell: ({ row }) => {
+                return (
+                  <>
+                    <ActionIcon
+                      title="Edytuj"
+                      onClick={() => {
+                        openContextModal({
+                          modal: "editUser",
+                          title: "Edytowanie konta",
+                          innerProps: { userId: row.id },
+                        });
+                      }}
+                    >
+                      <Edit />
+                    </ActionIcon>
+                  </>
+                );
+              },
             },
           ]}
           infiniteQuery={usersQuery}

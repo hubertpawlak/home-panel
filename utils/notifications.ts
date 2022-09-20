@@ -105,8 +105,7 @@ const useMutationStatusNotification = (
   };
 
   const onError = (err: TRPCClientError<any>) => {
-    const parsedMessage: TRPCClientError<any>[] = JSON.parse(err.message);
-    const messageToDisplay = parsedMessage?.[0]?.message;
+    const messageToDisplay = err.message;
     showFailure(messageToDisplay);
     if (!onErrorExtra) return;
     onErrorExtra(err);

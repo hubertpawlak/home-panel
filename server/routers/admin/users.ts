@@ -3,6 +3,11 @@ import { createProtectedRouter } from "../../createProtectedRouter";
 import { SharedMax } from "../../../types/SharedMax";
 import { z } from "zod";
 import {
+  addRoleToUser,
+  getRolesForUser,
+  removeUserRole,
+} from "supertokens-node/recipe/userroles";
+import {
   deleteUser,
   getUserCount,
   getUsersNewestFirst,
@@ -37,6 +42,50 @@ export const usersRouter = createProtectedRouter()
         email: user.email,
       }));
       return { rows: users, nextCursor: nextPaginationToken };
+    },
+  })
+  .query("getEditableUserInfo", {
+    input: z.object({ userId: z.string().min(1).max(SharedMax) }),
+    async resolve({ input }) {
+      const { userId } = input;
+      const roles = (await getRolesForUser(userId)).roles;
+      return { userId, roles };
+    },
+  })
+  .mutation("editUser", {
+    input: z.object({
+      userId: z.string().min(1).max(SharedMax),
+      roles: z
+        .array(z.enum(["root", "admin", "user"]))
+        .max(3)
+        .optional(),
+    }),
+    async resolve({ input }) {
+      // Extract inputs
+      const { userId } = input;
+      const wantedRoles: string[] | undefined = input.roles;
+      // Specify what to change
+      const editRoles = !!wantedRoles;
+      // Add/Remove roles
+      if (editRoles) {
+        const currentRoles = (await getRolesForUser(userId)).roles;
+        const rolesToRemove = currentRoles.filter(
+          (role) => !wantedRoles.includes(role)
+        );
+        const rolesToAdd = wantedRoles.filter(
+          (role) => !currentRoles.includes(role)
+        );
+        await Promise.all(
+          rolesToAdd.map((role) => addRoleToUser(userId, role))
+        );
+        await Promise.all(
+          rolesToRemove.map((role) => removeUserRole(userId, role))
+        );
+      }
+      return {
+        userId,
+        roles: wantedRoles,
+      };
     },
   })
   .mutation("deleteUsers", {

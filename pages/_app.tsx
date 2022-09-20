@@ -1,13 +1,14 @@
 import Head from "next/head";
-import router from "next/router";
 import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
 import { AppProps } from "next/app";
 import { AppRouter } from "../server/routers/_app";
 import { cacheableQueries } from "../types/CacheableQueries";
+import { EditUserModal } from "../components/EditUserModal";
 import { frontendConfig } from "../config/frontendConfig";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { httpLink } from "@trpc/client/links/httpLink";
 import { MantineProvider } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
 import { NextPage } from "next";
 import { NotificationsProvider } from "@mantine/notifications";
 import { ReactElement, ReactNode } from "react";
@@ -59,16 +60,13 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         }}
       >
         <MuiThemeProvider theme={muiTheme}>
-          <NotificationsProvider>
-            <SuperTokensWrapper
-              requireAuth={false}
-              onSessionExpired={() => {
-                router.push("/");
-              }}
-            >
-              {getLayout(<Component {...pageProps} />)}
-            </SuperTokensWrapper>
-          </NotificationsProvider>
+          <ModalsProvider modals={{ editUser: EditUserModal }}>
+            <NotificationsProvider>
+              <SuperTokensWrapper>
+                {getLayout(<Component {...pageProps} />)}
+              </SuperTokensWrapper>
+            </NotificationsProvider>
+          </ModalsProvider>
         </MuiThemeProvider>
       </MantineProvider>
     </>

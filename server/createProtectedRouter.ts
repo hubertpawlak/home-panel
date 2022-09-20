@@ -56,8 +56,7 @@ export function _createProtectedRouter({
       const curRolePower = role in rolePower ? rolePower[role as UserRole] : 0;
       return Math.max(prevPower, curRolePower);
     }, 0);
-    if (userPower < requiredPower)
-      throw new TRPCError({ code: "UNAUTHORIZED" });
+    if (userPower < requiredPower) throw new TRPCError({ code: "FORBIDDEN" });
     // Check passed successfully
     return next<ProtectedRouterContext>({
       ctx: {

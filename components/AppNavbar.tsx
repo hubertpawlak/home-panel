@@ -29,14 +29,12 @@ const links: IAppNavbarLink[] = [
     title: "Powiadomienia",
     requiredPower: rolePower["user"],
   },
-  // TODO: create tokens for sensors
   {
     href: "/sources",
     Icon: DatabaseImport,
     title: "Źródła danych",
     requiredPower: rolePower["admin"],
   },
-  // TODO: Table; search, delete
   {
     href: "/admin/users",
     Icon: Users,

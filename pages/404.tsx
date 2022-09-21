@@ -1,6 +1,10 @@
+import bg from "../public/404.svg";
 import Head from "next/head";
-import { FileUnknown, MoodSad } from "tabler-icons-react";
+import Image from "next/future/image";
 import Layout from "../components/Layout";
+import { Button, Center, Container } from "@mantine/core";
+import { FileUnknown } from "tabler-icons-react";
+import { NextLink } from "@mantine/next";
 import { NextPageWithLayout } from "./_app";
 
 const Custom404: NextPageWithLayout = () => {
@@ -9,14 +13,25 @@ const Custom404: NextPageWithLayout = () => {
       <Head>
         <title>404: Nie odnaleziono strony</title>
       </Head>
-      {/* TODO: 404 page */}
-      <MoodSad />
+      <Container size="xl" style={{ filter: "brightness(0.9)" }}>
+        <Image
+          src={bg}
+          alt="błąd 404"
+          sizes="100vw"
+          style={{ width: "100%", height: "auto", maxHeight: "50vh" }}
+        />
+        <Center mt="xl">
+          <Button component={NextLink} href="/" variant="subtle" replace>
+            Przenieś mnie na stronę główną
+          </Button>
+        </Center>
+      </Container>
     </>
   );
 };
 
 Custom404.getLayout = (page) => (
-  <Layout title="404" icon={<FileUnknown />}>
+  <Layout title="Nie odnaleziono strony" icon={<FileUnknown />}>
     {page}
   </Layout>
 );

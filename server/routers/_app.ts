@@ -1,6 +1,7 @@
 import { adminRouter } from "./admin";
 import { createRouter } from "../createRouter";
 import { m2mRouter } from "./m2m";
+import { rootRouter } from "./root";
 import { seedRouter } from "./seed";
 import { selfServiceRouter } from "./self";
 import { sensorsRouter } from "./sensors";
@@ -12,6 +13,7 @@ export const appRouter = createRouter()
   .merge("m2m.", m2mRouter)
   .merge("sensors.", sensorsRouter)
   .merge("self.", selfServiceRouter)
+  .merge("root.", rootRouter)
   .merge("admin.", adminRouter);
 
 export type AppRouter = typeof appRouter;

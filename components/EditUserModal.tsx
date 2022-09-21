@@ -30,7 +30,7 @@ export const EditUserModal = ({ innerProps }: EditUserProps) => {
   });
 
   const { isFetchedAfterMount } = trpc.useQuery(
-    ["admin.users.getEditableUserInfo", { userId }],
+    ["root.users.getEditableUserInfo", { userId }],
     {
       refetchOnWindowFocus: false,
       onSuccess(data) {
@@ -44,7 +44,7 @@ export const EditUserModal = ({ innerProps }: EditUserProps) => {
       setIsSubmitting(true);
     },
   });
-  const { mutate: editUser } = trpc.useMutation("admin.users.editUser", {
+  const { mutate: editUser } = trpc.useMutation("root.users.editUser", {
     ...mutateOpts,
     onSettled() {
       setIsSubmitting(false);

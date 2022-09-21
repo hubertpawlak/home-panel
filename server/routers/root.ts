@@ -1,8 +1,7 @@
 import supertokens from "supertokens-node";
 import { _createProtectedRouter } from "../createProtectedRouter";
 import { backendConfig } from "../../config/backendConfig";
-import { sensorsRouter } from "./admin/sensors";
-import { sourcesRouter } from "./admin/sources";
+import { usersRouter } from "./root/users";
 
 /**
  * Remember that whenever we want to use any functions from the supertokens-node lib,
@@ -10,8 +9,6 @@ import { sourcesRouter } from "./admin/sources";
  */
 supertokens.init(backendConfig());
 
-export const adminRouter = _createProtectedRouter({
-  minRequiredRole: "admin",
-})
-  .merge("sources.", sourcesRouter)
-  .merge("sensors.", sensorsRouter);
+export const rootRouter = _createProtectedRouter({
+  minRequiredRole: "root",
+}).merge("users.", usersRouter);

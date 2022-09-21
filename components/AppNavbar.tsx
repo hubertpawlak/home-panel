@@ -43,7 +43,7 @@ const links: IAppNavbarLink[] = [
     href: "/admin/users",
     Icon: Users,
     title: "Użytkownicy",
-    requiredPower: rolePower["admin"],
+    requiredPower: rolePower["root"],
   },
   // TODO: as is
   { href: "/tos", Icon: SectionSign, title: "Warunki korzystania" },

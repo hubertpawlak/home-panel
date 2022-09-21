@@ -31,14 +31,14 @@ const UsersPage: NextPageWithLayout = () => {
   });
 
   const { data: userCount, isLoading: isLoadingUserCount } = trpc.useQuery(
-    ["admin.users.getCount"],
+    ["root.users.getCount"],
     { staleTime: 60 * 1000 }
   );
-  const usersQuery = trpc.useInfiniteQuery(["admin.users.getNewest", {}], {
+  const usersQuery = trpc.useInfiniteQuery(["root.users.getNewest", {}], {
     getNextPageParam: (data) => data.nextCursor,
   });
 
-  const deleteUsersMutation = trpc.useMutation("admin.users.deleteUsers", {
+  const deleteUsersMutation = trpc.useMutation("root.users.deleteUsers", {
     useErrorBoundary: false,
   });
 
@@ -124,7 +124,7 @@ UsersPage.getLayout = (page) => (
   <Layout
     title="Użytkownicy"
     icon={<Users />}
-    requiredPower={rolePower["admin"]}
+    requiredPower={rolePower["root"]}
   >
     {page}
   </Layout>

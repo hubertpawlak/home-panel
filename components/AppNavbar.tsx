@@ -4,10 +4,8 @@ import { Divider, Navbar, ScrollArea } from "@mantine/core";
 import { rolePower } from "../types/RolePower";
 import {
   Bell,
-  Cookie,
   DatabaseImport,
   Home,
-  SectionSign,
   Timeline,
   Users,
 } from "tabler-icons-react";
@@ -45,10 +43,6 @@ const links: IAppNavbarLink[] = [
     title: "Użytkownicy",
     requiredPower: rolePower["root"],
   },
-  // TODO: as is
-  { href: "/tos", Icon: SectionSign, title: "Warunki korzystania" },
-  // TODO: cookie notice
-  { href: "/privacy", Icon: Cookie, title: "Polityka prywatności" },
 ];
 
 export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => {

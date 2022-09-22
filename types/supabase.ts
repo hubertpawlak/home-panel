@@ -12,6 +12,105 @@ export interface paths {
       };
     };
   };
+  "/push": {
+    get: {
+      parameters: {
+        query: {
+          endpoint?: parameters["rowFilter.push.endpoint"];
+          p256dh?: parameters["rowFilter.push.p256dh"];
+          auth?: parameters["rowFilter.push.auth"];
+          ownerId?: parameters["rowFilter.push.ownerId"];
+          createdAt?: parameters["rowFilter.push.createdAt"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["push"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** push */
+          push?: definitions["push"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          endpoint?: parameters["rowFilter.push.endpoint"];
+          p256dh?: parameters["rowFilter.push.p256dh"];
+          auth?: parameters["rowFilter.push.auth"];
+          ownerId?: parameters["rowFilter.push.ownerId"];
+          createdAt?: parameters["rowFilter.push.createdAt"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          endpoint?: parameters["rowFilter.push.endpoint"];
+          p256dh?: parameters["rowFilter.push.p256dh"];
+          auth?: parameters["rowFilter.push.auth"];
+          ownerId?: parameters["rowFilter.push.ownerId"];
+          createdAt?: parameters["rowFilter.push.createdAt"];
+        };
+        body: {
+          /** push */
+          push?: definitions["push"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/temperature_sensors": {
     get: {
       parameters: {
@@ -120,6 +219,25 @@ export interface paths {
 }
 
 export interface definitions {
+  push: {
+    /**
+     * Format: text
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    endpoint: string;
+    /** Format: text */
+    p256dh: string;
+    /** Format: text */
+    auth: string;
+    /** Format: text */
+    ownerId: string;
+    /**
+     * Format: timestamp with time zone
+     * @default (now() AT TIME ZONE 'utc'::text)
+     */
+    createdAt: string;
+  };
   temperature_sensors: {
     /**
      * Format: text
@@ -181,6 +299,18 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
+  /** @description push */
+  "body.push": definitions["push"];
+  /** Format: text */
+  "rowFilter.push.endpoint": string;
+  /** Format: text */
+  "rowFilter.push.p256dh": string;
+  /** Format: text */
+  "rowFilter.push.auth": string;
+  /** Format: text */
+  "rowFilter.push.ownerId": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.push.createdAt": string;
   /** @description temperature_sensors */
   "body.temperature_sensors": definitions["temperature_sensors"];
   /** Format: text */

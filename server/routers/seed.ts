@@ -1,4 +1,5 @@
 import UserRoles from "supertokens-node/recipe/userroles";
+import webPush from "web-push";
 import { createRouter } from "../createRouter";
 import { generateKeyPair } from "jose";
 import { getUserById } from "supertokens-node/recipe/thirdparty";
@@ -7,6 +8,17 @@ import { SharedMax } from "../../types/SharedMax";
 import { z } from "zod";
 
 export const seedRouter = createRouter()
+  .query("generateVapidKeys", {
+    input: z.undefined(),
+    async resolve() {
+      if (process.env.NODE_ENV === "production") return {};
+      const { publicKey, privateKey } = webPush.generateVAPIDKeys();
+      return {
+        publicKey,
+        privateKey,
+      };
+    },
+  })
   .query("generateKeys", {
     input: z.undefined(),
     async resolve() {

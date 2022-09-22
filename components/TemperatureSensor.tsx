@@ -4,6 +4,7 @@ import {
   Text,
   Tooltip
   } from "@mantine/core";
+import { HARDCODED_PUSH_NOTIFY_ABOVE } from "../types/Push";
 import {
   intlFormat,
   isWithinInterval,
@@ -21,8 +22,8 @@ export interface ITemperatureSensor {
 }
 
 function getColor(temperature: number): DefaultMantineColor {
-  if (temperature > 93) return "red";
-  if (temperature > 85) return "yellow";
+  if (temperature > HARDCODED_PUSH_NOTIFY_ABOVE) return "red";
+  if (temperature > HARDCODED_PUSH_NOTIFY_ABOVE - 5) return "yellow";
   return "dark.0";
 }
 

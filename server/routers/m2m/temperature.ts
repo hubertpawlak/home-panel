@@ -1,9 +1,19 @@
 import supabase from "../../../utils/supabase";
 import { createM2MRouter } from "../../createM2MRouter";
 import { definitions } from "../../../types/supabase";
+import { HARDCODED_PUSH_NOTIFY_ABOVE } from "../../../types/Push";
+import { redis } from "../../../utils/redis";
+import { sendPush } from "../../../utils/push";
 import { SharedMax } from "../../../types/SharedMax";
-import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+
+const deleteSubscription = (endpoint: string) => {
+  return async () =>
+    await supabase
+      .from<definitions["push"]>("push")
+      .delete({ returning: "minimal" })
+      .eq("endpoint", endpoint);
+};
 
 export const temperatureRouter = createM2MRouter().mutation(
   "storeTemperatures",
@@ -18,6 +28,7 @@ export const temperatureRouter = createM2MRouter().mutation(
       )
       .min(1),
     async resolve({ ctx, input }) {
+      // Phase 1 - database
       const { sourceId } = ctx;
       // Add sourceId to every reading
       type InputWithSource = typeof input[0] & { updated_by: string };
@@ -25,21 +36,42 @@ export const temperatureRouter = createM2MRouter().mutation(
         ...i,
         updated_by: sourceId,
       }));
-      const { error, status, statusText, count } = await supabase
+      const { count: tempsCount } = await supabase
         .from<definitions["temperature_sensors"]>("temperature_sensors")
         // updated_at is set by "handle_updated_at" DB trigger
         .upsert(_input, {
           returning: "minimal",
           count: "exact",
         });
-      if (error)
-        throw new TRPCError({
-          code: "INTERNAL_SERVER_ERROR",
-          message: `${status}: ${statusText}`,
-        });
+      // Phase 2 - web push
+      const triggerPush = input.some(
+        ({ temperature }) => temperature > HARDCODED_PUSH_NOTIFY_ABOVE
+      );
+      if (!triggerPush) return { tempsCount };
+      // Prevent notification spam
+      // Get previous value and bump in one request
+      const pushAlreadySent = await redis.set<boolean>("notified", true, {
+        ex: 60, // TTL in seconds
+        get: true, // Get previous value or null
+      });
+      if (pushAlreadySent === true) return { tempsCount };
+      // Get subscriptions and send notifications
+      const { data: subscriptions, count: pushCount } = await supabase
+        .from<definitions["push"]>("push")
+        .select("endpoint,p256dh,auth", { count: "exact" });
+      const timestamp = Date.now();
+      await Promise.all(
+        (subscriptions ?? [])?.map((sub) =>
+          sendPush(sub, {
+            title: `Temperatura przekroczyła ${HARDCODED_PUSH_NOTIFY_ABOVE}°C `,
+            body: `Jeden z czujników zgłosił temperaturę powyżej limitu`,
+            timestamp,
+          }).catch(deleteSubscription(sub.endpoint))
+        )
+      );
       return {
-        status,
-        count,
+        tempsCount,
+        pushCount,
       };
     },
   }

@@ -11,7 +11,7 @@ import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { NextPage } from "next";
 import { NotificationsProvider } from "@mantine/notifications";
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, useEffect } from "react";
 import { splitLink } from "@trpc/client/links/splitLink";
 import { withTRPC } from "@trpc/next";
 import {
@@ -37,6 +37,39 @@ const muiTheme = createTheme({ palette: { mode: "dark" } });
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
+
+  // Try to register serviceWorker
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").then(
+        async (reg) => {
+          // Update sub in DB
+          const sub = await reg.pushManager.getSubscription();
+          if (!sub) return;
+          const json = sub.toJSON();
+          if (!json) return;
+          const { endpoint, keys } = json;
+          if (!endpoint || !keys) return;
+          fetch("/api/trpc/push.register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              endpoint,
+              keys: { p256dh: keys.p256dh, auth: keys.auth },
+            }),
+          })
+            .then(() => {})
+            .catch(() => {});
+        },
+        (err) => {
+          console.error("SW: registration failed: ", err);
+        }
+      );
+    }
+  }, []);
+
   return (
     <>
       <Head>

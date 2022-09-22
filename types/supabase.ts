@@ -20,7 +20,7 @@ export interface paths {
           p256dh?: parameters["rowFilter.push.p256dh"];
           auth?: parameters["rowFilter.push.auth"];
           ownerId?: parameters["rowFilter.push.ownerId"];
-          createdAt?: parameters["rowFilter.push.createdAt"];
+          created_at?: parameters["rowFilter.push.created_at"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -75,7 +75,7 @@ export interface paths {
           p256dh?: parameters["rowFilter.push.p256dh"];
           auth?: parameters["rowFilter.push.auth"];
           ownerId?: parameters["rowFilter.push.ownerId"];
-          createdAt?: parameters["rowFilter.push.createdAt"];
+          created_at?: parameters["rowFilter.push.created_at"];
         };
         header: {
           /** Preference */
@@ -94,7 +94,7 @@ export interface paths {
           p256dh?: parameters["rowFilter.push.p256dh"];
           auth?: parameters["rowFilter.push.auth"];
           ownerId?: parameters["rowFilter.push.ownerId"];
-          createdAt?: parameters["rowFilter.push.createdAt"];
+          created_at?: parameters["rowFilter.push.created_at"];
         };
         body: {
           /** push */
@@ -236,7 +236,7 @@ export interface definitions {
      * Format: timestamp with time zone
      * @default (now() AT TIME ZONE 'utc'::text)
      */
-    createdAt: string;
+    created_at: string;
   };
   temperature_sensors: {
     /**
@@ -310,7 +310,7 @@ export interface parameters {
   /** Format: text */
   "rowFilter.push.ownerId": string;
   /** Format: timestamp with time zone */
-  "rowFilter.push.createdAt": string;
+  "rowFilter.push.created_at": string;
   /** @description temperature_sensors */
   "body.temperature_sensors": definitions["temperature_sensors"];
   /** Format: text */

@@ -1,7 +1,5 @@
-import { env } from "process";
-
-export const appBaseUrl = env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${env.NEXT_PUBLIC_VERCEL_URL}/`
+const appBaseUrl = process.env.NEXT_PUBLIC_APP_URL
+  ? `https://${process.env.NEXT_PUBLIC_APP_URL}/`
   : "http://localhost:3000/";
 
 export const appInfo = {

@@ -1,11 +1,14 @@
 import supabase from "../../../utils/supabase";
 import { createM2MRouter } from "../../createM2MRouter";
 import { definitions } from "../../../types/supabase";
-import { HARDCODED_PUSH_NOTIFY_ABOVE } from "../../../types/Push";
 import { redis } from "../../../utils/redis";
 import { sendPush } from "../../../utils/push";
 import { SharedMax } from "../../../types/SharedMax";
 import { z } from "zod";
+import {
+  HARDCODED_PUSH_NOTIFY_ABOVE,
+  HARDCODED_PUSH_TTL,
+} from "../../../types/Push";
 
 const deleteSubscription = (endpoint: string) => {
   return async () =>
@@ -62,11 +65,17 @@ export const temperatureRouter = createM2MRouter().mutation(
       const timestamp = Date.now();
       await Promise.all(
         (subscriptions ?? [])?.map((sub) =>
-          sendPush(sub, {
-            title: `Temperatura przekroczyła ${HARDCODED_PUSH_NOTIFY_ABOVE}°C `,
-            body: `Jeden z czujników zgłosił temperaturę powyżej limitu`,
-            timestamp,
-          }).catch(deleteSubscription(sub.endpoint))
+          sendPush(
+            sub,
+            {
+              title: `Temperatura przekroczyła ${HARDCODED_PUSH_NOTIFY_ABOVE}°C `,
+              body: `Jeden z czujników zgłosił temperaturę powyżej limitu`,
+              timestamp,
+            },
+            {
+              TTL: HARDCODED_PUSH_TTL,
+            }
+          ).catch(deleteSubscription(sub.endpoint))
         )
       );
       return {

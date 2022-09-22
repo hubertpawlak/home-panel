@@ -1,8 +1,9 @@
-import ThirdPartyReact, {
-  Github,
-} from "supertokens-auth-react/recipe/thirdparty";
 import SessionReact from "supertokens-auth-react/recipe/session";
 import { appInfo } from "./appInfo";
+import ThirdPartyReact, {
+  Github,
+  Google,
+} from "supertokens-auth-react/recipe/thirdparty";
 import type { SuperTokensConfig } from "supertokens-auth-react/lib/build/types";
 
 export const frontendConfig: () => SuperTokensConfig = () => {
@@ -43,7 +44,7 @@ export const frontendConfig: () => SuperTokensConfig = () => {
           superTokensBrandingText: "#838383",
         },
         signInAndUpFeature: {
-          providers: [Github.init()],
+          providers: [Github.init(), Google.init()],
         },
       }),
       SessionReact.init(),

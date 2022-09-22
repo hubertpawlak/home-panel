@@ -10,7 +10,9 @@ export const backendConfig = (): TypeInput => {
     !env.SUPERTOKENS_CONN_URI ||
     !env.SUPERTOKENS_API_KEY ||
     !env.GITHUB_CLIENT_ID ||
-    !env.GITHUB_CLIENT_SECRET
+    !env.GITHUB_CLIENT_SECRET ||
+    !env.GOOGLE_CLIENT_ID ||
+    !env.GOOGLE_CLIENT_SECRET
   ) {
     throw "Configure SUPERTOKENS in your env file";
   }
@@ -28,6 +30,10 @@ export const backendConfig = (): TypeInput => {
             ThirdPartyNode.Github({
               clientId: env.GITHUB_CLIENT_ID,
               clientSecret: env.GITHUB_CLIENT_SECRET,
+            }),
+            ThirdPartyNode.Google({
+              clientId: env.GOOGLE_CLIENT_ID,
+              clientSecret: env.GOOGLE_CLIENT_SECRET,
             }),
           ],
         },

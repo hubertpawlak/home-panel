@@ -32,6 +32,7 @@ if (typeof window !== "undefined") {
 // Used "any" because "next/dynamic" returns weird type but actually works fine
 const modals: Record<string, any> = {
   editUser: dynamic(() => import("../components/EditUserModal")),
+  showToken: dynamic(() => import("../components/ShowTokenModal")),
 };
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {

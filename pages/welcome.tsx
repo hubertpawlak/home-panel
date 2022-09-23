@@ -19,24 +19,12 @@ import {
   Text,
   Title,
   Container,
-  MantineGradient,
   Code,
 } from "@mantine/core";
 
-const sharedGradient: MantineGradient = {
-  deg: 45,
-  from: "cyan",
-  to: "indigo",
-};
-
 function ThemedListIcon({ Icon }: { Icon: Icon }) {
   return (
-    <ThemeIcon
-      size="lg"
-      radius="xl"
-      variant="gradient"
-      gradient={sharedGradient}
-    >
+    <ThemeIcon size="lg" radius="xl" variant="gradient">
       <Icon />
     </ThemeIcon>
   );
@@ -64,18 +52,7 @@ export default WelcomePage;
 function WelcomeTitle() {
   return (
     <Title align="center">
-      <Highlight
-        highlight={["panel", "sterowania", "domem"]}
-        highlightStyles={(theme) => ({
-          backgroundImage: theme.fn.linearGradient(
-            45,
-            theme.colors.cyan[5],
-            theme.colors.indigo[5]
-          ),
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        })}
-      >
+      <Highlight highlight={["panel", "sterowania", "domem"]}>
         Nowoczesny panel do zdalnego sterowania domem
       </Highlight>
     </Title>
@@ -116,7 +93,6 @@ function WelcomeButtons() {
         rel="noopener"
         radius="xl"
         variant="gradient"
-        gradient={sharedGradient}
         leftIcon={<AddressBook />}
       >
         O autorze

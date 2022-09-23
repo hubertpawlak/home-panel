@@ -90,6 +90,27 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         withNormalizeCSS
         theme={{
           colorScheme: "dark",
+          defaultGradient: { deg: 45, from: "cyan", to: "indigo" },
+          components: {
+            ThemeIcon: {
+              defaultProps: {
+                gradient: { deg: 45, from: "cyan", to: "indigo" },
+              },
+            },
+            Mark: {
+              styles: (theme) => ({
+                root: {
+                  backgroundImage: theme.fn.linearGradient(
+                    45,
+                    theme.colors.cyan[5],
+                    theme.colors.indigo[5]
+                  ),
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                },
+              }),
+            },
+          },
         }}
       >
         <MuiThemeProvider theme={muiTheme}>

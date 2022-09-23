@@ -27,10 +27,7 @@ export const UsersTable = ({ users, showEmails }: IUsersTable) => {
   });
   const { mutateAsync: deleteUsers, isLoading: isDeleting } = trpc.useMutation(
     "root.users.deleteUsers",
-    {
-      ...opts,
-      useErrorBoundary: false,
-    }
+    opts
   );
 
   return (

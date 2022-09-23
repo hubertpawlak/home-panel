@@ -1,9 +1,9 @@
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
 import { AppProps } from "next/app";
 import { AppRouter } from "../server/routers/_app";
 import { cacheableQueries } from "../types/CacheableQueries";
-import { EditUserModal } from "../components/EditUserModal";
 import { frontendConfig } from "../config/frontendConfig";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { httpLink } from "@trpc/client/links/httpLink";
@@ -28,6 +28,11 @@ if (typeof window !== "undefined") {
   // We only want to call this init function on the frontend
   SuperTokensReact.init(frontendConfig());
 }
+
+// Used "any" because "next/dynamic" returns weird type but actually works fine
+const modals: Record<string, any> = {
+  editUser: dynamic(() => import("../components/EditUserModal")),
+};
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -107,7 +112,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           },
         }}
       >
-        <ModalsProvider modals={{ editUser: EditUserModal }}>
+        <ModalsProvider modals={modals}>
           <NotificationsProvider>
             <SuperTokensWrapper>
               {getLayout(<Component {...pageProps} />)}

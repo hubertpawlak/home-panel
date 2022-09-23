@@ -8,7 +8,6 @@ import { ContextModalProps } from "@mantine/modals";
 import { trpc } from "../utils/trpc";
 import { useForm } from "@mantine/form";
 import { useMutationStatusNotification } from "../utils/notifications";
-import { useState } from "react";
 
 type EditUserProps = ContextModalProps<{
   userId: string;
@@ -21,7 +20,6 @@ interface IEditUser {
 
 export const EditUserModal = ({ innerProps }: EditUserProps) => {
   const { userId } = innerProps;
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<IEditUser>({
     initialValues: {
       userId,
@@ -39,17 +37,11 @@ export const EditUserModal = ({ innerProps }: EditUserProps) => {
     }
   );
 
-  const mutateOpts = useMutationStatusNotification({
-    onMutate() {
-      setIsSubmitting(true);
-    },
-  });
-  const { mutate: editUser } = trpc.useMutation("root.users.editUser", {
-    ...mutateOpts,
-    onSettled() {
-      setIsSubmitting(false);
-    },
-  });
+  const mutateOpts = useMutationStatusNotification();
+  const { mutate: editUser, isLoading: isSubmitting } = trpc.useMutation(
+    "root.users.editUser",
+    mutateOpts
+  );
 
   const disabled = !isFetchedAfterMount || isSubmitting;
 
@@ -84,3 +76,5 @@ export const EditUserModal = ({ innerProps }: EditUserProps) => {
     </>
   );
 };
+
+export default EditUserModal;

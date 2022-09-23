@@ -1,6 +1,6 @@
 import { AppHeaderSignInBtn } from "./AppHeaderSignInBtn";
-import { Dispatch, SetStateAction } from "react";
 import { Home, QuestionMark } from "tabler-icons-react";
+import type { Dispatch, SetStateAction } from "react";
 import {
   Breadcrumbs,
   Burger,

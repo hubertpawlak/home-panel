@@ -1,10 +1,10 @@
 import supabase from "../../../utils/supabase";
 import { createM2MRouter } from "../../createM2MRouter";
-import { definitions } from "../../../types/supabase";
 import { redis } from "../../../utils/redis";
 import { sendPush } from "../../../utils/push";
 import { SharedMax } from "../../../types/SharedMax";
 import { z } from "zod";
+import type { definitions } from "../../../types/supabase";
 import {
   HARDCODED_PUSH_NOTIFY_ABOVE,
   HARDCODED_PUSH_TTL,

@@ -4,10 +4,10 @@ import {
   Stack,
   TextInput
   } from "@mantine/core";
-import { ContextModalProps } from "@mantine/modals";
 import { trpc } from "../utils/trpc";
 import { useForm } from "@mantine/form";
 import { useMutationStatusNotification } from "../utils/notifications";
+import type { ContextModalProps } from "@mantine/modals";
 
 type EditUserProps = ContextModalProps<{
   userId: string;

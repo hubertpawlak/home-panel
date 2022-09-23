@@ -1,9 +1,9 @@
 import supabase from "../../../utils/supabase";
 import { createProtectedRouter } from "../../createProtectedRouter";
-import { definitions } from "../../../types/supabase";
 import { SharedMax } from "../../../types/SharedMax";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import type { definitions } from "../../../types/supabase";
 
 export const sensorsRouter = createProtectedRouter()
   .mutation("renameTemperatureSensor", {

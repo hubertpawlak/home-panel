@@ -3,10 +3,10 @@ import supertokens from "supertokens-node";
 import UserRoles from "supertokens-node/recipe/userroles";
 import { backendConfig } from "../../config/backendConfig";
 import { createRouter } from "../createRouter";
-import { definitions } from "../../types/supabase";
 import { env } from "process";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import type { definitions } from "../../types/supabase";
 
 /**
  * Remember that whenever we want to use any functions from the supertokens-node lib,

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import React, { useEffect } from "react";
 import SuperTokens, { redirectToAuth } from "supertokens-auth-react";
+import { useEffect } from "react";
 
 const SuperTokensComponentNoSSR = dynamic(
   new Promise((res) => res(SuperTokens.getRoutingComponent)) as any,

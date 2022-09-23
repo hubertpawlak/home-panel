@@ -1,11 +1,11 @@
 import Layout from "../components/Layout";
 import { DatabaseImport } from "tabler-icons-react";
-import { NextPageWithLayout } from "./_app";
 import { openContextModal } from "@mantine/modals";
 import { rolePower } from "../types/RolePower";
 import { trpc } from "../utils/trpc";
 import { useForm } from "@mantine/form";
 import { useMutationStatusNotification } from "../utils/notifications";
+import type { NextPageWithLayout } from "./_app";
 import {
   Button,
   Container,

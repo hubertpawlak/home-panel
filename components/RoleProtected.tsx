@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
 import { RoleAccessDenied } from "./RoleAccessDenied";
 import { trpc } from "../utils/trpc";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import type { PropsWithChildren } from "react";
 
 /**
  * Restrict children components to certain roles

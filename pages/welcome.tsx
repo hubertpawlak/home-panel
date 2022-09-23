@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
-import { NextPageWithLayout } from "./_app";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import type { NextPageWithLayout } from "./_app";
 import {
   BrandGithub,
   Code as CodeIcon,

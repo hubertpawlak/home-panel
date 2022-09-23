@@ -1,9 +1,9 @@
 import supabase from "../../utils/supabase";
 import { _createProtectedRouter } from "../createProtectedRouter";
 import { createRouter } from "../createRouter";
-import { definitions } from "../../types/supabase";
 import { SharedMax } from "../../types/SharedMax";
 import { z } from "zod";
+import type { definitions } from "../../types/supabase";
 
 const subscriptionSchema = z.object({
   endpoint: z.string().min(1).max(SharedMax).startsWith("https://"),

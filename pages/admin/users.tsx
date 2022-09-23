@@ -1,11 +1,11 @@
 import Layout from "../../components/Layout";
-import { NextPageWithLayout } from "./../_app";
 import { PlayerTrackNext, PlayerTrackPrev, Users } from "tabler-icons-react";
 import { rolePower } from "../../types/RolePower";
 import { Suspense, useEffect } from "react";
 import { trpc } from "../../utils/trpc";
 import { useCounter, useLocalStorage } from "@mantine/hooks";
 import { UsersTable } from "../../components/UsersTable";
+import type { NextPageWithLayout } from "./../_app";
 import {
   ActionIcon,
   Box,

@@ -1,9 +1,9 @@
 import supabase from "../../utils/supabase";
 import { _createProtectedRouter } from "../createProtectedRouter";
-import { definitions } from "../../types/supabase";
 import { SharedMax } from "../../types/SharedMax";
 import { sub } from "date-fns";
 import { z } from "zod";
+import type { definitions } from "../../types/supabase";
 
 export const sensorsRouter = _createProtectedRouter({
   minRequiredRole: "user",

@@ -3,7 +3,7 @@ import ThirdPartyNode from "supertokens-node/recipe/thirdparty";
 import UserRoles from "supertokens-node/recipe/userroles";
 import { appInfo } from "./appInfo";
 import { env } from "process";
-import { TypeInput } from "supertokens-node/types";
+import type { TypeInput } from "supertokens-node/types";
 
 export const backendConfig = (): TypeInput => {
   if (

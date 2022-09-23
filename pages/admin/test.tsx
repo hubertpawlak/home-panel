@@ -1,10 +1,10 @@
 import Layout from "../../components/Layout";
 import { Button, Code } from "@mantine/core";
-import { NextPageWithLayout } from "../_app";
 import { rolePower } from "../../types/RolePower";
 import { TestPipe } from "tabler-icons-react";
 import { trpc } from "../../utils/trpc";
 import { useEffect, useState } from "react";
+import type { NextPageWithLayout } from "../_app";
 
 const TestPage: NextPageWithLayout = () => {
   const {

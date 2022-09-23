@@ -1,8 +1,8 @@
 import Session from "supertokens-node/recipe/session";
 import { createProtectedRouter } from "../../createProtectedRouter";
-import { DisplayedUser } from "../../../types/DisplayedUser";
 import { SharedMax } from "../../../types/SharedMax";
 import { z } from "zod";
+import type { DisplayedUser } from "../../../types/DisplayedUser";
 import {
   addRoleToUser,
   getRolesForUser,

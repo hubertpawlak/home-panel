@@ -1,7 +1,7 @@
 import { AppNavbarLink, IAppNavbarLink } from "./AppNavbarLink";
-import { Dispatch, SetStateAction } from "react";
 import { Divider, Navbar, ScrollArea } from "@mantine/core";
 import { rolePower } from "../types/RolePower";
+import type { Dispatch, SetStateAction } from "react";
 import {
   Bell,
   DatabaseImport,

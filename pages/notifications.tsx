@@ -8,12 +8,12 @@ import {
   Text,
   Title
   } from "@mantine/core";
-import { NextPageWithLayout } from "./_app";
 import { rolePower } from "../types/RolePower";
 import { trpc } from "../utils/trpc";
 import { useCallback, useEffect, useState } from "react";
 import { useInterval } from "@mantine/hooks";
 import { useMutationStatusNotification } from "../utils/notifications";
+import type { NextPageWithLayout } from "./_app";
 
 async function getSubscription() {
   const perm = await Notification.requestPermission(); // Triggers UI on "default"

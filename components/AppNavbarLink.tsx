@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
 import { Icon as IconType } from "tabler-icons-react";
 import { NavLink } from "@mantine/core";
 import { NextLink } from "@mantine/next";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import type { Dispatch, SetStateAction } from "react";
 export interface IAppNavbarLink {
   href: string;
   Icon: IconType;

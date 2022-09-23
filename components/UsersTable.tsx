@@ -5,11 +5,11 @@ import {
   Table,
   Text
   } from "@mantine/core";
-import { DisplayedUser } from "../types/DisplayedUser";
 import { Edit, Trash } from "tabler-icons-react";
 import { openConfirmModal, openContextModal } from "@mantine/modals";
 import { trpc } from "../utils/trpc";
 import { useMutationStatusNotification } from "../utils/notifications";
+import type { DisplayedUser } from "../types/DisplayedUser";
 
 interface IUsersTable {
   users?: DisplayedUser[];

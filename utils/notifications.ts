@@ -1,7 +1,7 @@
 import { Check, X } from "tabler-icons-react";
-import { TRPCClientError } from "@trpc/client";
 import { useId } from "@mantine/hooks";
-import { UseTRPCMutationOptions } from "@trpc/react";
+import type { UseTRPCMutationOptions } from "@trpc/react";
+import type { TRPCClientError } from "@trpc/client";
 import {
   hideNotification,
   showNotification,

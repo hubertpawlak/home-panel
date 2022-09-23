@@ -1,19 +1,19 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
-import { AppProps } from "next/app";
-import { AppRouter } from "../server/routers/_app";
 import { cacheableQueries } from "../types/CacheableQueries";
 import { frontendConfig } from "../config/frontendConfig";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { httpLink } from "@trpc/client/links/httpLink";
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
-import { NextPage } from "next";
 import { NotificationsProvider } from "@mantine/notifications";
 import { ReactElement, ReactNode, useEffect } from "react";
 import { splitLink } from "@trpc/client/links/splitLink";
 import { withTRPC } from "@trpc/next";
+import type { AppProps } from "next/app";
+import type { AppRouter } from "../server/routers/_app";
+import type { NextPage } from "next";
 
 export type NextPageWithLayout = NextPage & {
   // eslint-disable-next-line no-unused-vars

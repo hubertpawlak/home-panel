@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 import { Button, Center, Container } from "@mantine/core";
 import { FileUnknown } from "tabler-icons-react";
 import { NextLink } from "@mantine/next";
-import { NextPageWithLayout } from "./_app";
+import type { NextPageWithLayout } from "./_app";
 
 const Custom404: NextPageWithLayout = () => {
   return (

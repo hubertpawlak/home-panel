@@ -1,8 +1,8 @@
 import * as trpc from "@trpc/server";
 import * as trpcNext from "@trpc/server/adapters/next";
-import { SessionRequest } from "supertokens-node/framework/express";
 import { superTokensNextWrapper } from "supertokens-node/nextjs";
 import { verifySession } from "supertokens-node/recipe/session/framework/express";
+import type { SessionRequest } from "supertokens-node/framework/express";
 
 export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
   if (!opts) return {};

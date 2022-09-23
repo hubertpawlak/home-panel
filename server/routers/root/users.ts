@@ -1,5 +1,6 @@
 import Session from "supertokens-node/recipe/session";
 import { createProtectedRouter } from "../../createProtectedRouter";
+import { DisplayedUser } from "../../../types/DisplayedUser";
 import { SharedMax } from "../../../types/SharedMax";
 import { z } from "zod";
 import {
@@ -34,7 +35,7 @@ export const usersRouter = createProtectedRouter()
       });
       const { users: rawUsers, nextPaginationToken } = usersResponse;
       // Map users for data grid
-      const users = rawUsers.map(({ user }) => ({
+      const users = rawUsers.map<DisplayedUser>(({ user }) => ({
         id: user.id,
         tpProvider: user.thirdParty.id,
         tpUserId: user.thirdParty.userId,

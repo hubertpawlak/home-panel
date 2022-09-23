@@ -14,10 +14,6 @@ import { NotificationsProvider } from "@mantine/notifications";
 import { ReactElement, ReactNode, useEffect } from "react";
 import { splitLink } from "@trpc/client/links/splitLink";
 import { withTRPC } from "@trpc/next";
-import {
-  createTheme,
-  ThemeProvider as MuiThemeProvider,
-} from "@mui/material/styles";
 
 export type NextPageWithLayout = NextPage & {
   // eslint-disable-next-line no-unused-vars
@@ -32,8 +28,6 @@ if (typeof window !== "undefined") {
   // We only want to call this init function on the frontend
   SuperTokensReact.init(frontendConfig());
 }
-
-const muiTheme = createTheme({ palette: { mode: "dark" } });
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -113,15 +107,13 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           },
         }}
       >
-        <MuiThemeProvider theme={muiTheme}>
-          <ModalsProvider modals={{ editUser: EditUserModal }}>
-            <NotificationsProvider>
-              <SuperTokensWrapper>
-                {getLayout(<Component {...pageProps} />)}
-              </SuperTokensWrapper>
-            </NotificationsProvider>
-          </ModalsProvider>
-        </MuiThemeProvider>
+        <ModalsProvider modals={{ editUser: EditUserModal }}>
+          <NotificationsProvider>
+            <SuperTokensWrapper>
+              {getLayout(<Component {...pageProps} />)}
+            </SuperTokensWrapper>
+          </NotificationsProvider>
+        </ModalsProvider>
       </MantineProvider>
     </>
   );

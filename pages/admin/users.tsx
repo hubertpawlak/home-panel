@@ -1,52 +1,59 @@
-import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
+import { NextPageWithLayout } from "./../_app";
+import { PlayerTrackNext, PlayerTrackPrev, Users } from "tabler-icons-react";
+import { rolePower } from "../../types/RolePower";
+import { Suspense, useEffect } from "react";
+import { trpc } from "../../utils/trpc";
+import { useCounter, useLocalStorage } from "@mantine/hooks";
+import { UsersTable } from "../../components/UsersTable";
 import {
   ActionIcon,
   Box,
+  Container,
+  Group,
   Loader,
   Skeleton,
   Switch,
-  Text
-  } from "@mantine/core";
-import { Edit, Users } from "tabler-icons-react";
-import { NextPageWithLayout } from "./../_app";
-import { openContextModal } from "@mantine/modals";
-import { rolePower } from "../../types/RolePower";
-import { Suspense } from "react";
-import { trpc } from "../../utils/trpc";
-import { useLocalStorage } from "@mantine/hooks";
-
-function rowKeyGetter(row: any) {
-  return row.id;
-}
-
-const UniversalDataGrid = dynamic(
-  () => import("../../components/UniversalDataGrid")
-);
+  Text,
+} from "@mantine/core";
 
 const UsersPage: NextPageWithLayout = () => {
-  const [showEmails, setShowEmails] = useLocalStorage({
-    key: "admin-show-emails",
-    defaultValue: false,
-  });
-
+  // User count
   const { data: userCount, isLoading: isLoadingUserCount } = trpc.useQuery(
     ["root.users.getCount"],
     { staleTime: 60 * 1000 }
   );
-  const usersQuery = trpc.useInfiniteQuery(["root.users.getNewest", {}], {
-    getNextPageParam: (data) => data.nextCursor,
+  // Users table
+  const [showEmails, setShowEmails] = useLocalStorage({
+    key: "admin-show-emails",
+    defaultValue: false,
   });
+  const { data, fetchNextPage, hasNextPage, isLoading } = trpc.useInfiniteQuery(
+    ["root.users.getNewest", {}],
+    {
+      getNextPageParam: (data) => data.nextCursor,
+      refetchOnWindowFocus: false,
+    }
+  );
+  const [visiblePage, { decrement: prevPage, increment: nextPage }] =
+    useCounter(0, { min: 0 });
+  const allFetchedPages = data?.pages ?? [];
+  const inOnFirstPage = visiblePage <= 0;
+  const isOnLastFetchedPage = visiblePage >= (data?.pages.length ?? 0) - 1;
+  const disableNextButton = (!hasNextPage && isOnLastFetchedPage) || isLoading;
 
-  const deleteUsersMutation = trpc.useMutation("root.users.deleteUsers", {
-    useErrorBoundary: false,
+  useEffect(() => {
+    // Fetch next page in the background
+    if (!hasNextPage) return;
+    if (!isOnLastFetchedPage) return;
+    fetchNextPage();
   });
 
   return (
-    <>
+    <Container size="xl">
       <>
         Zarejestrowani użytkownicy:{" "}
-        <Text component="span" color="blue" weight="bold">
+        <Text component="span" weight="bold" inline>
           {isLoadingUserCount ? <Loader variant="dots" /> : userCount}
         </Text>
       </>
@@ -60,63 +67,31 @@ const UsersPage: NextPageWithLayout = () => {
             }}
           />
         </Box>
-        {/* TODO: switch to Table */}
-        <UniversalDataGrid
-          columns={[
-            { field: "id", headerName: "id", minWidth: 330 },
-            { field: "tpProvider", headerName: "tpProvider" },
-            { field: "tpUserId", headerName: "tpUserId" },
-            { field: "timeJoined", headerName: "timeJoined", minWidth: 150 },
-            {
-              field: "email",
-              headerName: "email",
-              minWidth: 300,
-              // Hide emails if switch is disabled
-              renderCell: showEmails
-                ? undefined
-                : ({ value: email }) => {
-                    const emailParts = (email as string).split("@");
-                    // Get the user part and censor it
-                    const user = "*".repeat(emailParts.shift()?.length ?? 3);
-                    const domain = emailParts.join("@") ?? "MISSING_DOMAIN";
-                    return (
-                      <>
-                        {user}@{domain}
-                      </>
-                    );
-                  },
-            },
-            {
-              field: "actions",
-              headerName: "actions",
-              align: "center",
-              renderCell: ({ row }) => {
-                return (
-                  <>
-                    <ActionIcon
-                      title="Edytuj"
-                      onClick={() => {
-                        openContextModal({
-                          modal: "editUser",
-                          title: "Edytowanie konta",
-                          innerProps: { userId: row.id },
-                        });
-                      }}
-                    >
-                      <Edit />
-                    </ActionIcon>
-                  </>
-                );
-              },
-            },
-          ]}
-          infiniteQuery={usersQuery}
-          getRowId={rowKeyGetter}
-          deleteText="Usuń konta"
-          deleteMutation={deleteUsersMutation}
+        <UsersTable
+          users={allFetchedPages[visiblePage]?.rows}
+          showEmails={showEmails}
         />
+        <Group position="right">
+          <ActionIcon
+            title="Poprzednia strona"
+            variant="transparent"
+            disabled={inOnFirstPage}
+            onClick={prevPage}
+          >
+            <PlayerTrackPrev />
+          </ActionIcon>
+          <Text>Strona {visiblePage + 1}</Text>
+          <ActionIcon
+            title="Następna strona"
+            variant="transparent"
+            disabled={disableNextButton}
+            onClick={nextPage}
+          >
+            <PlayerTrackNext />
+          </ActionIcon>
+        </Group>
       </Suspense>
-    </>
+    </Container>
   );
 };
 

@@ -74,6 +74,9 @@ export const temperatureRouter = createM2MRouter().mutation(
             },
             {
               TTL: HARDCODED_PUSH_TTL,
+              headers: {
+                Urgency: "high",
+              },
             }
           ).catch(deleteSubscription(sub.endpoint))
         )

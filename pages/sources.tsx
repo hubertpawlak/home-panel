@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import { DatabaseImport } from "tabler-icons-react";
 import { openContextModal } from "@mantine/modals";
 import { rolePower } from "../types/RolePower";
+import { SensorsTable } from "../components/SensorsTable";
 import { trpc } from "../utils/trpc";
 import { useForm } from "@mantine/form";
 import { useMutationStatusNotification } from "../utils/notifications";
@@ -33,6 +34,9 @@ const SourcesPage: NextPageWithLayout = () => {
         signOpts.onSuccess?.(null, null, null);
       },
     });
+  const { data: sensors } = trpc.useQuery([
+    "admin.sensors.getTemperatureSensors",
+  ]);
 
   return (
     <Container size="xl">
@@ -62,6 +66,9 @@ const SourcesPage: NextPageWithLayout = () => {
           zawierają podpisane cyfrowo informacje o&nbsp;źródle danych, takie jak
           nazwa. Każde źródło powinno mieć swój token.
         </Text>
+        {/* List of all known temperature sensors */}
+        <Title align="center">Czujniki temperatury</Title>
+        <SensorsTable sensors={sensors} />
       </Stack>
     </Container>
   );

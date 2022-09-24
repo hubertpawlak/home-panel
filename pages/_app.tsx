@@ -2,13 +2,18 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
 import { cacheableQueries } from "../types/CacheableQueries";
+import {
+  ComponentType,
+  ReactElement,
+  ReactNode,
+  useEffect
+  } from "react";
+import { ContextModalProps, ModalsProvider } from "@mantine/modals";
 import { frontendConfig } from "../config/frontendConfig";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { httpLink } from "@trpc/client/links/httpLink";
 import { MantineProvider } from "@mantine/core";
-import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
-import { ReactElement, ReactNode, useEffect } from "react";
 import { splitLink } from "@trpc/client/links/splitLink";
 import { withTRPC } from "@trpc/next";
 import type { AppProps } from "next/app";
@@ -32,8 +37,9 @@ if (typeof window !== "undefined") {
 // Used "any" because "next/dynamic" returns weird type but actually works fine
 const modals: Record<string, any> = {
   editUser: dynamic(() => import("../components/EditUserModal")),
+  editSensor: dynamic(() => import("../components/EditSensorModal")),
   showToken: dynamic(() => import("../components/ShowTokenModal")),
-};
+} as Record<string, ComponentType<ContextModalProps<any>>>;
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);

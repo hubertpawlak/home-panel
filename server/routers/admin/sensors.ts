@@ -6,6 +6,15 @@ import { z } from "zod";
 import type { definitions } from "../../../types/supabase";
 
 export const sensorsRouter = createProtectedRouter()
+  .query("getTemperatureSensors", {
+    async resolve() {
+      const { data } = await supabase
+        .from<definitions["temperature_sensors"]>("temperature_sensors")
+        .select("hwId,name,updated_by")
+        .order("hwId", { ascending: true });
+      return data;
+    },
+  })
   .mutation("renameTemperatureSensor", {
     input: z.object({
       hwId: z.string().min(1).max(SharedMax),

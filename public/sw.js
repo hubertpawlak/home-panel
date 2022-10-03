@@ -3,7 +3,7 @@
 /**
  * @type {ServiceWorkerGlobalScope}
  */
-const s = self;
+const _self = self;
 
 /**
  * @typedef NotificationPayload
@@ -13,27 +13,34 @@ const s = self;
  * @property {number} [timestamp]
  */
 
-// Show received push notifications
-s.addEventListener("push", function (event) {
-  if (!(s.Notification?.permission === "granted")) return;
-  try {
-    /**
-     * @type {NotificationPayload}
-     */
-    const data = event.data.json();
-    const { title, timestamp, body } = data;
-    s.registration.showNotification(title, {
-      body,
-      timestamp,
-      icon: "/favicon.ico",
-    });
-  } catch (error) {
-    console.error(error);
-  }
+/**
+ * @description Show received push notification
+ * @argument {NotificationPayload} payload
+ */
+const displayNotification = async (payload) => {
+  if (!(_self.Notification && _self.Notification.permission === "granted"))
+    return;
+
+  const { title, timestamp, body } = payload;
+
+  const _title = title ?? "Bez tytułu";
+
+  await _self.registration.showNotification(_title, {
+    body,
+    timestamp,
+    icon: "/favicon.ico",
+  });
+};
+
+// Wait for Promise to settle
+_self.addEventListener("push", function (event) {
+  const data = event.data?.json() ?? {};
+  const displayPushPromise = displayNotification(data);
+  event.waitUntil(displayPushPromise);
 });
 
 // Update subscription on the server
-s.addEventListener("pushsubscriptionchange", async function (event) {
+_self.addEventListener("pushsubscriptionchange", async function (event) {
   const { oldSubscription, newSubscription } = event;
   await fetch("/api/trpc/push.change", {
     method: "POST",

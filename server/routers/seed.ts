@@ -1,11 +1,12 @@
-import UserRoles from "supertokens-node/recipe/userroles";
-import webPush from "web-push";
-import { createRouter } from "../createRouter";
 import { generateKeyPair } from "jose";
 import { getUserById } from "supertokens-node/recipe/thirdparty";
-import { jwtPrivateKeyToBase64, jwtPublicKeyToBase64 } from "../../utils/jwt";
-import { SharedMax } from "../../types/SharedMax";
+import UserRoles from "supertokens-node/recipe/userroles";
+import webPush from "web-push";
 import { z } from "zod";
+import { JwtAlg } from "../../types/JwtAlg";
+import { SharedMax } from "../../types/SharedMax";
+import { jwtPrivateKeyToBase64, jwtPublicKeyToBase64 } from "../../utils/jwt";
+import { createRouter } from "../createRouter";
 
 export const seedRouter = createRouter()
   .query("generateVapidKeys", {
@@ -23,7 +24,7 @@ export const seedRouter = createRouter()
     input: z.undefined(),
     async resolve() {
       if (process.env.NODE_ENV === "production") return {};
-      const { publicKey, privateKey } = await generateKeyPair("ES512");
+      const { publicKey, privateKey } = await generateKeyPair(JwtAlg);
       // Use helper functions to convert keys into an easy to store format
       return {
         publicKey: await jwtPublicKeyToBase64(publicKey),

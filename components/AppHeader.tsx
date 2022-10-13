@@ -1,6 +1,3 @@
-import { AppHeaderSignInBtn } from "./AppHeaderSignInBtn";
-import { Home, QuestionMark } from "tabler-icons-react";
-import type { Dispatch, SetStateAction } from "react";
 import {
   Breadcrumbs,
   Burger,
@@ -9,6 +6,9 @@ import {
   MediaQuery,
   ScrollArea,
 } from "@mantine/core";
+import type { Dispatch, SetStateAction } from "react";
+import { Home, QuestionMark } from "tabler-icons-react";
+import { AppHeaderSignInBtn } from "./AppHeaderSignInBtn";
 
 interface AppHeaderProps {
   navOpened: boolean;
@@ -29,6 +29,9 @@ export const AppHeader = ({
         <MediaQuery largerThan="xl" styles={{ display: "none" }}>
           <Burger
             opened={navOpened}
+            aria-label={
+              navOpened ? "zamknij menu nawigacyjne" : "otwórz menu nawigacyjne"
+            }
             onClick={() => setNavOpened((o) => !o)}
             size="sm"
             mr="xs"

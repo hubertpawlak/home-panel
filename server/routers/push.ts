@@ -1,12 +1,12 @@
+import { z } from "zod";
+import { SharedMax } from "../../types/SharedMax";
+import type { definitions } from "../../types/supabase";
 import supabase from "../../utils/supabase";
 import { _createProtectedRouter } from "../createProtectedRouter";
 import { createRouter } from "../createRouter";
-import { SharedMax } from "../../types/SharedMax";
-import { z } from "zod";
-import type { definitions } from "../../types/supabase";
 
 const subscriptionSchema = z.object({
-  endpoint: z.string().min(1).max(SharedMax).startsWith("https://"),
+  endpoint: z.string().max(SharedMax).url().startsWith("https://"),
   keys: z.object({
     p256dh: z.string().min(1).max(SharedMax),
     auth: z.string().min(1).max(SharedMax),

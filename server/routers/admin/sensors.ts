@@ -1,46 +1,47 @@
-import supabase from "../../../utils/supabase";
-import { createProtectedRouter } from "../../createProtectedRouter";
-import { SharedMax } from "../../../types/SharedMax";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import type { definitions } from "../../../types/supabase";
+import { SharedMax } from "../../../types/SharedMax";
+import supabase from "../../../utils/supabase";
+import { adminProcedure } from "../../middleware/enforceUserAuth";
+import { router } from "../trpc";
 
-export const sensorsRouter = createProtectedRouter()
-  .query("getTemperatureSensors", {
-    async resolve() {
-      const { data } = await supabase
-        .from<definitions["temperature_sensors"]>("temperature_sensors")
-        .select("hwId,name,updated_by")
-        .order("hwId", { ascending: true });
-      return data;
-    },
-  })
-  .mutation("renameTemperatureSensor", {
-    input: z.object({
-      hwId: z.string().min(1).max(SharedMax),
-      name: z.string().min(1).max(SharedMax),
-    }),
-    async resolve({ input }) {
+export const sensorsRouter = router({
+  getTemperatureSensors: adminProcedure.query(async () => {
+    const { data } = await supabase
+      .from("temperature_sensors")
+      .select("hwId,name,updated_by")
+      .order("hwId", { ascending: true });
+    return data;
+  }),
+  renameTemperatureSensor: adminProcedure
+    .input(
+      z.object({
+        hwId: z.string().min(1).max(SharedMax),
+        name: z.string().min(1).max(SharedMax),
+      })
+    )
+    .mutation(async ({ input }) => {
       const { hwId, name } = input;
-      const { data, error, status, statusText } = await supabase
-        .from<definitions["temperature_sensors"]>("temperature_sensors")
+      const { error, status, statusText } = await supabase
+        .from("temperature_sensors")
         .update({ hwId, name });
       if (error)
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
           message: `${status}: ${statusText}`,
         });
-      return { data };
-    },
-  })
-  .mutation("deleteTemperatureSensor", {
-    input: z.object({
-      hwId: z.string().min(1).max(SharedMax),
+      return { success: true };
     }),
-    async resolve({ input }) {
+  deleteTemperatureSensor: adminProcedure
+    .input(
+      z.object({
+        hwId: z.string().min(1).max(SharedMax),
+      })
+    )
+    .mutation(async ({ input }) => {
       const { hwId } = input;
       const { error, status, statusText } = await supabase
-        .from<definitions["temperature_sensors"]>("temperature_sensors")
+        .from("temperature_sensors")
         .delete()
         .match({ hwId });
       if (error)
@@ -49,5 +50,5 @@ export const sensorsRouter = createProtectedRouter()
           message: `${status}: ${statusText}`,
         });
       return { success: true };
-    },
-  });
+    }),
+});

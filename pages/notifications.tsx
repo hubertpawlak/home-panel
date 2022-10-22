@@ -1,18 +1,11 @@
-import Layout from "../components/Layout";
-import { Bell } from "tabler-icons-react";
-import {
-  Button,
-  Checkbox,
-  Container,
-  Stack,
-  Text,
-  Title
-  } from "@mantine/core";
-import { rolePower } from "../types/RolePower";
-import { trpc } from "../utils/trpc";
-import { useCallback, useEffect, useState } from "react";
+import { Button, Checkbox, Container, Stack, Text, Title } from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
+import { useCallback, useEffect, useState } from "react";
+import { Bell } from "tabler-icons-react";
+import Layout from "../components/Layout";
+import { rolePower } from "../types/RolePower";
 import { useMutationStatusNotification } from "../utils/notifications";
+import { trpc } from "../utils/trpc";
 import type { NextPageWithLayout } from "./_app";
 
 async function getSubscription() {
@@ -81,14 +74,10 @@ const NotificationsPage: NextPageWithLayout = () => {
 
   const opts = useMutationStatusNotification();
   // Prepare mutations to update subscription on the server
-  const { mutateAsync: registerSub, isLoading: isLoadingPR } = trpc.useMutation(
-    "push.register",
-    opts
-  );
-  const { mutateAsync: changeSub, isLoading: isLoadingPC } = trpc.useMutation(
-    "push.change",
-    opts
-  );
+  const { mutateAsync: registerSub, isLoading: isLoadingPR } =
+    trpc.push.register.useMutation(opts);
+  const { mutateAsync: changeSub, isLoading: isLoadingPC } =
+    trpc.push.change.useMutation(opts);
 
   if (!applicationServerKey)
     return <Text color="red">missing applicationServerKey</Text>;

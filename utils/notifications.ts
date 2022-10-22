@@ -1,12 +1,12 @@
-import { Check, X } from "tabler-icons-react";
 import { useId } from "@mantine/hooks";
-import type { UseTRPCMutationOptions } from "@trpc/react";
-import type { TRPCClientError } from "@trpc/client";
 import {
   hideNotification,
   showNotification,
   updateNotification,
 } from "@mantine/notifications";
+import type { TRPCClientError } from "@trpc/client";
+import type { UseTRPCMutationOptions } from "@trpc/react/shared";
+import { Check, X } from "tabler-icons-react";
 
 interface UseStatusNotificationOptions {
   mutatingMessage?: string;
@@ -74,10 +74,10 @@ interface UseMutationStatusNotification extends UseStatusNotificationOptions {
 }
 
 /**
- * Easier way to setup mutation status notifications with trpc.useMutation
+ * Easier way to setup mutation status notifications with trpc.mutation.useMutation
  * NOTE: Functions passed to useMutationStatusNotification are executed after original functions
  * @example const opts = useMutationStatusNotification();
- * const { mutateAsync } = trpc.useMutation("mutation", {...opts})
+ * const { mutateAsync } = trpc.mutation.useMutation({...opts})
  */
 const useMutationStatusNotification = (
   options?: UseMutationStatusNotification

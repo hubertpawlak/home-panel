@@ -1,8 +1,16 @@
-import * as trpc from "@trpc/server";
-import * as trpcNext from "@trpc/server/adapters/next";
+import type * as trpc from "@trpc/server";
+import type * as trpcNext from "@trpc/server/adapters/next";
+import supertokens from "supertokens-node";
+import type { SessionRequest } from "supertokens-node/framework/express";
 import { superTokensNextWrapper } from "supertokens-node/nextjs";
 import { verifySession } from "supertokens-node/recipe/session/framework/express";
-import type { SessionRequest } from "supertokens-node/framework/express";
+import { backendConfig } from "../config/backendConfig";
+
+/**
+ * Remember that whenever we want to use any functions from the supertokens-node lib,
+ * we have to call the supertokens.init function at the top of that serverless function file.
+ */
+supertokens.init(backendConfig());
 
 export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
   if (!opts) return {};

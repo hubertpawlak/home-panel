@@ -1,8 +1,8 @@
+import { TRPCError } from "@trpc/server";
 import UserRoles from "supertokens-node/recipe/userroles";
-import { createRouter } from "./createRouter";
-import { rolePower } from "../types/RolePower";
-import { router, TRPCError } from "@trpc/server";
-import { UserRole } from "../types/UserRole";
+import { rolePower } from "../../types/RolePower";
+import type { UserRole } from "../../types/UserRole";
+import { publicProcedure, t } from "../routers/trpc";
 
 interface ProtectedRouterOptions {
   minRequiredRole?: UserRole;
@@ -16,13 +16,8 @@ interface ProtectedRouterContext {
   };
 }
 
-/**
- * Create a router guarding access by requiring a certain role (or higher)
- */
-export function _createProtectedRouter({
-  minRequiredRole,
-}: ProtectedRouterOptions) {
-  return createRouter().middleware(async ({ ctx, next }) => {
+export const enforceUserAuth = ({ minRequiredRole }: ProtectedRouterOptions) =>
+  t.middleware(async ({ ctx, next }) => {
     if (ctx.bypassProtection)
       return next<ProtectedRouterContext>({
         ctx: {
@@ -68,16 +63,15 @@ export function _createProtectedRouter({
       },
     });
   });
-}
 
-/**
- * Create a fake router with ProtectedRouterContext.
- * Used for context swapping for nested routers.
- * @example
- * const real = _createProtectedRouter();
- * const fake = createProtectedRouter();
- * real.merge(fake);
- */
-export function createProtectedRouter() {
-  return router<ProtectedRouterContext>();
-}
+export const userProcedure = publicProcedure.use(
+  enforceUserAuth({ minRequiredRole: "user" })
+);
+
+export const adminProcedure = publicProcedure.use(
+  enforceUserAuth({ minRequiredRole: "admin" })
+);
+
+export const rootProcedure = publicProcedure.use(
+  enforceUserAuth({ minRequiredRole: "root" })
+);

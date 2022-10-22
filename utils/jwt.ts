@@ -1,12 +1,12 @@
-import { JwtAlg } from "../types/JwtAlg";
+import type { KeyLike } from "jose";
 import {
   base64url,
   exportPKCS8,
   exportSPKI,
   importPKCS8,
   importSPKI,
-  KeyLike,
 } from "jose";
+import { JwtAlg } from "../types/JwtAlg";
 
 export async function base64ToJwtPublicKey(encodedJwtPublicKey?: string) {
   // Check if the key is provided

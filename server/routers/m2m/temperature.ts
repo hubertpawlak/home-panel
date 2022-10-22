@@ -1,36 +1,34 @@
-import supabase from "../../../utils/supabase";
-import { createM2MRouter } from "../../createM2MRouter";
-import { redis } from "../../../utils/redis";
-import { sendPush } from "../../../utils/push";
-import { SharedMax } from "../../../types/SharedMax";
 import { z } from "zod";
-import type { definitions } from "../../../types/supabase";
 import {
   HARDCODED_PUSH_NOTIFY_ABOVE,
   HARDCODED_PUSH_TTL,
 } from "../../../types/Push";
+import { SharedMax } from "../../../types/SharedMax";
+import { sendPush } from "../../../utils/push";
+import { redis } from "../../../utils/redis";
+import supabase from "../../../utils/supabase";
+import { m2mProcedure } from "../../middleware/enforceM2MAuth";
+import { router } from "../trpc";
 
 const deleteSubscription = (endpoint: string) => {
   return async () =>
-    await supabase
-      .from<definitions["push"]>("push")
-      .delete({ returning: "minimal" })
-      .eq("endpoint", endpoint);
+    await supabase.from("push").delete().eq("endpoint", endpoint);
 };
 
-export const temperatureRouter = createM2MRouter().mutation(
-  "storeTemperatures",
-  {
-    input: z
-      .array(
-        z.object({
-          hwId: z.string().min(1).max(SharedMax),
-          temperature: z.number(),
-          resolution: z.number(),
-        })
-      )
-      .min(1),
-    async resolve({ ctx, input }) {
+export const temperatureRouter = router({
+  storeTemperatures: m2mProcedure
+    .input(
+      z
+        .array(
+          z.object({
+            hwId: z.string().min(1).max(SharedMax),
+            temperature: z.number(),
+            resolution: z.number(),
+          })
+        )
+        .min(1)
+    )
+    .mutation(async ({ ctx, input }) => {
       // Phase 1 - database
       const { sourceId } = ctx;
       // Add sourceId to every reading
@@ -40,10 +38,9 @@ export const temperatureRouter = createM2MRouter().mutation(
         updated_by: sourceId,
       }));
       const { count: tempsCount } = await supabase
-        .from<definitions["temperature_sensors"]>("temperature_sensors")
+        .from("temperature_sensors")
         // updated_at is set by "handle_updated_at" DB trigger
         .upsert(_input, {
-          returning: "minimal",
           count: "exact",
         });
       // Phase 2 - web push
@@ -60,7 +57,7 @@ export const temperatureRouter = createM2MRouter().mutation(
       if (pushAlreadySent === true) return { tempsCount };
       // Get subscriptions and send notifications
       const { data: subscriptions, count: pushCount } = await supabase
-        .from<definitions["push"]>("push")
+        .from("push")
         .select("endpoint,p256dh,auth", { count: "exact" });
       const timestamp = Date.now();
       await Promise.all(
@@ -85,6 +82,5 @@ export const temperatureRouter = createM2MRouter().mutation(
         tempsCount,
         pushCount,
       };
-    },
-  }
-);
+    }),
+});

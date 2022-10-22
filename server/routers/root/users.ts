@@ -1,34 +1,33 @@
-import Session from "supertokens-node/recipe/session";
-import { createProtectedRouter } from "../../createProtectedRouter";
-import { SharedMax } from "../../../types/SharedMax";
-import { z } from "zod";
-import type { DisplayedUser } from "../../../types/DisplayedUser";
-import {
-  addRoleToUser,
-  getRolesForUser,
-  removeUserRole,
-} from "supertokens-node/recipe/userroles";
 import {
   deleteUser,
   getUserCount,
   getUsersNewestFirst,
 } from "supertokens-node";
+import Session from "supertokens-node/recipe/session";
+import {
+  addRoleToUser,
+  getRolesForUser,
+  removeUserRole,
+} from "supertokens-node/recipe/userroles";
+import { z } from "zod";
+import type { DisplayedUser } from "../../../types/DisplayedUser";
+import { SharedMax } from "../../../types/SharedMax";
+import { rootProcedure } from "../../middleware/enforceUserAuth";
+import { router } from "../trpc";
 
-export const usersRouter = createProtectedRouter()
-  .query("getCount", {
-    input: z.undefined(),
-    output: z.number().min(0),
-    async resolve() {
-      const count = await getUserCount();
-      return count;
-    },
-  })
-  .query("getNewest", {
-    input: z.object({
-      cursor: z.string().max(SharedMax).optional(),
-      maxRowsPerPage: z.number().min(1).default(10),
-    }),
-    async resolve({ input }) {
+export const usersRouter = router({
+  getCount: rootProcedure.query(async () => {
+    const count = await getUserCount();
+    return count;
+  }),
+  getNewest: rootProcedure
+    .input(
+      z.object({
+        cursor: z.string().max(SharedMax).optional(),
+        maxRowsPerPage: z.number().min(1).default(10),
+      })
+    )
+    .query(async ({ input }) => {
       const usersResponse = await getUsersNewestFirst({
         limit: input?.maxRowsPerPage,
         paginationToken: input?.cursor,
@@ -43,25 +42,25 @@ export const usersRouter = createProtectedRouter()
         email: user.email,
       }));
       return { rows: users, nextCursor: nextPaginationToken };
-    },
-  })
-  .query("getEditableUserInfo", {
-    input: z.object({ userId: z.string().min(1).max(SharedMax) }),
-    async resolve({ input }) {
+    }),
+  getEditableUserInfo: rootProcedure
+    .input(z.object({ userId: z.string().min(1).max(SharedMax) }))
+    .query(async ({ input }) => {
       const { userId } = input;
       const roles = (await getRolesForUser(userId)).roles;
       return { userId, roles };
-    },
-  })
-  .mutation("editUser", {
-    input: z.object({
-      userId: z.string().min(1).max(SharedMax),
-      roles: z
-        .array(z.enum(["root", "admin", "user"]))
-        .max(3)
-        .optional(),
     }),
-    async resolve({ input }) {
+  editUser: rootProcedure
+    .input(
+      z.object({
+        userId: z.string().min(1).max(SharedMax),
+        roles: z
+          .array(z.enum(["root", "admin", "user"]))
+          .max(3)
+          .optional(),
+      })
+    )
+    .mutation(async ({ input }) => {
       // Extract inputs
       const { userId } = input;
       const wantedRoles: string[] | undefined = input.roles;
@@ -87,16 +86,15 @@ export const usersRouter = createProtectedRouter()
         userId,
         roles: wantedRoles,
       };
-    },
-  })
-  .mutation("deleteUsers", {
-    input: z.array(z.string().min(1).max(SharedMax)).nonempty(),
-    async resolve({ input: userIds }) {
+    }),
+  deleteUsers: rootProcedure
+    .input(z.array(z.string().min(1).max(SharedMax)).nonempty())
+    .mutation(async ({ input: userIds }) => {
       await Promise.all(
         userIds.map(async (userId) => {
           await Session.revokeAllSessionsForUser(userId);
           return await deleteUser(userId);
         })
       );
-    },
-  });
+    }),
+});

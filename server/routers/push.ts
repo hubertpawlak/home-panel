@@ -1,9 +1,8 @@
 import { z } from "zod";
 import { SharedMax } from "../../types/SharedMax";
-import type { definitions } from "../../types/supabase";
 import supabase from "../../utils/supabase";
-import { _createProtectedRouter } from "../createProtectedRouter";
-import { createRouter } from "../createRouter";
+import { userProcedure } from "../middleware/enforceUserAuth";
+import { publicProcedure, router } from "./trpc";
 
 const subscriptionSchema = z.object({
   endpoint: z.string().max(SharedMax).url().startsWith("https://"),
@@ -13,61 +12,49 @@ const subscriptionSchema = z.object({
   }),
 });
 
-// Initial setup
-const pushRouterRestricted = _createProtectedRouter({
-  minRequiredRole: "user",
-}).mutation("register", {
-  input: subscriptionSchema,
-  async resolve({ input, ctx }) {
-    const { endpoint } = input;
-    const { p256dh, auth } = input.keys;
-    const { status } = await supabase
-      .from<definitions["push"]>("push")
-      .upsert(
-        { endpoint, p256dh, auth, ownerId: ctx.user.id },
-        { returning: "minimal" }
-      );
-    return { status };
-  },
-});
-
-// Subscription changes/maintenance
-const pushRouterPublic = createRouter().mutation("change", {
-  input: z.object({
-    oldSubscription: subscriptionSchema,
-    newSubscription: subscriptionSchema.optional().nullable(),
-  }),
-  async resolve({ input }) {
-    const { oldSubscription, newSubscription } = input;
-    const {
-      status: status1,
-      data: oldData,
-      count,
-    } = await supabase
-      .from<definitions["push"]>("push")
-      .delete({ returning: "representation", count: "exact" })
-      .match({
-        endpoint: oldSubscription.endpoint,
-        p256dh: oldSubscription.keys.p256dh,
-        auth: oldSubscription.keys.auth,
+export const pushRouter = router({
+  // Initial setup
+  register: userProcedure
+    .input(subscriptionSchema)
+    .mutation(async ({ input, ctx }) => {
+      const { endpoint } = input;
+      const { p256dh, auth } = input.keys;
+      const { status } = await supabase
+        .from("push")
+        .upsert({ endpoint, p256dh, auth, ownerId: ctx.user.id });
+      return { status };
+    }),
+  // Subscription changes/maintenance
+  change: publicProcedure
+    .input(
+      z.object({
+        oldSubscription: subscriptionSchema,
+        newSubscription: subscriptionSchema.optional().nullable(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const { oldSubscription, newSubscription } = input;
+      const {
+        status: status1,
+        data: oldData,
+        count,
+      } = await supabase
+        .from("push")
+        .delete({ count: "exact" })
+        .match({
+          endpoint: oldSubscription.endpoint,
+          p256dh: oldSubscription.keys.p256dh,
+          auth: oldSubscription.keys.auth,
+        })
+        .select();
+      // Require that the old sub is removed
+      if (!newSubscription || !count) return { status: [status1, null] };
+      const { status: status2 } = await supabase.from("push").upsert({
+        endpoint: newSubscription.endpoint,
+        p256dh: newSubscription.keys.p256dh,
+        auth: newSubscription.keys.auth,
+        ownerId: oldData?.[0]?.ownerId,
       });
-    // Require that the old sub is removed
-    if (!newSubscription || !count) return { status: [status1, null] };
-    const { status: status2 } = await supabase
-      .from<definitions["push"]>("push")
-      .upsert(
-        {
-          endpoint: newSubscription.endpoint,
-          p256dh: newSubscription.keys.p256dh,
-          auth: newSubscription.keys.auth,
-          ownerId: oldData?.[0]?.ownerId,
-        },
-        { returning: "minimal" }
-      );
-    return { status: [status1, status2] };
-  },
+      return { status: [status1, status2] };
+    }),
 });
-
-export const pushRouter = createRouter()
-  .merge(pushRouterRestricted)
-  .merge(pushRouterPublic);

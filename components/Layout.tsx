@@ -2,7 +2,8 @@ import Head from "next/head";
 import { AppHeader } from "../components/AppHeader";
 import { AppNavbar } from "../components/AppNavbar";
 import { AppShell } from "@mantine/core";
-import { PropsWithChildren, useCallback, useState } from "react";
+import type { PropsWithChildren} from "react";
+import { useCallback, useState } from "react";
 import { RoleProtected } from "./RoleProtected";
 import { useEventListener } from "@mantine/hooks";
 

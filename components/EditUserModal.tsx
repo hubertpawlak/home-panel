@@ -1,13 +1,8 @@
-import {
-  Button,
-  MultiSelect,
-  Stack,
-  TextInput
-  } from "@mantine/core";
-import { trpc } from "../utils/trpc";
+import { Button, MultiSelect, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useMutationStatusNotification } from "../utils/notifications";
 import type { ContextModalProps } from "@mantine/modals";
+import { useMutationStatusNotification } from "../utils/notifications";
+import { trpc } from "../utils/trpc";
 
 type EditUserProps = ContextModalProps<{
   userId: string;
@@ -27,8 +22,8 @@ export const EditUserModal = ({ innerProps }: EditUserProps) => {
     },
   });
 
-  const { isFetchedAfterMount } = trpc.useQuery(
-    ["root.users.getEditableUserInfo", { userId }],
+  const { isFetchedAfterMount } = trpc.root.users.getEditableUserInfo.useQuery(
+    { userId },
     {
       refetchOnWindowFocus: false,
       onSuccess(data) {
@@ -38,10 +33,8 @@ export const EditUserModal = ({ innerProps }: EditUserProps) => {
   );
 
   const mutateOpts = useMutationStatusNotification();
-  const { mutate: editUser, isLoading: isSubmitting } = trpc.useMutation(
-    "root.users.editUser",
-    mutateOpts
-  );
+  const { mutate: editUser, isLoading: isSubmitting } =
+    trpc.root.users.editUser.useMutation(mutateOpts);
 
   const disabled = !isFetchedAfterMount || isSubmitting;
 

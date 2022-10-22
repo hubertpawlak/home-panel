@@ -6,77 +6,63 @@ import { z } from "zod";
 import { JwtAlg } from "../../types/JwtAlg";
 import { SharedMax } from "../../types/SharedMax";
 import { jwtPrivateKeyToBase64, jwtPublicKeyToBase64 } from "../../utils/jwt";
-import { createRouter } from "../createRouter";
+import { disableOnProduction } from "../middleware/disableOnProduction";
+import { publicProcedure, router } from "./trpc";
 
-export const seedRouter = createRouter()
-  .query("generateVapidKeys", {
-    input: z.undefined(),
-    async resolve() {
-      if (process.env.NODE_ENV === "production") return {};
+export const seedRouter = router({
+  generateVapidKeys: publicProcedure
+    .use(disableOnProduction)
+    .query(async () => {
       const { publicKey, privateKey } = webPush.generateVAPIDKeys();
       return {
         publicKey,
         privateKey,
       };
-    },
-  })
-  .query("generateKeys", {
-    input: z.undefined(),
-    async resolve() {
-      if (process.env.NODE_ENV === "production") return {};
-      const { publicKey, privateKey } = await generateKeyPair(JwtAlg);
-      // Use helper functions to convert keys into an easy to store format
-      return {
-        publicKey: await jwtPublicKeyToBase64(publicKey),
-        privateKey: await jwtPrivateKeyToBase64(privateKey),
-      };
-    },
-  })
-  .mutation("createDefaultRoles", {
-    input: z.null().optional(),
-    output: z.boolean(),
-    async resolve() {
-      // No permissions for now - keep checks simple
-      // Nobody
-      const nobodyResponse = await UserRoles.createNewRoleOrAddPermissions(
-        "nobody",
-        []
-      );
-      if (nobodyResponse.createdNewRole === false) return false;
-
-      // User
-      const userResponse = await UserRoles.createNewRoleOrAddPermissions(
-        "user",
-        []
-      );
-      if (userResponse.createdNewRole === false) return false;
-
-      // Admin
-      const adminResponse = await UserRoles.createNewRoleOrAddPermissions(
-        "admin",
-        []
-      );
-      if (adminResponse.createdNewRole === false) return false;
-
-      // Root
-      const rootResponse = await UserRoles.createNewRoleOrAddPermissions(
-        "root",
-        []
-      );
-      if (rootResponse.createdNewRole === false) return false;
-
-      return true;
-    },
-  })
-  .mutation("addRootRole", {
-    input: z.object({
-      id: z.string().min(1).max(SharedMax),
     }),
-    output: z.object({
-      success: z.boolean(),
-      status: z.string(),
-    }),
-    async resolve({ input }) {
+  generateKeys: publicProcedure.use(disableOnProduction).query(async () => {
+    if (process.env.NODE_ENV === "production") return {};
+    const { publicKey, privateKey } = await generateKeyPair(JwtAlg);
+    // Use helper functions to convert keys into an easy to store format
+    return {
+      publicKey: await jwtPublicKeyToBase64(publicKey),
+      privateKey: await jwtPrivateKeyToBase64(privateKey),
+    };
+  }),
+  createDefaultRoles: publicProcedure.mutation(async () => {
+    // No permissions for now - keep checks simple
+    // Nobody
+    const nobodyResponse = await UserRoles.createNewRoleOrAddPermissions(
+      "nobody",
+      []
+    );
+    if (nobodyResponse.createdNewRole === false) return false;
+    // User
+    const userResponse = await UserRoles.createNewRoleOrAddPermissions(
+      "user",
+      []
+    );
+    if (userResponse.createdNewRole === false) return false;
+    // Admin
+    const adminResponse = await UserRoles.createNewRoleOrAddPermissions(
+      "admin",
+      []
+    );
+    if (adminResponse.createdNewRole === false) return false;
+    // Root
+    const rootResponse = await UserRoles.createNewRoleOrAddPermissions(
+      "root",
+      []
+    );
+    if (rootResponse.createdNewRole === false) return false;
+    return true;
+  }),
+  addRootRole: publicProcedure
+    .input(
+      z.object({
+        id: z.string().min(1).max(SharedMax),
+      })
+    )
+    .mutation(async ({ input }) => {
       const rootUsers = await UserRoles.getUsersThatHaveRole("root");
       // Unknown role
       if (rootUsers.status !== "OK") {
@@ -106,13 +92,10 @@ export const seedRouter = createRouter()
         success: addRoleResponse.status === "OK",
         status: addRoleResponse.status,
       };
-    },
-  })
-  .query("getMyId", {
-    input: z.null().optional(),
-    async resolve({ ctx }) {
-      if (!ctx.user) return null;
-      if (!ctx.user.id) return null;
-      return ctx.user.id;
-    },
-  });
+    }),
+  getMyId: publicProcedure.query(async ({ ctx }) => {
+    if (!ctx.user) return null;
+    if (!ctx.user.id) return null;
+    return ctx.user.id;
+  }),
+});

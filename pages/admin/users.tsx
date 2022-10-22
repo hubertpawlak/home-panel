@@ -1,11 +1,3 @@
-import Layout from "../../components/Layout";
-import { PlayerTrackNext, PlayerTrackPrev, Users } from "tabler-icons-react";
-import { rolePower } from "../../types/RolePower";
-import { Suspense, useEffect } from "react";
-import { trpc } from "../../utils/trpc";
-import { useCounter, useLocalStorage } from "@mantine/hooks";
-import { UsersTable } from "../../components/UsersTable";
-import type { NextPageWithLayout } from "./../_app";
 import {
   ActionIcon,
   Box,
@@ -16,25 +8,32 @@ import {
   Switch,
   Text,
 } from "@mantine/core";
+import { useCounter, useLocalStorage } from "@mantine/hooks";
+import { Suspense, useEffect } from "react";
+import { PlayerTrackNext, PlayerTrackPrev, Users } from "tabler-icons-react";
+import Layout from "../../components/Layout";
+import { UsersTable } from "../../components/UsersTable";
+import { rolePower } from "../../types/RolePower";
+import { trpc } from "../../utils/trpc";
+import type { NextPageWithLayout } from "./../_app";
 
 const UsersPage: NextPageWithLayout = () => {
   // User count
-  const { data: userCount, isLoading: isLoadingUserCount } = trpc.useQuery(
-    ["root.users.getCount"],
-    { staleTime: 60 * 1000 }
-  );
+  const { data: userCount, isLoading: isLoadingUserCount } =
+    trpc.root.users.getCount.useQuery(undefined, { staleTime: 60 * 1000 });
   // Users table
   const [showEmails, setShowEmails] = useLocalStorage({
     key: "admin-show-emails",
     defaultValue: false,
   });
-  const { data, fetchNextPage, hasNextPage, isLoading } = trpc.useInfiniteQuery(
-    ["root.users.getNewest", {}],
-    {
-      getNextPageParam: (data) => data.nextCursor,
-      refetchOnWindowFocus: false,
-    }
-  );
+  const { data, fetchNextPage, hasNextPage, isLoading } =
+    trpc.root.users.getNewest.useInfiniteQuery(
+      {},
+      {
+        getNextPageParam: (data) => data.nextCursor,
+        refetchOnWindowFocus: false,
+      }
+    );
   const [visiblePage, { decrement: prevPage, increment: nextPage }] =
     useCounter(0, { min: 0 });
   const allFetchedPages = data?.pages ?? [];

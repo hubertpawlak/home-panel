@@ -1,15 +1,9 @@
-import {
-  ActionIcon,
-  Button,
-  ScrollArea,
-  Table,
-  Text
-  } from "@mantine/core";
-import { Edit, Trash } from "tabler-icons-react";
+import { ActionIcon, Button, ScrollArea, Table, Text } from "@mantine/core";
 import { openConfirmModal, openContextModal } from "@mantine/modals";
-import { trpc } from "../utils/trpc";
-import { useMutationStatusNotification } from "../utils/notifications";
+import { Edit, Trash } from "tabler-icons-react";
 import type { DisplayedUser } from "../types/DisplayedUser";
+import { useMutationStatusNotification } from "../utils/notifications";
+import { trpc } from "../utils/trpc";
 
 interface IUsersTable {
   users?: DisplayedUser[];
@@ -17,18 +11,16 @@ interface IUsersTable {
 }
 
 export const UsersTable = ({ users, showEmails }: IUsersTable) => {
-  const { refetchQueries, invalidateQueries } = trpc.useContext();
+  const trpcContext = trpc.useContext();
   const opts = useMutationStatusNotification({
     successMessage: "Konto zostało usunięte",
     onSuccess() {
-      refetchQueries(["root.users.getNewest"]);
-      invalidateQueries(["root.users.getCount"]);
+      trpcContext.root.users.getNewest.refetch();
+      trpcContext.root.users.getCount.invalidate();
     },
   });
-  const { mutateAsync: deleteUsers, isLoading: isDeleting } = trpc.useMutation(
-    "root.users.deleteUsers",
-    opts
-  );
+  const { mutateAsync: deleteUsers, isLoading: isDeleting } =
+    trpc.root.users.deleteUsers.useMutation(opts);
 
   return (
     <ScrollArea type="auto" offsetScrollbars>

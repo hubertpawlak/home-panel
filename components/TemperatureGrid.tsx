@@ -1,4 +1,5 @@
-import { ITemperatureSensor, TemperatureSensor } from "./TemperatureSensor";
+import type { ITemperatureSensor} from "./TemperatureSensor";
+import { TemperatureSensor } from "./TemperatureSensor";
 import { SimpleGrid } from "@mantine/core";
 
 interface ITemperatureGrid {

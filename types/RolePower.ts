@@ -1,4 +1,4 @@
-import { UserRole } from "./UserRole";
+import type { UserRole } from "./UserRole";
 
 type RoleToRolePower = {
   [key in UserRole]: number;

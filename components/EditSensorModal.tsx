@@ -1,8 +1,8 @@
 import { Button, Stack, TextInput } from "@mantine/core";
-import { trpc } from "../utils/trpc";
 import { useForm } from "@mantine/form";
-import { useMutationStatusNotification } from "../utils/notifications";
 import type { ContextModalProps } from "@mantine/modals";
+import { useMutationStatusNotification } from "../utils/notifications";
+import { trpc } from "../utils/trpc";
 
 type EditSensorProps = ContextModalProps<{
   hwId: string;
@@ -25,16 +25,15 @@ export const EditSensorModal = ({ innerProps }: EditSensorProps) => {
     },
   });
 
-  const { refetchQueries } = trpc.useContext();
+  const { refetch: refetchTemperatureSensors } =
+    trpc.admin.sensors.getTemperatureSensors.useQuery();
   const mutateOpts = useMutationStatusNotification({
     onSuccess() {
-      refetchQueries(["admin.sensors.getTemperatureSensors"]);
+      refetchTemperatureSensors();
     },
   });
-  const { mutate: editSensor, isLoading: isSubmitting } = trpc.useMutation(
-    "admin.sensors.renameTemperatureSensor",
-    mutateOpts
-  );
+  const { mutate: editSensor, isLoading: isSubmitting } =
+    trpc.admin.sensors.renameTemperatureSensor.useMutation(mutateOpts);
 
   return (
     <>

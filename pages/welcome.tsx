@@ -1,26 +1,26 @@
-import Layout from "../components/Layout";
-import { useSessionContext } from "supertokens-auth-react/recipe/session";
-import type { NextPageWithLayout } from "./_app";
-import {
-  BrandGithub,
-  Code as CodeIcon,
-  Home,
-  Icon,
-  Edit,
-  Shield,
-  AddressBook,
-} from "tabler-icons-react";
 import {
   Button,
+  Code,
+  Container,
   Group,
   Highlight,
   List,
-  ThemeIcon,
   Text,
+  ThemeIcon,
   Title,
-  Container,
-  Code,
 } from "@mantine/core";
+import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import type { Icon } from "tabler-icons-react";
+import {
+  AddressBook,
+  BrandGithub,
+  Code as CodeIcon,
+  Edit,
+  Home,
+  Shield,
+} from "tabler-icons-react";
+import Layout from "../components/Layout";
+import type { NextPageWithLayout } from "./_app";
 
 function ThemedListIcon({ Icon }: { Icon: Icon }) {
   return (

@@ -1,6 +1,7 @@
+import type {
+  DefaultMantineColor} from "@mantine/core";
 import {
   Card,
-  DefaultMantineColor,
   Text,
   Tooltip
   } from "@mantine/core";

@@ -1,32 +1,25 @@
-import {
-  ActionIcon,
-  Button,
-  ScrollArea,
-  Table,
-  Text
-  } from "@mantine/core";
-import { Edit, Trash } from "tabler-icons-react";
+import { ActionIcon, Button, ScrollArea, Table, Text } from "@mantine/core";
 import { openConfirmModal, openContextModal } from "@mantine/modals";
-import { trpc } from "../utils/trpc";
-import { useMutationStatusNotification } from "../utils/notifications";
+import { Edit, Trash } from "tabler-icons-react";
 import type { DisplayedSensor } from "../types/DisplayedSensor";
+import { useMutationStatusNotification } from "../utils/notifications";
+import { trpc } from "../utils/trpc";
 
 interface ISensorsTable {
   sensors?: DisplayedSensor[] | null;
 }
 
 export const SensorsTable = ({ sensors }: ISensorsTable) => {
-  const { refetchQueries } = trpc.useContext();
+  const { refetch: refetchTemperatureSensors } =
+    trpc.admin.sensors.getTemperatureSensors.useQuery();
   const opts = useMutationStatusNotification({
     successMessage: "Czujnik został usunięty",
     onSuccess() {
-      refetchQueries(["admin.sensors.getTemperatureSensors"]);
+      refetchTemperatureSensors();
     },
   });
-  const { mutateAsync: deleteSensor, isLoading: isDeleting } = trpc.useMutation(
-    "admin.sensors.deleteTemperatureSensor",
-    opts
-  );
+  const { mutateAsync: deleteSensor, isLoading: isDeleting } =
+    trpc.admin.sensors.deleteTemperatureSensor.useMutation(opts);
 
   return (
     <ScrollArea type="auto" offsetScrollbars>

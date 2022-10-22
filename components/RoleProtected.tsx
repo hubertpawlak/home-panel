@@ -1,7 +1,7 @@
-import { RoleAccessDenied } from "./RoleAccessDenied";
-import { trpc } from "../utils/trpc";
-import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import type { PropsWithChildren } from "react";
+import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import { trpc } from "../utils/trpc";
+import { RoleAccessDenied } from "./RoleAccessDenied";
 
 /**
  * Restrict children components to certain roles
@@ -17,7 +17,7 @@ export const RoleProtected = ({
     data: userPower,
     isFetched,
     isError,
-  } = trpc.useQuery(["self.getPower"], {
+  } = trpc.self.getPower.useQuery(undefined, {
     staleTime: 60 * 1000, // 1 min
     retry: false,
     refetchOnWindowFocus: false,

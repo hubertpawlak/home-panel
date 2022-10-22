@@ -1,12 +1,3 @@
-import Layout from "../components/Layout";
-import { DatabaseImport } from "tabler-icons-react";
-import { openContextModal } from "@mantine/modals";
-import { rolePower } from "../types/RolePower";
-import { SensorsTable } from "../components/SensorsTable";
-import { trpc } from "../utils/trpc";
-import { useForm } from "@mantine/form";
-import { useMutationStatusNotification } from "../utils/notifications";
-import type { NextPageWithLayout } from "./_app";
 import {
   Button,
   Container,
@@ -16,6 +7,15 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { openContextModal } from "@mantine/modals";
+import { DatabaseImport } from "tabler-icons-react";
+import Layout from "../components/Layout";
+import { SensorsTable } from "../components/SensorsTable";
+import { rolePower } from "../types/RolePower";
+import { useMutationStatusNotification } from "../utils/notifications";
+import { trpc } from "../utils/trpc";
+import type { NextPageWithLayout } from "./_app";
 
 const SourcesPage: NextPageWithLayout = () => {
   const signTokenForm = useForm({ initialValues: { sourceId: "" } });
@@ -23,7 +23,7 @@ const SourcesPage: NextPageWithLayout = () => {
     successMessage: "Token został wygenerowany",
   });
   const { mutateAsync: signToken, isLoading: isSigningToken } =
-    trpc.useMutation("admin.sources.signToken", {
+    trpc.admin.sources.signToken.useMutation({
       ...signOpts,
       onSuccess(data) {
         openContextModal({
@@ -34,9 +34,7 @@ const SourcesPage: NextPageWithLayout = () => {
         signOpts.onSuccess?.(null, null, null);
       },
     });
-  const { data: sensors } = trpc.useQuery([
-    "admin.sensors.getTemperatureSensors",
-  ]);
+  const { data: sensors } = trpc.admin.sensors.getTemperatureSensors.useQuery();
 
   return (
     <Container size="xl">

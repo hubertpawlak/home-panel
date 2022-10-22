@@ -1,4 +1,4 @@
-import { _createM2MRouter } from "../createM2MRouter";
 import { temperatureRouter } from "./m2m/temperature";
+import { t } from "./trpc";
 
-export const m2mRouter = _createM2MRouter().merge(temperatureRouter);
+export const m2mRouter = t.mergeRouters(temperatureRouter);

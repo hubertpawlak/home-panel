@@ -1,5 +1,5 @@
 export interface DisplayedSensor {
   hwId: string;
-  name?: string;
-  updated_by?: string;
+  name: string | null;
+  updated_by: string | null;
 }

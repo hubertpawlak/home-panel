@@ -1,24 +1,16 @@
+import { MantineProvider } from "@mantine/core";
+import type { ContextModalProps } from "@mantine/modals";
+import { ModalsProvider } from "@mantine/modals";
+import { NotificationsProvider } from "@mantine/notifications";
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import type { ComponentType, ReactElement, ReactNode } from "react";
+import { useEffect } from "react";
 import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
-import { cacheableQueries } from "../types/CacheableQueries";
-import {
-  ComponentType,
-  ReactElement,
-  ReactNode,
-  useEffect
-  } from "react";
-import { ContextModalProps, ModalsProvider } from "@mantine/modals";
 import { frontendConfig } from "../config/frontendConfig";
-import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
-import { httpLink } from "@trpc/client/links/httpLink";
-import { MantineProvider } from "@mantine/core";
-import { NotificationsProvider } from "@mantine/notifications";
-import { splitLink } from "@trpc/client/links/splitLink";
-import { withTRPC } from "@trpc/next";
-import type { AppProps } from "next/app";
-import type { AppRouter } from "../server/routers/_app";
-import type { NextPage } from "next";
+import { trpc } from "../utils/trpc";
 
 export type NextPageWithLayout = NextPage & {
   // eslint-disable-next-line no-unused-vars
@@ -131,24 +123,4 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   );
 };
 
-export default withTRPC<AppRouter>({
-  config() {
-    const url = process.env.NEXT_PUBLIC_APP_URL
-      ? `https://${process.env.NEXT_PUBLIC_APP_URL}/api/trpc`
-      : "http://localhost:3000/api/trpc";
-    return {
-      links: [
-        // Disable request batching for cacheable queries
-        splitLink({
-          condition({ type, path }) {
-            const isQuery = type === "query";
-            const isCacheable = (cacheableQueries[path] ?? 0) > 0;
-            return isQuery && isCacheable;
-          },
-          true: httpLink({ url }),
-          false: httpBatchLink({ url }),
-        }),
-      ],
-    };
-  },
-})(App);
+export default trpc.withTRPC(App);

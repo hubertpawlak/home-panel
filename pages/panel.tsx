@@ -1,12 +1,12 @@
-import Layout from "../components/Layout";
-import { rolePower } from "../types/RolePower";
-import { TemperatureGrid } from "../components/TemperatureGrid";
 import { Timeline } from "tabler-icons-react";
+import Layout from "../components/Layout";
+import { TemperatureGrid } from "../components/TemperatureGrid";
+import { rolePower } from "../types/RolePower";
 import { trpc } from "../utils/trpc";
 import type { NextPageWithLayout } from "./_app";
 
 const ControlPanelPage: NextPageWithLayout = () => {
-  const temps = trpc.useQuery(["sensors.getTemperatures"], {
+  const temps = trpc.sensors.getTemperatures.useQuery(undefined, {
     refetchInterval: 3000,
   });
 

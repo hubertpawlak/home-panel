@@ -1,10 +1,10 @@
-import { Icon as IconType } from "tabler-icons-react";
 import { NavLink } from "@mantine/core";
 import { NextLink } from "@mantine/next";
-import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
-import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import type { Dispatch, SetStateAction } from "react";
+import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import type { Icon as IconType } from "tabler-icons-react";
+import { trpc } from "../utils/trpc";
 export interface IAppNavbarLink {
   href: string;
   Icon: IconType;
@@ -26,19 +26,18 @@ export function AppNavbarLink({
   const router = useRouter();
   const session = useSessionContext();
   const doesSessionExist = !session.loading && session.doesSessionExist;
-  const userPowerQuery = trpc.useQuery(["self.getPower"], {
+  const { data: userPower } = trpc.self.getPower.useQuery(undefined, {
     placeholderData: 0,
     // Reduce the amount of queries
     staleTime: 60 * 1000, // 1 min
     // Don't ask the server for userPower if there is no user session
     enabled: doesSessionExist,
   });
-  const userPower = userPowerQuery.data ?? 0;
 
   // Disable useless buttons
   const disabled =
     (!!requiredPower && !doesSessionExist) ||
-    (!!requiredPower && requiredPower > userPower);
+    (!!requiredPower && requiredPower > (userPower ?? 0));
 
   return (
     <NavLink

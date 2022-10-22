@@ -1,16 +1,16 @@
 import { ActionIcon, Loader, Menu } from "@mantine/core";
-import { Login, Logout, UserCircle } from "tabler-icons-react";
-import { redirectToAuth } from "supertokens-auth-react";
-import { signOut } from "supertokens-auth-react/recipe/thirdparty";
-import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
-import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import { useState } from "react";
+import { redirectToAuth } from "supertokens-auth-react";
+import { useSessionContext } from "supertokens-auth-react/recipe/session";
+import { signOut } from "supertokens-auth-react/recipe/thirdparty";
+import { Login, Logout, UserCircle } from "tabler-icons-react";
+import { trpc } from "../utils/trpc";
 
 export function AppHeaderSignInBtn() {
   const [userLoading, setUserLoading] = useState(false);
   const session = useSessionContext();
-  const { invalidateQueries } = trpc.useContext();
+  const trpcContext = trpc.useContext();
   const router = useRouter();
 
   if (session.loading) return <Loader size="sm" color="gray" />;
@@ -47,7 +47,7 @@ export function AppHeaderSignInBtn() {
               setUserLoading(true);
               signOut()
                 .then(() => {
-                  invalidateQueries(); // Make tRPC forget possibly secret content
+                  trpcContext.invalidate(); // Make tRPC forget possibly secret content
                   router.push("/"); // Redirect to homepage
                 })
                 .finally(() => {

@@ -1,5 +1,4 @@
-import { Check, Copy } from "tabler-icons-react";
-import type { ContextModalProps } from "@mantine/modals";
+// Licensed under the Open Software License version 3.0
 import {
   ActionIcon,
   CopyButton,
@@ -8,6 +7,8 @@ import {
   TextInput,
   Tooltip,
 } from "@mantine/core";
+import type { ContextModalProps } from "@mantine/modals";
+import { Check, Copy } from "tabler-icons-react";
 
 type ShowTokenProps = ContextModalProps<{ token: string }>;
 

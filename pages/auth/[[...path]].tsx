@@ -1,7 +1,8 @@
+// Licensed under the Open Software License version 3.0
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import SuperTokens, { redirectToAuth } from "supertokens-auth-react";
 import { useEffect } from "react";
+import SuperTokens, { redirectToAuth } from "supertokens-auth-react";
 
 const SuperTokensComponentNoSSR = dynamic(
   new Promise((res) => res(SuperTokens.getRoutingComponent)) as any,

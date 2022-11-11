@@ -1,17 +1,8 @@
-import type {
-  DefaultMantineColor} from "@mantine/core";
-import {
-  Card,
-  Text,
-  Tooltip
-  } from "@mantine/core";
+// Licensed under the Open Software License version 3.0
+import type { DefaultMantineColor } from "@mantine/core";
+import { Card, Text, Tooltip } from "@mantine/core";
+import { intlFormat, isWithinInterval, parseISO, set } from "date-fns";
 import { HARDCODED_PUSH_NOTIFY_ABOVE } from "../types/Push";
-import {
-  intlFormat,
-  isWithinInterval,
-  parseISO,
-  set
-  } from "date-fns";
 
 export interface ITemperatureSensor {
   hwId: string;

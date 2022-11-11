@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { Button, Checkbox, Container, Stack, Text, Title } from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
 import { useCallback, useEffect, useState } from "react";

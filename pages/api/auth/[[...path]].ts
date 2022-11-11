@@ -1,9 +1,10 @@
+// Licensed under the Open Software License version 3.0
+import type { Request, Response } from "express";
+import type { NextApiRequest, NextApiResponse } from "next";
 import supertokens from "supertokens-node";
-import { backendConfig } from "../../../config/backendConfig";
 import { middleware } from "supertokens-node/framework/express";
 import { superTokensNextWrapper } from "supertokens-node/nextjs";
-import type { NextApiRequest, NextApiResponse } from "next";
-import type { Request, Response } from "express";
+import { backendConfig } from "../../../config/backendConfig";
 
 supertokens.init(backendConfig());
 

@@ -1,6 +1,7 @@
-import type { ITemperatureSensor} from "./TemperatureSensor";
-import { TemperatureSensor } from "./TemperatureSensor";
+// Licensed under the Open Software License version 3.0
 import { SimpleGrid } from "@mantine/core";
+import type { ITemperatureSensor } from "./TemperatureSensor";
+import { TemperatureSensor } from "./TemperatureSensor";
 
 interface ITemperatureGrid {
   temps?: ITemperatureSensor[] | null;

@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import type * as trpc from "@trpc/server";
 import type * as trpcNext from "@trpc/server/adapters/next";
 import supertokens from "supertokens-node";

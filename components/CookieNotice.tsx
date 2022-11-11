@@ -1,6 +1,4 @@
-import Link from "next/link";
-import { Cookie } from "tabler-icons-react";
-import { useLocalStorage, useMediaQuery } from "@mantine/hooks";
+// Licensed under the Open Software License version 3.0
 import {
   Button,
   Group,
@@ -9,6 +7,9 @@ import {
   ThemeIcon,
   useMantineTheme,
 } from "@mantine/core";
+import { useLocalStorage, useMediaQuery } from "@mantine/hooks";
+import Link from "next/link";
+import { Cookie } from "tabler-icons-react";
 
 export function CookieNotice() {
   const [closedCookieNotice, setClosedCookieNotice] = useLocalStorage<boolean>({

@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { ActionIcon, Button, ScrollArea, Table, Text } from "@mantine/core";
 import { openConfirmModal, openContextModal } from "@mantine/modals";
 import { Edit, Trash } from "tabler-icons-react";

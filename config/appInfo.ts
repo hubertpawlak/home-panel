@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 const appBaseUrl = process.env.NEXT_PUBLIC_APP_URL
   ? `https://${process.env.NEXT_PUBLIC_APP_URL}/`
   : "http://localhost:3000/";

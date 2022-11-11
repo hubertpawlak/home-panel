@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { z } from "zod";
 import {
   HARDCODED_PUSH_NOTIFY_ABOVE,

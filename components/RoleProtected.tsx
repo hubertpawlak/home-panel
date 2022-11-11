@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import type { PropsWithChildren } from "react";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import { trpc } from "../utils/trpc";

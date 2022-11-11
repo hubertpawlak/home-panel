@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { ActionIcon, Loader, Menu } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useState } from "react";

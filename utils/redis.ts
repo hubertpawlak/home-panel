@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { Redis } from "@upstash/redis";
 
 const UPSTASH_REDIS_REST_URL = process.env.UPSTASH_REDIS_REST_URL;

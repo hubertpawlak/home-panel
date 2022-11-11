@@ -1,7 +1,8 @@
+// Licensed under the Open Software License version 3.0
 import * as trpcNext from "@trpc/server/adapters/next";
+import { createContext } from "../../../server/context";
 import { appRouter } from "../../../server/routers/_app";
 import { cacheableQueries } from "../../../types/CacheableQueries";
-import { createContext } from "../../../server/context";
 
 export default trpcNext.createNextApiHandler({
   router: appRouter,

@@ -1,10 +1,11 @@
-import bg from "../public/404.svg";
-import Head from "next/head";
-import Image from "next/future/image";
-import Layout from "../components/Layout";
+// Licensed under the Open Software License version 3.0
 import { Button, Center, Container } from "@mantine/core";
-import { FileUnknown } from "tabler-icons-react";
 import { NextLink } from "@mantine/next";
+import Image from "next/future/image";
+import Head from "next/head";
+import { FileUnknown } from "tabler-icons-react";
+import Layout from "../components/Layout";
+import bg from "../public/404.svg";
 import type { NextPageWithLayout } from "./_app";
 
 const Custom404: NextPageWithLayout = () => {

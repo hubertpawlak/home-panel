@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { Button, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import type { ContextModalProps } from "@mantine/modals";

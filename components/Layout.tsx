@@ -1,11 +1,12 @@
+// Licensed under the Open Software License version 3.0
+import { AppShell } from "@mantine/core";
+import { useEventListener } from "@mantine/hooks";
 import Head from "next/head";
+import type { PropsWithChildren } from "react";
+import { useCallback, useState } from "react";
 import { AppHeader } from "../components/AppHeader";
 import { AppNavbar } from "../components/AppNavbar";
-import { AppShell } from "@mantine/core";
-import type { PropsWithChildren} from "react";
-import { useCallback, useState } from "react";
 import { RoleProtected } from "./RoleProtected";
-import { useEventListener } from "@mantine/hooks";
 
 type LayoutProps = PropsWithChildren<{
   title: string;

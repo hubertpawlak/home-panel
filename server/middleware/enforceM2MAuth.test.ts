@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { beforeEach, test } from "@jest/globals";
 import { nanoid } from "nanoid/non-secure";
 import type { Context } from "../context";

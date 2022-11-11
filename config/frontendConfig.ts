@@ -1,10 +1,11 @@
+// Licensed under the Open Software License version 3.0
+import type { SuperTokensConfig } from "supertokens-auth-react/lib/build/types";
 import SessionReact from "supertokens-auth-react/recipe/session";
-import { appInfo } from "./appInfo";
 import ThirdPartyReact, {
   Github,
   Google,
 } from "supertokens-auth-react/recipe/thirdparty";
-import type { SuperTokensConfig } from "supertokens-auth-react/lib/build/types";
+import { appInfo } from "./appInfo";
 
 export const frontendConfig: () => SuperTokensConfig = () => {
   return {

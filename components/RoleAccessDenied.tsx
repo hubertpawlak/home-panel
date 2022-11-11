@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { Container, Text, Title } from "@mantine/core";
 
 export const RoleAccessDenied = () => (

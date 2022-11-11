@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { expect, test } from "@jest/globals";
 import { generateKeyPair } from "jose";
 import { nanoid } from "nanoid/non-secure";

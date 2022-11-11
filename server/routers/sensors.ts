@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { sub } from "date-fns";
 import supabase from "../../utils/supabase";
 import { userProcedure } from "../middleware/enforceUserAuth";

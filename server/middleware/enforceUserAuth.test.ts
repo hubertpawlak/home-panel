@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { beforeEach } from "@jest/globals";
 import { rolePower } from "../../types/RolePower";
 import type { UserRole } from "../../types/UserRole";

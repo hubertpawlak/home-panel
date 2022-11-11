@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { adminRouter } from "./admin";
 import { m2mRouter } from "./m2m";
 import { pushRouter } from "./push";

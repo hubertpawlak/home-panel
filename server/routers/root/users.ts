@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import {
   deleteUser,
   getUserCount,

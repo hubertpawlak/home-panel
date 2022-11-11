@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { generateKeyPair } from "jose";
 import { getUserById } from "supertokens-node/recipe/thirdparty";
 import UserRoles from "supertokens-node/recipe/userroles";

@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { initTRPC } from "@trpc/server";
 import type { Context } from "../context";
 

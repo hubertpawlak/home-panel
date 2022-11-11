@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { httpBatchLink, httpLink, splitLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
 import type { AppRouter } from "../server/routers/_app";

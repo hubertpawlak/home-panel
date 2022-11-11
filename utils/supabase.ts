@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "../types/supabase";
 

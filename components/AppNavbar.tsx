@@ -1,7 +1,5 @@
-import type { IAppNavbarLink } from "./AppNavbarLink";
-import { AppNavbarLink } from "./AppNavbarLink";
+// Licensed under the Open Software License version 3.0
 import { Divider, Navbar, ScrollArea } from "@mantine/core";
-import { rolePower } from "../types/RolePower";
 import type { Dispatch, SetStateAction } from "react";
 import {
   Bell,
@@ -10,6 +8,9 @@ import {
   Timeline,
   Users,
 } from "tabler-icons-react";
+import { rolePower } from "../types/RolePower";
+import type { IAppNavbarLink } from "./AppNavbarLink";
+import { AppNavbarLink } from "./AppNavbarLink";
 
 interface AppNavbarProps {
   navOpened: boolean;

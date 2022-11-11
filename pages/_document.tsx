@@ -1,5 +1,6 @@
-import Document from 'next/document';
-import { createGetInitialProps } from '@mantine/next';
+// Licensed under the Open Software License version 3.0
+import { createGetInitialProps } from "@mantine/next";
+import Document from "next/document";
 
 const getInitialProps = createGetInitialProps();
 

@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { z } from "zod";
 import { SharedMax } from "../../types/SharedMax";
 import supabase from "../../utils/supabase";

@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { MantineProvider } from "@mantine/core";
 import type { ContextModalProps } from "@mantine/modals";
 import { ModalsProvider } from "@mantine/modals";

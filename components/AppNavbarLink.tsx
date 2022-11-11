@@ -1,3 +1,4 @@
+// Licensed under the Open Software License version 3.0
 import { NavLink } from "@mantine/core";
 import { NextLink } from "@mantine/next";
 import { useRouter } from "next/router";

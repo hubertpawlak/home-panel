@@ -5,7 +5,7 @@ import {
   updateNotification,
 } from "@mantine/notifications";
 import type { TRPCClientError } from "@trpc/client";
-import type { UseTRPCMutationOptions } from "@trpc/react/shared";
+import type { UseTRPCMutationOptions } from "@trpc/react-query/shared";
 import { Check, X } from "tabler-icons-react";
 
 interface UseStatusNotificationOptions {

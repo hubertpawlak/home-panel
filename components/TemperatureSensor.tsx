@@ -2,7 +2,9 @@
 import type { DefaultMantineColor } from "@mantine/core";
 import { Card, Text, Tooltip } from "@mantine/core";
 import { intlFormat, isWithinInterval, parseISO, set } from "date-fns";
+import { useEffect } from "react";
 import { HARDCODED_PUSH_NOTIFY_ABOVE } from "../types/Push";
+import { trpc } from "../utils/trpc";
 
 export interface ITemperatureSensor {
   hwId: string;
@@ -27,8 +29,6 @@ export function TemperatureSensor({
   name,
   updated_by,
 }: ITemperatureSensor) {
-  if (temperature === undefined || temperature === null) return null;
-
   const timestamp = parseISO(updated_at);
   const now = new Date();
   const todayStart = set(now, {
@@ -49,6 +49,22 @@ export function TemperatureSensor({
     minute: "2-digit",
     second: "2-digit",
   });
+
+  // Telemetry for future UI fix
+  const { mutateAsync: reportTimeFormattingProblems } =
+    trpc.log.reportTimeFormattingProblems.useMutation();
+  useEffect(() => {
+    const uiNow = now.getTime();
+    if (isNaN(uiNow) || uiNow < 60 * 1000 || !updatedToday)
+      reportTimeFormattingProblems({
+        uiNow,
+        updated_at,
+        updatedToday,
+        result: _updated_at,
+      }).catch(() => {});
+  });
+
+  if (temperature === undefined || temperature === null) return null;
 
   return (
     <Card>

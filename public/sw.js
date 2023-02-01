@@ -33,38 +33,11 @@ const displayNotification = async (payload) => {
   });
 };
 
-/**
- * @description Report potential problems
- * @argument {NotificationPayload} payload
- */
-const sendPushTelemetry = async (payload) => {
-  const { timestamp } = payload;
-  if (isNaN(timestamp)) return; // Filter invalid pushes
-  // Don't report if shown within acceptable time range
-  const now = Date.now();
-  const diff = now - timestamp;
-  if (diff < 10 * 1000) return;
-  // Report problems with service worker
-  await fetch("/api/trpc/log.reportLatePush", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      now,
-      timestamp,
-    }),
-  }).catch(() => {});
-};
-
 // Wait for Promise to settle
 _self.addEventListener("push", function (event) {
   const data = event.data?.json() ?? {};
   const displayNotificationPromise = displayNotification(data);
-  const sendPushTelemetryPromise = sendPushTelemetry(data);
-  event.waitUntil(
-    Promise.all([displayNotificationPromise, sendPushTelemetryPromise])
-  );
+  event.waitUntil(Promise.all([displayNotificationPromise]));
 });
 
 // Update subscription on the server

@@ -1,6 +1,6 @@
 // Licensed under the Open Software License version 3.0
 import { TRPCError } from "@trpc/server";
-import * as configCat from "configcat-js-ssr";
+import { get as getValueAsync } from "@vercel/edge-config";
 import { t } from "../routers/trpc";
 
 interface EnforceConfigFlagOptions {
@@ -19,15 +19,10 @@ export const enforceConfigFlag = ({
   passthrough,
 }: EnforceConfigFlagOptions) =>
   t.middleware(async ({ next }) => {
-    const CONFIG_CAT_SDK_KEY = process.env.CONFIG_CAT_SDK_KEY;
-    if (!CONFIG_CAT_SDK_KEY) throw new Error("Missing CONFIG_CAT_SDK_KEY");
+    const env = process.env.NODE_ENV ?? "development";
     // Get config flag
-    const configCatClient = configCat.createClient(CONFIG_CAT_SDK_KEY);
-    const isFlagEnabled: boolean = await configCatClient.getValueAsync(
-      flag,
-      defaultFlagValue
-    );
-    configCatClient.dispose();
+    const isFlagEnabled: boolean =
+      (await getValueAsync(`${env}_${flag}`)) ?? defaultFlagValue;
     // Pass flag state if passthrough enabled
     if (!isFlagEnabled && passthrough)
       return next<EnforceConfigFlagContext>({

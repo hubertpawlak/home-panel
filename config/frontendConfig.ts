@@ -31,19 +31,55 @@ export const frontendConfig: () => SuperTokensConfig = () => {
     },
     recipeList: [
       ThirdPartyReact.init({
-        palette: {
-          background: "#0a0a0a",
-          primary: "#1864ab",
-          success: "#2b8a3e",
-          error: "#c92a2a",
-          textTitle: "#dbdbdb",
-          textLabel: "#dbdbdb",
-          textInput: "white",
-          textPrimary: "#dbdbdb",
-          textLink: "white",
-          superTokensBrandingBackground: "#0a0a0a",
-          superTokensBrandingText: "#838383",
-        },
+        style: `
+                [data-supertokens~=container] {
+                    --palette-background: 10, 10, 10;
+                    --palette-primary: 24, 100, 171;
+                    --palette-success: 43, 138, 62;
+                    --palette-textTitle: 219, 219, 219;
+                    --palette-textLabel: 219, 219, 219;
+                    --palette-textPrimary: 219, 219, 219;
+                    --palette-error: 201, 42, 42;
+                    --palette-errorBackground: 201, 42, 42;
+                    --palette-textInput: 255, 255, 255;
+                    --palette-textLink: 255, 255, 255;
+                    --palette-superTokensBrandingBackground: 10, 10, 10;
+                    --palette-superTokensBrandingText: 131, 131, 131;
+                }
+                [data-supertokens~="providerButton"] {
+                  justify-content: center;
+                  border: 0px !important;
+                  cursor: pointer;
+                }
+                [data-supertokens~="providerButtonLeft"] {
+                  margin-left: 0px;
+                  margin-right: 4px;
+                }
+                [data-supertokens~="providerGitHub"] {
+                  background-color: #000;
+                  color: #fff;
+                }
+                [data-supertokens~="providerGitHub"]:hover {
+                  background-color: #4d4d4d !important;
+                }
+                [data-supertokens~="providerGitHub"] > [data-supertokens~="providerButtonLeft"] {
+                  filter: invert(100%);
+                }
+                [data-supertokens~="providerGoogle"] {
+                  background-color: #4285f4;
+                  color: #fff;
+                }
+                [data-supertokens~="providerGoogle"]:hover {
+                  background-color: #7baaf7 !important;
+                }
+                [data-supertokens~="providerGoogle"] [data-supertokens~="providerButtonLogoCenter"] {
+                  background-color: #fff;
+                  padding: 5px;
+                }
+                [data-supertokens~="providerButtonText"] {
+                  font-weight: bold;
+                }
+            `,
         signInAndUpFeature: {
           providers: [Github.init(), Google.init()],
         },

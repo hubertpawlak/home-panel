@@ -1,0 +1,14 @@
+{
+  "production_pushTTLSeconds": 900,
+  "production_pushNotifyAbove": 90,
+  "production_seedRouter_generateVapidKeys": false,
+  "production_seedRouter_generateKeys": false,
+  "production_seedRouter_createDefaultRoles": false,
+  "production_seedRouter_addRootRole": false,
+  "development_pushTTLSeconds": 900,
+  "development_pushNotifyAbove": 90,
+  "development_seedRouter_generateVapidKeys": true,
+  "development_seedRouter_generateKeys": true,
+  "development_seedRouter_createDefaultRoles": true,
+  "development_seedRouter_addRootRole": true
+}

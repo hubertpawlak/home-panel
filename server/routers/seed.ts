@@ -7,12 +7,17 @@ import { z } from "zod";
 import { JwtAlg } from "../../types/JwtAlg";
 import { SharedMax } from "../../types/SharedMax";
 import { jwtPrivateKeyToBase64, jwtPublicKeyToBase64 } from "../../utils/jwt";
-import { disableOnProduction } from "../middleware/disableOnProduction";
+import { enforceConfigFlag } from "../middleware/enforceConfigFlag";
 import { publicProcedure, router } from "./trpc";
 
 export const seedRouter = router({
   generateVapidKeys: publicProcedure
-    .use(disableOnProduction)
+    .use(
+      enforceConfigFlag({
+        flag: "seedRouter_generateVapidKeys",
+        defaultFlagValue: false,
+      })
+    )
     .query(async () => {
       const { publicKey, privateKey } = webPush.generateVAPIDKeys();
       return {
@@ -20,44 +25,66 @@ export const seedRouter = router({
         privateKey,
       };
     }),
-  generateKeys: publicProcedure.use(disableOnProduction).query(async () => {
-    if (process.env.NODE_ENV === "production") return {};
-    const { publicKey, privateKey } = await generateKeyPair(JwtAlg);
-    // Use helper functions to convert keys into an easy to store format
-    return {
-      publicKey: await jwtPublicKeyToBase64(publicKey),
-      privateKey: await jwtPrivateKeyToBase64(privateKey),
-    };
-  }),
-  createDefaultRoles: publicProcedure.mutation(async () => {
-    // No permissions for now - keep checks simple
-    // Nobody
-    const nobodyResponse = await UserRoles.createNewRoleOrAddPermissions(
-      "nobody",
-      []
-    );
-    if (nobodyResponse.createdNewRole === false) return false;
-    // User
-    const userResponse = await UserRoles.createNewRoleOrAddPermissions(
-      "user",
-      []
-    );
-    if (userResponse.createdNewRole === false) return false;
-    // Admin
-    const adminResponse = await UserRoles.createNewRoleOrAddPermissions(
-      "admin",
-      []
-    );
-    if (adminResponse.createdNewRole === false) return false;
-    // Root
-    const rootResponse = await UserRoles.createNewRoleOrAddPermissions(
-      "root",
-      []
-    );
-    if (rootResponse.createdNewRole === false) return false;
-    return true;
-  }),
+  generateKeys: publicProcedure
+    .use(
+      enforceConfigFlag({
+        flag: "seedRouter_generateKeys",
+        defaultFlagValue: false,
+      })
+    )
+    .query(async () => {
+      const { publicKey, privateKey } = await generateKeyPair(JwtAlg);
+      // Use helper functions to convert keys into an easy to store format
+      return {
+        publicKey: await jwtPublicKeyToBase64(publicKey),
+        privateKey: await jwtPrivateKeyToBase64(privateKey),
+      };
+    }),
+  createDefaultRoles: publicProcedure
+    .use(
+      enforceConfigFlag({
+        flag: "seedRouter_createDefaultRoles",
+        defaultFlagValue: false,
+      })
+    )
+    .mutation(async () => {
+      // No permissions for now - keep checks simple
+      const nobodyResponse = await UserRoles.createNewRoleOrAddPermissions(
+        "nobody",
+        []
+      );
+      const userResponse = await UserRoles.createNewRoleOrAddPermissions(
+        "user",
+        []
+      );
+      const adminResponse = await UserRoles.createNewRoleOrAddPermissions(
+        "admin",
+        []
+      );
+      if (adminResponse.createdNewRole === false) return false;
+      const rootResponse = await UserRoles.createNewRoleOrAddPermissions(
+        "root",
+        []
+      );
+      // Get all existing roles
+      const roles = (await UserRoles.getAllRoles()).roles;
+      return {
+        roles,
+        created: {
+          nobody: nobodyResponse.createdNewRole,
+          user: userResponse.createdNewRole,
+          admin: adminResponse.createdNewRole,
+          root: rootResponse.createdNewRole,
+        },
+      };
+    }),
   addRootRole: publicProcedure
+    .use(
+      enforceConfigFlag({
+        flag: "seedRouter_addRootRole",
+        defaultFlagValue: false,
+      })
+    )
     .input(
       z.object({
         id: z.string().min(1).max(SharedMax),

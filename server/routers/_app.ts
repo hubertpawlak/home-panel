@@ -1,5 +1,6 @@
 // Licensed under the Open Software License version 3.0
 import { adminRouter } from "./admin";
+import { edgeConfigRouter } from "./edgeConfig";
 import { m2mRouter } from "./m2m";
 import { pushRouter } from "./push";
 import { rootRouter } from "./root";
@@ -18,6 +19,7 @@ export const appRouter = router({
   root: rootRouter,
   admin: adminRouter,
   log: telemetryRouter,
+  edgeConfig: edgeConfigRouter,
 });
 
 export type AppRouter = typeof appRouter;

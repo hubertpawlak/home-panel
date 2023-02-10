@@ -2,7 +2,7 @@
 import type { DefaultMantineColor } from "@mantine/core";
 import { Card, Text, Tooltip } from "@mantine/core";
 import { intlFormat, isToday, parseISO } from "date-fns";
-import { HARDCODED_PUSH_NOTIFY_ABOVE } from "../types/Push";
+import { trpc } from "../utils/trpc";
 
 export interface ITemperatureSensor {
   hwId: string;
@@ -13,9 +13,13 @@ export interface ITemperatureSensor {
   updated_by?: string | null;
 }
 
-function getColor(temperature: number): DefaultMantineColor {
-  if (temperature > HARDCODED_PUSH_NOTIFY_ABOVE) return "red";
-  if (temperature > HARDCODED_PUSH_NOTIFY_ABOVE - 5) return "yellow";
+function getColor(
+  temperature: number,
+  notifyAbove?: number
+): DefaultMantineColor {
+  if (notifyAbove === undefined || notifyAbove === null) return "dark.0";
+  if (temperature > notifyAbove) return "red";
+  if (temperature > notifyAbove - 5) return "yellow";
   return "dark.0";
 }
 
@@ -38,6 +42,13 @@ export function TemperatureSensor({
     second: "2-digit",
   });
 
+  const { data: edgeConfig } = trpc.edgeConfig.get.useQuery(
+    ["pushNotifyAbove"],
+    {
+      staleTime: 60 * 1000, // 1 min
+    }
+  );
+
   if (temperature === undefined || temperature === null) return null;
 
   return (
@@ -59,7 +70,7 @@ export function TemperatureSensor({
           size={55}
           inline
           weight={900}
-          color={getColor(temperature)}
+          color={getColor(temperature, edgeConfig?.pushNotifyAbove)}
         >
           {`${temperature.toFixed(1)}°C`}
         </Text>

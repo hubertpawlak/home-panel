@@ -1,10 +1,7 @@
 // Licensed under the Open Software License version 3.0
 import { z } from "zod";
-import {
-  HARDCODED_PUSH_NOTIFY_ABOVE,
-  HARDCODED_PUSH_TTL,
-} from "../../../types/Push";
 import { SharedMax } from "../../../types/SharedMax";
+import { getEdgeConfigValues } from "../../../utils/getEdgeConfigValues";
 import { sendPush } from "../../../utils/push";
 import { redis } from "../../../utils/redis";
 import supabase from "../../../utils/supabase";
@@ -30,6 +27,12 @@ export const temperatureRouter = router({
         .min(1)
     )
     .mutation(async ({ ctx, input }) => {
+      // Get edge config variables
+      const { pushNotifyAbove, pushTTLSeconds } = await getEdgeConfigValues([
+        "pushNotifyAbove",
+        "pushTTLSeconds",
+      ]);
+      if (pushNotifyAbove === undefined) return {};
       // Phase 1 - database
       const { sourceId } = ctx;
       // Add sourceId to every reading
@@ -46,7 +49,7 @@ export const temperatureRouter = router({
         });
       // Phase 2 - web push
       const triggerPush = input.some(
-        ({ temperature }) => temperature > HARDCODED_PUSH_NOTIFY_ABOVE
+        ({ temperature }) => temperature > pushNotifyAbove
       );
       if (!triggerPush) return { tempsCount };
       // Prevent notification spam
@@ -66,12 +69,12 @@ export const temperatureRouter = router({
           sendPush(
             sub,
             {
-              title: `Temperatura przekroczyła ${HARDCODED_PUSH_NOTIFY_ABOVE}°C `,
+              title: `Temperatura przekroczyła ${pushNotifyAbove}°C `,
               body: `Jeden z czujników zgłosił temperaturę powyżej limitu`,
               timestamp,
             },
             {
-              TTL: HARDCODED_PUSH_TTL,
+              TTL: pushTTLSeconds,
               headers: {
                 Urgency: "high",
               },

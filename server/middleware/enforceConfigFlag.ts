@@ -1,6 +1,7 @@
 // Licensed under the Open Software License version 3.0
 import { TRPCError } from "@trpc/server";
 import { get as getValueAsync } from "@vercel/edge-config";
+import { EdgeFlagEnv } from "../../types/EdgeConfig";
 import { t } from "../routers/trpc";
 
 interface EnforceConfigFlagOptions {
@@ -13,10 +14,9 @@ export const enforceConfigFlag = ({
   defaultFlagValue,
 }: EnforceConfigFlagOptions) =>
   t.middleware(async ({ next }) => {
-    const env = process.env.NODE_ENV ?? "development";
     // Get config flag
     const isFlagEnabled: boolean =
-      (await getValueAsync(`${env}_${flag}`)) ?? defaultFlagValue;
+      (await getValueAsync(`${EdgeFlagEnv}_${flag}`)) ?? defaultFlagValue;
     // Throw if feature is not enabled
     if (!isFlagEnabled)
       throw new TRPCError({

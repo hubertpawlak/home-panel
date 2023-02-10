@@ -1,5 +1,13 @@
 // Licensed under the Open Software License version 3.0
-import { Button, Checkbox, Container, Stack, Text, Title } from "@mantine/core";
+import {
+  Button,
+  Checkbox,
+  Container,
+  NumberInput,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
 import { useCallback, useEffect, useState } from "react";
 import { Bell } from "tabler-icons-react";
@@ -79,6 +87,14 @@ const NotificationsPage: NextPageWithLayout = () => {
     trpc.push.register.useMutation(opts);
   const { mutateAsync: changeSub, isLoading: isLoadingPC } =
     trpc.push.change.useMutation(opts);
+
+  const { data: pushEdgeFlags } = trpc.edgeConfig.get.useQuery(
+    ["pushTTLSeconds", "pushNotifyAbove"],
+    {
+      // Reduce the amount of queries
+      staleTime: 60 * 1000, // 1 min
+    }
+  );
 
   if (!applicationServerKey)
     return <Text color="red">missing applicationServerKey</Text>;
@@ -165,6 +181,19 @@ const NotificationsPage: NextPageWithLayout = () => {
           color="green"
           checked={subscription}
           label="Istnieje aktywna subskrypcja"
+        />
+        <Title align="center">Globalne ustawienia</Title>
+        <NumberInput
+          value={pushEdgeFlags?.pushNotifyAbove}
+          disabled
+          label="pushNotifyAbove"
+          description="Próg temperaturowy w stopniach Celsjusza, po którego osiągnięciu przez dowolny czujnik, zostanie wysłane powiadomienie"
+        />
+        <NumberInput
+          value={pushEdgeFlags?.pushTTLSeconds}
+          disabled
+          label="pushTTLSeconds"
+          description="Czas w sekundach przed wysłaniem kolejnego powiadomienia, po spadku temperatury poniżej progu przez wszystkie czujniki"
         />
       </Stack>
     </Container>

@@ -56,11 +56,11 @@ export const frontendConfig: () => SuperTokensConfig = () => {
                   margin-right: 4px;
                 }
                 [data-supertokens~="providerGitHub"] {
-                  background-color: #000;
+                  background-color: #222;
                   color: #fff;
                 }
                 [data-supertokens~="providerGitHub"]:hover {
-                  background-color: #4d4d4d !important;
+                  background-color: #000 !important;
                 }
                 [data-supertokens~="providerGitHub"] > [data-supertokens~="providerButtonLeft"] {
                   filter: invert(100%);
@@ -70,7 +70,7 @@ export const frontendConfig: () => SuperTokensConfig = () => {
                   color: #fff;
                 }
                 [data-supertokens~="providerGoogle"]:hover {
-                  background-color: #7baaf7 !important;
+                  background-color: #073075 !important;
                 }
                 [data-supertokens~="providerGoogle"] [data-supertokens~="providerButtonLogoCenter"] {
                   background-color: #fff;

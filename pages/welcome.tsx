@@ -10,6 +10,7 @@ import {
   ThemeIcon,
   Title,
 } from "@mantine/core";
+import Balancer from "react-wrap-balancer";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import type { Icon } from "tabler-icons-react";
 import {
@@ -53,9 +54,11 @@ export default WelcomePage;
 function WelcomeTitle() {
   return (
     <Title align="center">
-      <Highlight highlight={["panel", "sterowania", "domem"]}>
-        Nowoczesny panel do zdalnego sterowania domem
-      </Highlight>
+      <Balancer>
+        <Highlight highlight={["panel", "sterowania", "domem"]}>
+          Nowoczesny panel do&nbsp;zdalnego sterowania domem
+        </Highlight>
+      </Balancer>
     </Title>
   );
 }
@@ -120,11 +123,14 @@ function WelcomeDisclaimer() {
 
   return (
     <>
-      <Text color="dimmed" mt="sm" align="justify">
-        Ta strona jest prywatną instancją panelu. Dostęp do sterowania wymaga
-        zalogowania się na autoryzowane konto. Porozmawiaj z&nbsp;właścicielem
-        domu, aby nadał Ci odpowiednie uprawnienia. Po otrzymaniu uprawnień
-        przyciski nawigacyjne staną się aktywne.
+      <Text color="dimmed" mt="sm" align="center">
+        <Balancer>
+          Ta&nbsp;strona jest prywatną instancją panelu. Dostęp
+          do&nbsp;sterowania wymaga zalogowania&nbsp;się na&nbsp;autoryzowane
+          konto. Porozmawiaj z&nbsp;właścicielem domu, aby nadał&nbsp;Ci
+          odpowiednie uprawnienia. Po&nbsp;otrzymaniu uprawnień przyciski
+          nawigacyjne staną&nbsp;się aktywne.
+        </Balancer>
       </Text>
       {userId ? (
         <Code block mt="sm">

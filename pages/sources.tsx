@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { openContextModal } from "@mantine/modals";
+import Balancer from "react-wrap-balancer";
 import { DatabaseImport } from "tabler-icons-react";
 import Layout from "../components/Layout";
 import { SensorsTable } from "../components/SensorsTable";
@@ -58,12 +59,14 @@ const SourcesPage: NextPageWithLayout = () => {
             </Grid.Col>
           </Grid>
         </form>
-        <Text color="dimmed" align="justify">
-          Utworzone tokeny są&nbsp;ważne bezterminowo i&nbsp;nie można ich
-          pojedynczo unieważnić. Obecnie wymagałoby to zmiany kluczy używanych
-          przez serwer, a&nbsp;więc unieważnienia wszystkich źródeł. Tokeny
-          zawierają podpisane cyfrowo informacje o&nbsp;źródle danych, takie jak
-          nazwa. Każde źródło powinno mieć swój token.
+        <Text color="dimmed" align="center">
+          <Balancer>
+            Utworzone tokeny są&nbsp;ważne bezterminowo i&nbsp;nie można ich
+            pojedynczo unieważnić. Obecnie wymagałoby to zmiany kluczy używanych
+            przez serwer, a&nbsp;więc unieważnienia wszystkich źródeł. Tokeny
+            zawierają podpisane cyfrowo informacje o&nbsp;źródle danych, takie
+            jak&nbsp;nazwa. Każde źródło powinno mieć swój token.
+          </Balancer>
         </Text>
         {/* List of all known temperature sensors */}
         <Title align="center">Czujniki temperatury</Title>

@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import type { ComponentType, ReactElement, ReactNode } from "react";
 import { useEffect } from "react";
+import { Provider as WrapBalancerProvider } from "react-wrap-balancer";
 import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
 import { frontendConfig } from "../config/frontendConfig";
 import { trpc } from "../utils/trpc";
@@ -84,42 +85,44 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         />
       </Head>
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          colorScheme: "dark",
-          defaultGradient: { deg: 45, from: "cyan", to: "indigo" },
-          components: {
-            ThemeIcon: {
-              defaultProps: {
-                gradient: { deg: 45, from: "cyan", to: "indigo" },
+      <WrapBalancerProvider>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            colorScheme: "dark",
+            defaultGradient: { deg: 45, from: "cyan", to: "indigo" },
+            components: {
+              ThemeIcon: {
+                defaultProps: {
+                  gradient: { deg: 45, from: "cyan", to: "indigo" },
+                },
+              },
+              Mark: {
+                styles: (theme) => ({
+                  root: {
+                    backgroundImage: theme.fn.linearGradient(
+                      45,
+                      theme.colors.cyan[5],
+                      theme.colors.indigo[5]
+                    ),
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  },
+                }),
               },
             },
-            Mark: {
-              styles: (theme) => ({
-                root: {
-                  backgroundImage: theme.fn.linearGradient(
-                    45,
-                    theme.colors.cyan[5],
-                    theme.colors.indigo[5]
-                  ),
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                },
-              }),
-            },
-          },
-        }}
-      >
-        <ModalsProvider modals={modals}>
-          <NotificationsProvider>
-            <SuperTokensWrapper>
-              {getLayout(<Component {...pageProps} />)}
-            </SuperTokensWrapper>
-          </NotificationsProvider>
-        </ModalsProvider>
-      </MantineProvider>
+          }}
+        >
+          <ModalsProvider modals={modals}>
+            <NotificationsProvider>
+              <SuperTokensWrapper>
+                {getLayout(<Component {...pageProps} />)}
+              </SuperTokensWrapper>
+            </NotificationsProvider>
+          </ModalsProvider>
+        </MantineProvider>
+      </WrapBalancerProvider>
     </>
   );
 };

@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
 import { useCallback, useEffect, useState } from "react";
+import Balancer from "react-wrap-balancer";
 import { Bell } from "tabler-icons-react";
 import Layout from "../components/Layout";
 import { rolePower } from "../types/RolePower";
@@ -187,13 +188,25 @@ const NotificationsPage: NextPageWithLayout = () => {
           value={pushEdgeFlags?.pushNotifyAbove}
           disabled
           label="pushNotifyAbove"
-          description="Próg temperaturowy w stopniach Celsjusza, po którego osiągnięciu przez dowolny czujnik, zostanie wysłane powiadomienie"
+          description={
+            <Balancer>
+              Próg temperaturowy w&nbsp;stopniach Celsjusza, po&nbsp;którego
+              osiągnięciu przez&nbsp;dowolny czujnik, zostanie wysłane
+              powiadomienie
+            </Balancer>
+          }
         />
         <NumberInput
           value={pushEdgeFlags?.pushTTLSeconds}
           disabled
           label="pushTTLSeconds"
-          description="Czas w sekundach przed wysłaniem kolejnego powiadomienia, po spadku temperatury poniżej progu przez wszystkie czujniki"
+          description={
+            <Balancer>
+              Czas w&nbsp;sekundach przed&nbsp;wysłaniem kolejnego
+              powiadomienia, po&nbsp;spadku temperatury poniżej progu
+              przez&nbsp;wszystkie czujniki
+            </Balancer>
+          }
         />
       </Stack>
     </Container>

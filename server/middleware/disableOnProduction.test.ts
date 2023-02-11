@@ -12,7 +12,9 @@ beforeEach(() => {
 
 test("throws on production", async () => {
   process.env = { ...env, NODE_ENV: "production" };
-  const middlewarePromise = disableOnProduction({ next } as any);
+  const middlewarePromise = disableOnProduction._middlewares[0]({
+    next,
+  } as any);
   await expect(middlewarePromise).rejects.toThrowErrorMatchingInlineSnapshot(
     `"This procedure is not available in this environment"`
   );
@@ -21,14 +23,18 @@ test("throws on production", async () => {
 
 test("calls next() on development", async () => {
   process.env = { ...env, NODE_ENV: "development" };
-  const middlewarePromise = disableOnProduction({ next } as any);
+  const middlewarePromise = disableOnProduction._middlewares[0]({
+    next,
+  } as any);
   await expect(middlewarePromise).resolves.toBeUndefined();
   expect(next).toBeCalledTimes(1);
 });
 
 test("calls next() in test env", async () => {
   process.env = { ...env, NODE_ENV: "test" };
-  const middlewarePromise = disableOnProduction({ next } as any);
+  const middlewarePromise = disableOnProduction._middlewares[0]({
+    next,
+  } as any);
   await expect(middlewarePromise).resolves.toBeUndefined();
   expect(next).toBeCalledTimes(1);
 });

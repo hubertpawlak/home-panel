@@ -19,7 +19,10 @@ beforeEach(() => {
 
 test("throws without public key", async () => {
   const ctx = {};
-  const middlewarePromise = enforceM2MAuth({ next, ctx } as any);
+  const middlewarePromise = enforceM2MAuth._middlewares[0]({
+    next,
+    ctx,
+  } as any);
   await expect(middlewarePromise).rejects.toThrowErrorMatchingInlineSnapshot(
     `"Missing JWT public key"`
   );
@@ -33,7 +36,10 @@ describe("with public key", () => {
 
   test("throws without Authorization header", async () => {
     const ctx = {};
-    const middlewarePromise = enforceM2MAuth({ next, ctx } as any);
+    const middlewarePromise = enforceM2MAuth._middlewares[0]({
+      next,
+      ctx,
+    } as any);
     await expect(middlewarePromise).rejects.toThrowErrorMatchingInlineSnapshot(
       `"UNAUTHORIZED"`
     );
@@ -44,7 +50,10 @@ describe("with public key", () => {
     const ctx = {
       authorization: `${nanoid()}`,
     } as Context;
-    const middlewarePromise = enforceM2MAuth({ next, ctx } as any);
+    const middlewarePromise = enforceM2MAuth._middlewares[0]({
+      next,
+      ctx,
+    } as any);
     await expect(middlewarePromise).rejects.toThrowErrorMatchingInlineSnapshot(
       `"BAD_REQUEST"`
     );
@@ -55,7 +64,10 @@ describe("with public key", () => {
     const ctx = {
       authorization: `Bearer ${nanoid()}`,
     } as Context;
-    const middlewarePromise = enforceM2MAuth({ next, ctx } as any);
+    const middlewarePromise = enforceM2MAuth._middlewares[0]({
+      next,
+      ctx,
+    } as any);
     await expect(middlewarePromise).rejects.toThrowErrorMatchingInlineSnapshot(
       `"JWT verification failed"`
     );
@@ -67,7 +79,10 @@ describe("with public key", () => {
       authorization:
         "Bearer eyJhbGciOiJFUzUxMiJ9.eyJpYXQiOjE2NjU5MTU4NDgsImlzcyI6IkhvbWVQYW5lbE0yTSIsInN1YiI6IlRlc3QxMjMifQ.AVH2oJIl_cyTvlX6epANnK1rqqi4wGc4MQ8ZvyBpCdarYlqFp01VriHGLOVCB3zB-zbyYnaWszdzKkzhitLCiy1yAKha1UfE3ZlIigFM6gh_zw_CRZmomY0G4YgAFZnFBnvTe-o_rIxbRwmpcxV6vkFBWHo_srPZzf3-geY2tqcgljj5",
     } as Context;
-    const middlewarePromise = enforceM2MAuth({ next, ctx } as any);
+    const middlewarePromise = enforceM2MAuth._middlewares[0]({
+      next,
+      ctx,
+    } as any);
     await expect(middlewarePromise).rejects.toThrowErrorMatchingInlineSnapshot(
       `"JWT verification failed"`
     );
@@ -79,7 +94,10 @@ describe("with public key", () => {
       authorization:
         "Bearer eyJhbGciOiJFUzUxMiJ9.eyJpYXQiOjE2NjU5MTU2NDUsImlzcyI6IkhvbWVQYW5lbE0yTSIsInN1YiI6IlRlc3QxMjMifQ.AbviuEsd1yYRvtnh0w0FpfpjzmCrTVPWuMCXrjmqKMmGgzPigPjS7YwnTRFbRLu1zBx5oKpxs48KyRM3Fe67QCFQARm0sajYj5B2CKWH4lDNTcFmvW_PMnB4Oc4VgZ5CxeLItTi_IKPn1A_gBJdgauES5cAN_MstaXLdlw1rsQLC8Yq7",
     } as Context;
-    const middlewarePromise = enforceM2MAuth({ next, ctx } as any);
+    const middlewarePromise = enforceM2MAuth._middlewares[0]({
+      next,
+      ctx,
+    } as any);
     await expect(middlewarePromise).resolves.toBeUndefined();
     expect(next).toBeCalledTimes(1);
   });

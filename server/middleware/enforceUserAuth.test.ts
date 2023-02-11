@@ -20,7 +20,7 @@ beforeEach(() => {
 
 test("throws if no min role is required", async () => {
   const ctx = {};
-  const middlewarePromise = enforceUserAuth({})({
+  const middlewarePromise = enforceUserAuth({})._middlewares[0]({
     next,
     ctx,
   } as any);
@@ -32,7 +32,9 @@ test("throws if no min role is required", async () => {
 
 test("throws without user", async () => {
   const ctx = {};
-  const middlewarePromise = enforceUserAuth({ minRequiredRole: "user" })({
+  const middlewarePromise = enforceUserAuth({
+    minRequiredRole: "user",
+  })._middlewares[0]({
     next,
     ctx,
   } as any);
@@ -67,7 +69,9 @@ test.each(cases)(
     const ctx = {
       user: { id: is },
     } as Context;
-    const middlewarePromise = enforceUserAuth({ minRequiredRole })({
+    const middlewarePromise = enforceUserAuth({
+      minRequiredRole,
+    })._middlewares[0]({
       next,
       ctx,
     } as any);

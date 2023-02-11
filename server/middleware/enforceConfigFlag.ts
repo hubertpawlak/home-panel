@@ -18,7 +18,7 @@ export const enforceConfigFlag = ({
     const isFlagEnabled: boolean =
       (await getValueAsync(`${EdgeFlagEnv}_${flag}`)) ?? defaultFlagValue;
     // Throw if feature is not enabled
-    if (!isFlagEnabled)
+    if (isFlagEnabled !== true)
       throw new TRPCError({
         code: "FORBIDDEN",
         message: `This procedure is disabled by ${flag} flag`,

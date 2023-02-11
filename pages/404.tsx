@@ -1,8 +1,8 @@
 // Licensed under the Open Software License version 3.0
 import { Button, Center, Container } from "@mantine/core";
-import { NextLink } from "@mantine/next";
-import Image from "next/future/image";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import { FileUnknown } from "tabler-icons-react";
 import Layout from "../components/Layout";
 import bg from "../public/404.svg";
@@ -22,7 +22,7 @@ const Custom404: NextPageWithLayout = () => {
           style={{ width: "100%", height: "auto", maxHeight: "50vh" }}
         />
         <Center mt="xl">
-          <Button component={NextLink} href="/" variant="subtle" replace>
+          <Button component={Link} href="/" variant="subtle" replace>
             Przenieś mnie na stronę główną
           </Button>
         </Center>

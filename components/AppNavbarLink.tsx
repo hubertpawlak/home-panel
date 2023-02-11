@@ -1,6 +1,6 @@
 // Licensed under the Open Software License version 3.0
 import { NavLink } from "@mantine/core";
-import { NextLink } from "@mantine/next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import type { Dispatch, SetStateAction } from "react";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
@@ -42,7 +42,7 @@ export function AppNavbarLink({
 
   return (
     <NavLink
-      component={NextLink}
+      component={Link}
       disabled={disabled}
       href={href}
       label={title}

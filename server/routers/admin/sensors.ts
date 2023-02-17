@@ -25,7 +25,8 @@ export const sensorsRouter = router({
       const { hwId, name } = input;
       const { error, status, statusText } = await supabase
         .from("temperature_sensors")
-        .update({ hwId, name });
+        .update({ name })
+        .eq("hwId", hwId);
       if (error)
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",

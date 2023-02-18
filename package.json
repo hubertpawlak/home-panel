@@ -10,7 +10,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "bump": "standard-version",
     "test": "jest"
+  },
+  "standard-version": {
+    "sign": true,
+    "skip": {
+      "changelog": true
+    }
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

@@ -6,22 +6,22 @@ import { useMutationStatusNotification } from "../utils/notifications";
 import { trpc } from "../utils/trpc";
 
 type EditSensorProps = ContextModalProps<{
-  hwId: string;
+  hw_id: string;
   name?: string;
 }>;
 
 interface IEditSensor {
-  hwId: string;
+  hw_id: string;
   name: string;
 }
 
 export const EditSensorModal = ({ innerProps }: EditSensorProps) => {
   // No need for a network call
   // Pass name from table
-  const { hwId, name } = innerProps;
+  const { hw_id, name } = innerProps;
   const form = useForm<IEditSensor>({
     initialValues: {
-      hwId,
+      hw_id,
       name: name ?? "",
     },
   });
@@ -45,7 +45,7 @@ export const EditSensorModal = ({ innerProps }: EditSensorProps) => {
       >
         <Stack spacing="sm">
           <TextInput
-            {...form.getInputProps("hwId")}
+            {...form.getInputProps("hw_id")}
             label="ID sprzętowe sensora"
             readOnly
           />

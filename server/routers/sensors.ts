@@ -10,9 +10,9 @@ export const sensorsRouter = router({
     const twoHoursAgo = sub(new Date(), { hours: 2 });
     const { data } = await supabase
       .from("temperature_sensors")
-      .select("hwId,temperature,resolution,updated_at,name,updated_by")
+      .select("hw_id,temperature,resolution,updated_at,name,updated_by")
       .gte("updated_at", twoHoursAgo.toISOString())
-      .order("hwId", { ascending: true });
+      .order("hw_id", { ascending: true });
     return data ?? [];
   }),
 });

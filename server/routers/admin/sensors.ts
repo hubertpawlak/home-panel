@@ -10,23 +10,23 @@ export const sensorsRouter = router({
   getTemperatureSensors: adminProcedure.query(async () => {
     const { data } = await supabase
       .from("temperature_sensors")
-      .select("hwId,name,updated_by")
-      .order("hwId", { ascending: true });
+      .select("hw_id,name,updated_by")
+      .order("hw_id", { ascending: true });
     return data;
   }),
   renameTemperatureSensor: adminProcedure
     .input(
       z.object({
-        hwId: z.string().min(1).max(SharedMax),
+        hw_id: z.string().min(1).max(SharedMax),
         name: z.string().min(1).max(SharedMax),
       })
     )
     .mutation(async ({ input }) => {
-      const { hwId, name } = input;
+      const { hw_id, name } = input;
       const { error, status, statusText } = await supabase
         .from("temperature_sensors")
         .update({ name })
-        .eq("hwId", hwId);
+        .eq("hw_id", hw_id);
       if (error)
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -37,15 +37,15 @@ export const sensorsRouter = router({
   deleteTemperatureSensor: adminProcedure
     .input(
       z.object({
-        hwId: z.string().min(1).max(SharedMax),
+        hw_id: z.string().min(1).max(SharedMax),
       })
     )
     .mutation(async ({ input }) => {
-      const { hwId } = input;
+      const { hw_id } = input;
       const { error, status, statusText } = await supabase
         .from("temperature_sensors")
         .delete()
-        .match({ hwId });
+        .match({ hw_id });
       if (error)
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",

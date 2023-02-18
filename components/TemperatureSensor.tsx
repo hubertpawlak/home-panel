@@ -5,7 +5,7 @@ import { intlFormat, isToday, parseISO } from "date-fns";
 import { trpc } from "../utils/trpc";
 
 export interface ITemperatureSensor {
-  hwId: string;
+  hw_id: string;
   temperature?: number | null;
   resolution?: number | null;
   updated_at: string;
@@ -24,7 +24,7 @@ function getColor(
 }
 
 export function TemperatureSensor({
-  hwId,
+  hw_id,
   temperature,
   resolution,
   updated_at,
@@ -54,7 +54,7 @@ export function TemperatureSensor({
   return (
     <Card>
       <Text align="center" size={24}>
-        {name ?? hwId}
+        {name ?? hw_id}
       </Text>
       <Tooltip
         withArrow

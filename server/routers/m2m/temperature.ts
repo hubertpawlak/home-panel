@@ -19,7 +19,7 @@ export const temperatureRouter = router({
       z
         .array(
           z.object({
-            hwId: z.string().min(1).max(SharedMax),
+            hw_id: z.string().min(1).max(SharedMax),
             temperature: z.number(),
             resolution: z.number(),
           })

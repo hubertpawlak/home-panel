@@ -37,10 +37,10 @@ export const SensorsTable = ({ sensors }: ISensorsTable) => {
           </tr>
         </thead>
         <tbody>
-          {sensors?.map(({ hwId, name, updated_by }) => {
+          {sensors?.map(({ hw_id, name, updated_by }) => {
             return (
-              <tr key={hwId}>
-                <td>{hwId}</td>
+              <tr key={hw_id}>
+                <td>{hw_id}</td>
                 <td>{name}</td>
                 <td>{updated_by}</td>
                 <td>
@@ -53,7 +53,7 @@ export const SensorsTable = ({ sensors }: ISensorsTable) => {
                         openContextModal({
                           modal: "editSensor",
                           title: "Edytowanie czujnika",
-                          innerProps: { hwId, name },
+                          innerProps: { hw_id, name },
                         })
                       }
                     >
@@ -79,7 +79,7 @@ export const SensorsTable = ({ sensors }: ISensorsTable) => {
                             cancel: "Nie, anuluj",
                           },
                           confirmProps: { color: "red" },
-                          onConfirm: () => deleteSensor({ hwId }),
+                          onConfirm: () => deleteSensor({ hw_id }),
                         })
                       }
                     >

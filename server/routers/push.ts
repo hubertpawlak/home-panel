@@ -22,7 +22,7 @@ export const pushRouter = router({
       const { p256dh, auth } = input.keys;
       const { status } = await supabase
         .from("push")
-        .upsert({ endpoint, p256dh, auth, ownerId: ctx.user.id });
+        .upsert({ endpoint, p256dh, auth, owner_id: ctx.user.id });
       return { status };
     }),
   // Subscription changes/maintenance
@@ -54,7 +54,7 @@ export const pushRouter = router({
         endpoint: newSubscription.endpoint,
         p256dh: newSubscription.keys.p256dh,
         auth: newSubscription.keys.auth,
-        ownerId: oldData?.[0]?.ownerId,
+        owner_id: oldData?.[0]?.owner_id,
       });
       return { status: [status1, status2] };
     }),

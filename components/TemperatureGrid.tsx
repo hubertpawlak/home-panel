@@ -33,7 +33,7 @@ export function TemperatureGrid({ temps }: ITemperatureGrid) {
       ]}
     >
       {temps.map((t) => (
-        <TemperatureSensor key={t.hwId} {...t} />
+        <TemperatureSensor key={t.hw_id} {...t} />
       ))}
     </SimpleGrid>
   );

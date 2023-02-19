@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
+    "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
     "@logtail/node": "^0.2.0",
     "@mantine/core": "^5.10.4",
@@ -30,7 +30,7 @@
     "@mantine/next": "^5.10.4",
     "@mantine/notifications": "^5.10.4",
     "@supabase/supabase-js": "^2.8.0",
-    "@tanstack/react-query": "^4.24.6",
+    "@tanstack/react-query": "^4.24.9",
     "@trpc/client": "^10.11.1",
     "@trpc/next": "^10.11.1",
     "@trpc/react-query": "^10.11.1",
@@ -39,6 +39,7 @@
     "@vercel/edge-config": "^0.1.1",
     "date-fns": "^2.29.3",
     "jose": "^4.12.0",
+    "mantine-datatable": "^1.8.4",
     "next": "13.1.6",
     "nextjs-cors": "^2.1.2",
     "react": "18.2.0",
@@ -53,8 +54,8 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@types/node": "18.13.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/node": "18.14.0",
     "@types/react": "18.0.28",
     "@types/web-push": "^3.3.2",
     "@typescript-eslint/eslint-plugin": "^5.52.0",

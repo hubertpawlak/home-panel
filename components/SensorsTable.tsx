@@ -1,16 +1,14 @@
 // Licensed under the Open Software License version 3.0
-import { ActionIcon, Button, ScrollArea, Table, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import { openConfirmModal, openContextModal } from "@mantine/modals";
+import { DataTable } from "mantine-datatable";
 import { Edit, Trash } from "tabler-icons-react";
 import type { DisplayedSensor } from "../types/DisplayedSensor";
 import { useMutationStatusNotification } from "../utils/notifications";
 import { trpc } from "../utils/trpc";
 
-interface ISensorsTable {
-  sensors?: DisplayedSensor[] | null;
-}
-
-export const SensorsTable = ({ sensors }: ISensorsTable) => {
+export const SensorsTable = () => {
+  // Actions
   const { refetch: refetchTemperatureSensors } =
     trpc.admin.sensors.getTemperatureSensors.useQuery();
   const opts = useMutationStatusNotification({
@@ -21,77 +19,84 @@ export const SensorsTable = ({ sensors }: ISensorsTable) => {
   });
   const { mutateAsync: deleteSensor, isLoading: isDeleting } =
     trpc.admin.sensors.deleteTemperatureSensor.useMutation(opts);
+  // Data
+  const { data: sensors, isLoading: isLoadingSensors } =
+    trpc.admin.sensors.getTemperatureSensors.useQuery();
 
   return (
-    <ScrollArea type="auto" offsetScrollbars>
-      <Table
-        highlightOnHover
-        style={{ fontFamily: "monospace", whiteSpace: "nowrap" }}
-      >
-        <thead>
-          <tr>
-            <th>ID czujnika</th>
-            <th style={{ width: "100%" }}>Nazwa</th>
-            <th>Źródło</th>
-            <th>Akcje</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sensors?.map(({ hw_id, name, updated_by }) => {
-            return (
-              <tr key={hw_id}>
-                <td>{hw_id}</td>
-                <td>{name}</td>
-                <td>{updated_by}</td>
-                <td>
-                  <Button.Group>
-                    <ActionIcon
-                      title="Edytuj"
-                      variant="transparent"
-                      disabled={isDeleting}
-                      onClick={() =>
-                        openContextModal({
-                          modal: "editSensor",
-                          title: "Edytowanie czujnika",
-                          innerProps: { hw_id, name },
-                        })
-                      }
-                    >
-                      <Edit />
-                    </ActionIcon>
-                    <ActionIcon
-                      title="Usuń czujnik"
-                      color="red.8"
-                      variant="transparent"
-                      disabled={isDeleting}
-                      onClick={() =>
-                        openConfirmModal({
-                          title: "Czy na pewno chcesz usunąć ten czujnik?",
-                          children: (
-                            <Text size="sm">
-                              Informacje o nim zostaną usunięte z bazy danych,
-                              jednak ponowne wykrycie przez źródło danych
-                              spowoduje automatycznie ponowne dodanie czujnika.
-                            </Text>
-                          ),
-                          labels: {
-                            confirm: "Tak, usuń czujnik",
-                            cancel: "Nie, anuluj",
-                          },
-                          confirmProps: { color: "red" },
-                          onConfirm: () => deleteSensor({ hw_id }),
-                        })
-                      }
-                    >
-                      <Trash />
-                    </ActionIcon>
-                  </Button.Group>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </ScrollArea>
+    <DataTable<DisplayedSensor>
+      records={sensors ?? []}
+      idAccessor="hw_id"
+      columns={[
+        {
+          accessor: "hw_id",
+          title: "ID czujnika",
+        },
+        {
+          accessor: "name",
+          title: "Nazwa",
+        },
+        {
+          accessor: "updated_by",
+          title: "Źródło",
+        },
+      ]}
+      fetching={isLoadingSensors}
+      // Actions
+      rowContextMenu={{
+        items: ({ hw_id }) => [
+          {
+            key: "edit",
+            title: "Edytuj",
+            icon: <Edit />,
+            disabled: isDeleting,
+            onClick() {
+              openContextModal({
+                modal: "editSensor",
+                title: "Edytowanie czujnika",
+                innerProps: { hw_id, name },
+              });
+            },
+          },
+          {
+            key: "delete",
+            title: "Usuń",
+            icon: <Trash />,
+            color: "red",
+            disabled: isDeleting,
+            onClick() {
+              openConfirmModal({
+                title: "Czy na pewno chcesz usunąć ten czujnik?",
+                children: (
+                  <Text size="sm">
+                    Informacje o nim zostaną usunięte z bazy danych, jednak
+                    ponowne wykrycie przez źródło danych spowoduje automatycznie
+                    ponowne dodanie czujnika.
+                  </Text>
+                ),
+                labels: {
+                  confirm: "Tak, usuń czujnik",
+                  cancel: "Nie, anuluj",
+                },
+                confirmProps: { color: "red" },
+                onConfirm: () => deleteSensor({ hw_id }),
+              });
+            },
+          },
+        ],
+      }}
+      // Styling
+      highlightOnHover
+      minHeight={
+        sensors === undefined || sensors === null || sensors?.length === 0
+          ? 200
+          : undefined
+      }
+      withBorder
+      withColumnBorders
+      borderRadius="sm"
+      noRecordsText="Brak danych"
+      rowSx={{ fontFamily: "monospace", whiteSpace: "nowrap" }}
+    />
   );
 };

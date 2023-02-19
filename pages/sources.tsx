@@ -1,64 +1,20 @@
 // Licensed under the Open Software License version 3.0
-import {
-  Button,
-  Container,
-  Grid,
-  Stack,
-  Text,
-  TextInput,
-  Title,
-} from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { openContextModal } from "@mantine/modals";
+import { Container, Stack, Text, Title } from "@mantine/core";
 import Balancer from "react-wrap-balancer";
 import { DatabaseImport } from "tabler-icons-react";
+import { AddSourceForm } from "../components/AddSourceForm";
 import Layout from "../components/Layout";
 import { SensorsTable } from "../components/SensorsTable";
 import { rolePower } from "../types/RolePower";
-import { useMutationStatusNotification } from "../utils/notifications";
-import { trpc } from "../utils/trpc";
 import type { NextPageWithLayout } from "./_app";
 
 const SourcesPage: NextPageWithLayout = () => {
-  const signTokenForm = useForm({ initialValues: { sourceId: "" } });
-  const signOpts = useMutationStatusNotification({
-    successMessage: "Token został wygenerowany",
-  });
-  const { mutateAsync: signToken, isLoading: isSigningToken } =
-    trpc.admin.sources.signToken.useMutation({
-      ...signOpts,
-      onSuccess(data) {
-        openContextModal({
-          modal: "showToken",
-          title: "Wygenerowano token",
-          innerProps: { token: data },
-        });
-        signOpts.onSuccess?.(null, null, null);
-      },
-    });
-  const { data: sensors } = trpc.admin.sensors.getTemperatureSensors.useQuery();
-
   return (
     <Container size="xl">
       <Stack spacing="xs">
         {/* Source token signing form */}
         <Title align="center">Dodaj źródło</Title>
-        <form onSubmit={signTokenForm.onSubmit((values) => signToken(values))}>
-          <Grid align="flex-end">
-            <Grid.Col span="auto">
-              <TextInput
-                label="Nazwa źródła"
-                placeholder="Garaż"
-                {...signTokenForm.getInputProps("sourceId")}
-              />
-            </Grid.Col>
-            <Grid.Col span="content">
-              <Button type="submit" disabled={isSigningToken}>
-                Utwórz token
-              </Button>
-            </Grid.Col>
-          </Grid>
-        </form>
+        <AddSourceForm />
         <Text color="dimmed" align="center">
           <Balancer>
             Utworzone tokeny są&nbsp;ważne bezterminowo i&nbsp;nie można ich
@@ -70,7 +26,7 @@ const SourcesPage: NextPageWithLayout = () => {
         </Text>
         {/* List of all known temperature sensors */}
         <Title align="center">Czujniki temperatury</Title>
-        <SensorsTable sensors={sensors} />
+        <SensorsTable />
       </Stack>
     </Container>
   );

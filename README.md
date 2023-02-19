@@ -7,7 +7,12 @@ Home Panel is a secure control panel accessible anywhere. Currently available on
     ```bash
     npm install
     ```
-3. Run the following command to start a development server
+3. Link your Supabase project and apply DB migrations
+    ```bash
+    npx supabase@latest link --project-ref <YOUR-SUPABASE-PROJECT-ID>
+    npx supabase@latest db push
+    ```
+4. Run the following command to start a development server
     ```bash
     npm run dev
     ```
@@ -18,7 +23,12 @@ Home Panel is a secure control panel accessible anywhere. Currently available on
     ```bash
     npm install --production
     ```
-3. Run the following command to start a production server
+3. Link your Supabase project and apply DB migrations
+    ```bash
+    npx supabase@latest link --project-ref <YOUR-SUPABASE-PROJECT-ID>
+    npx supabase@latest db push
+    ```
+4. Run the following command to start a production server
     ```bash
     npm run start
     ```

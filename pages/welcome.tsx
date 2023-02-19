@@ -22,6 +22,7 @@ import {
   Shield,
 } from "tabler-icons-react";
 import Layout from "../components/Layout";
+import { trpc } from "../utils/trpc";
 import type { NextPageWithLayout } from "./_app";
 
 function ThemedListIcon({ Icon }: { Icon: Icon }) {
@@ -120,6 +121,10 @@ function WelcomeButtons() {
 function WelcomeDisclaimer() {
   const session = useSessionContext();
   const userId = !session.loading && session.userId;
+  const { data: version } = trpc.health.version.useQuery(undefined, {
+    staleTime: Infinity,
+    enabled: !session.loading && !!session.userId,
+  });
 
   return (
     <>
@@ -134,7 +139,7 @@ function WelcomeDisclaimer() {
       </Text>
       {userId ? (
         <Code block mt="sm">
-          &quot;userId&quot;: &quot;{userId}&quot;
+          {JSON.stringify({ userId, version }, null, 2)}
         </Code>
       ) : null}
     </>

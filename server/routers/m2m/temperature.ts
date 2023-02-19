@@ -72,6 +72,7 @@ export const temperatureRouter = router({
               title: `Temperatura przekroczyła ${pushNotifyAbove}°C `,
               body: `Jeden z czujników zgłosił temperaturę powyżej limitu`,
               timestamp,
+              path: "/panel",
             },
             {
               TTL: pushTTLSeconds,

@@ -12,6 +12,7 @@ const _self = self;
  * @property {string} title
  * @property {string} [body]
  * @property {number} [timestamp]
+ * @property {string} [path]
  */
 
 /**
@@ -22,7 +23,7 @@ const displayNotification = async (payload) => {
   if (!(_self.Notification && _self.Notification.permission === "granted"))
     return;
 
-  const { title, timestamp, body } = payload;
+  const { title, timestamp, body, path } = payload;
 
   const _title = title ?? "Bez tytułu";
 
@@ -30,6 +31,34 @@ const displayNotification = async (payload) => {
     body,
     timestamp,
     icon: "/favicon.ico",
+    // "Arbitrary data that you want to be associated with the notification. This can be of any data type." ~MDN
+    data: {
+      path,
+    },
+  });
+};
+
+/**
+ * @description Try to focus/open provided path
+ * @argument {string} [path]
+ */
+const focusOnUrl = async (path) => {
+  if (!path) return;
+
+  await _self.clients.matchAll({ type: "window" }).then((clientsArray) => {
+    // Focus on a matching tab
+    const hadWindowToFocus = clientsArray.some((windowClient) => {
+      if (windowClient.url === `${_self.location.origin}${path}`) {
+        windowClient.focus();
+        return true;
+      }
+      return false;
+    });
+    // Otherwise, open a new tab and focus
+    if (!hadWindowToFocus)
+      _self.clients
+        .openWindow(path)
+        .then((windowClient) => windowClient?.focus());
   });
 };
 
@@ -50,4 +79,14 @@ _self.addEventListener("pushsubscriptionchange", async function (event) {
     },
     body: JSON.stringify({ oldSubscription, newSubscription }),
   });
+});
+
+// Handle notification click
+_self.addEventListener("notificationclick", function (event) {
+  // Close notification
+  event.notification.close();
+  // Try to focus on URL
+  const path = event.notification.data.path;
+  const focusOnUrlPromise = focusOnUrl(path);
+  event.waitUntil(Promise.all([focusOnUrlPromise]));
 });

@@ -21,6 +21,7 @@ interface NotificationPayload {
   title: string;
   body?: string;
   timestamp?: number;
+  path?: string;
 }
 
 /**

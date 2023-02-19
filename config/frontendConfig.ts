@@ -39,7 +39,7 @@ export const frontendConfig: () => SuperTokensConfig = () => {
                     --palette-textTitle: 219, 219, 219;
                     --palette-textLabel: 219, 219, 219;
                     --palette-textPrimary: 219, 219, 219;
-                    --palette-error: 201, 42, 42;
+                    --palette-error: 255, 255, 255;
                     --palette-errorBackground: 201, 42, 42;
                     --palette-textInput: 255, 255, 255;
                     --palette-textLink: 255, 255, 255;

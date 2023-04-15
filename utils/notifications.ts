@@ -35,7 +35,7 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
         "Oczekiwanie na potwierdzenie ze strony serwera",
       loading: true,
       autoClose: false,
-      disallowClose: true,
+      withCloseButton: true,
     });
   };
 
@@ -48,7 +48,7 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
       icon: Check({}), // It has to be called like that in order to work here
       loading: false,
       autoClose: 2000,
-      disallowClose: false,
+      withCloseButton: false,
     });
   };
 
@@ -61,7 +61,7 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
       icon: X({}),
       loading: false,
       autoClose: 8000,
-      disallowClose: false,
+      withCloseButton: false,
     });
   };
 

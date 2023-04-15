@@ -2,7 +2,7 @@
 import { MantineProvider } from "@mantine/core";
 import type { ContextModalProps } from "@mantine/modals";
 import { ModalsProvider } from "@mantine/modals";
-import { NotificationsProvider } from "@mantine/notifications";
+import { Notifications } from "@mantine/notifications";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
@@ -115,11 +115,10 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           }}
         >
           <ModalsProvider modals={modals}>
-            <NotificationsProvider>
-              <SuperTokensWrapper>
-                {getLayout(<Component {...pageProps} />)}
-              </SuperTokensWrapper>
-            </NotificationsProvider>
+            <Notifications />
+            <SuperTokensWrapper>
+              {getLayout(<Component {...pageProps} />)}
+            </SuperTokensWrapper>
           </ModalsProvider>
         </MantineProvider>
       </WrapBalancerProvider>

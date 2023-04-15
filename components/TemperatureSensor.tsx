@@ -62,7 +62,9 @@ export function TemperatureSensor({
         openDelay={500}
         color="dark.9"
         position="bottom"
-        transition="slide-up"
+        transitionProps={{
+          transition: "slide-up",
+        }}
         label={`Rozdzielczość: ${resolution}`}
       >
         <Text

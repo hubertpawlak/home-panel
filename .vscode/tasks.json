@@ -16,8 +16,9 @@
 			"type": "shell",
 			"label": "supabase:generate types",
 			"command": [
-				"npx supabase gen types typescript --project-id erovdvnlexobfpqwuwyl --schema public > types/supabase.ts"
-			]
+				"npx -y supabase@latest gen types typescript --local --schema public > types/supabase.ts"
+			],
+			"problemMatcher": []
 		}
 	]
 }

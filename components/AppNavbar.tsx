@@ -1,13 +1,13 @@
 // Licensed under the Open Software License version 3.0
 import { Divider, Navbar, ScrollArea } from "@mantine/core";
-import type { Dispatch, SetStateAction } from "react";
 import {
-  Bell,
-  DatabaseImport,
-  Home,
-  Timeline,
-  Users,
-} from "tabler-icons-react";
+  IconBell,
+  IconDatabaseImport,
+  IconHome,
+  IconTimeline,
+  IconUsers,
+} from "@tabler/icons-react";
+import type { Dispatch, SetStateAction } from "react";
 import { rolePower } from "../types/RolePower";
 import type { IAppNavbarLink } from "./AppNavbarLink";
 import { AppNavbarLink } from "./AppNavbarLink";
@@ -18,28 +18,28 @@ interface AppNavbarProps {
 }
 
 const links: IAppNavbarLink[] = [
-  { href: "/", Icon: Home, title: "Strona główna" },
+  { href: "/", Icon: IconHome, title: "Strona główna" },
   {
     href: "/panel",
-    Icon: Timeline,
+    Icon: IconTimeline,
     title: "Panel sterowania",
     requiredPower: rolePower["user"],
   },
   {
     href: "/notifications",
-    Icon: Bell,
+    Icon: IconBell,
     title: "Powiadomienia",
     requiredPower: rolePower["user"],
   },
   {
     href: "/sources",
-    Icon: DatabaseImport,
+    Icon: IconDatabaseImport,
     title: "Źródła danych",
     requiredPower: rolePower["admin"],
   },
   {
     href: "/admin/users",
-    Icon: Users,
+    Icon: IconUsers,
     title: "Użytkownicy",
     requiredPower: rolePower["root"],
   },

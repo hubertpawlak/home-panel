@@ -5,9 +5,9 @@ import {
   showNotification,
   updateNotification,
 } from "@mantine/notifications";
+import { IconCheck, IconX } from "@tabler/icons-react";
 import type { TRPCClientError } from "@trpc/client";
 import type { UseTRPCMutationOptions } from "@trpc/react-query/shared";
-import { Check, X } from "tabler-icons-react";
 
 interface UseStatusNotificationOptions {
   mutatingMessage?: string;
@@ -45,7 +45,7 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
       title: "Zmiany zostały zapisane",
       message: message ?? successMessage,
       color: "green",
-      icon: Check({}), // It has to be called like that in order to work here
+      icon: IconCheck({}), // It has to be called like that in order to work here
       loading: false,
       autoClose: 2000,
       withCloseButton: false,
@@ -58,7 +58,7 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
       title: "Coś poszło nie tak",
       message: message ?? failureMessage,
       color: "red",
-      icon: X({}),
+      icon: IconX({}),
       loading: false,
       autoClose: 8000,
       withCloseButton: false,

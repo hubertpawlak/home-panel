@@ -1,10 +1,10 @@
 // Licensed under the Open Software License version 3.0
 import { NavLink } from "@mantine/core";
+import type { Icon as IconType } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import type { Dispatch, SetStateAction } from "react";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
-import type { Icon as IconType } from "tabler-icons-react";
 import { trpc } from "../utils/trpc";
 export interface IAppNavbarLink {
   href: string;

@@ -1,8 +1,8 @@
 // Licensed under the Open Software License version 3.0
 import { Box, Container, Loader, Skeleton, Switch, Text } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
+import { Users } from "@tabler/icons-react";
 import { Suspense } from "react";
-import { Users } from "tabler-icons-react";
 import Layout from "../../components/Layout";
 import { UsersTable } from "../../components/UsersTable";
 import { rolePower } from "../../types/RolePower";

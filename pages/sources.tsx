@@ -1,7 +1,7 @@
 // Licensed under the Open Software License version 3.0
 import { Container, Stack, Text, Title } from "@mantine/core";
+import { IconDatabaseImport } from "@tabler/icons-react";
 import Balancer from "react-wrap-balancer";
-import { DatabaseImport } from "tabler-icons-react";
 import { AddSourceForm } from "../components/AddSourceForm";
 import Layout from "../components/Layout";
 import { SensorsTable } from "../components/SensorsTable";
@@ -35,7 +35,7 @@ const SourcesPage: NextPageWithLayout = () => {
 SourcesPage.getLayout = (page) => (
   <Layout
     title="Źródła danych"
-    icon={<DatabaseImport />}
+    icon={<IconDatabaseImport />}
     requiredPower={rolePower["admin"]}
   >
     {page}

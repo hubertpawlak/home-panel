@@ -7,8 +7,8 @@ import {
   MediaQuery,
   ScrollArea,
 } from "@mantine/core";
+import { IconHome, IconQuestionMark } from "@tabler/icons-react";
 import type { Dispatch, SetStateAction } from "react";
-import { Home, QuestionMark } from "tabler-icons-react";
 import { AppHeaderSignInBtn } from "./AppHeaderSignInBtn";
 
 interface AppHeaderProps {
@@ -40,14 +40,19 @@ export const AppHeader = ({
         </MediaQuery>
         <ScrollArea offsetScrollbars scrollbarSize={2} sx={{ flexGrow: 1 }}>
           <Breadcrumbs sx={{ alignItems: "center" }}>
-            <Button variant="subtle" compact color="dark" leftIcon={<Home />}>
+            <Button
+              variant="subtle"
+              compact
+              color="dark"
+              leftIcon={<IconHome />}
+            >
               Dom
             </Button>
             <Button
               variant="subtle"
               compact
               color="dark"
-              leftIcon={icon ?? <QuestionMark />}
+              leftIcon={icon ?? <IconQuestionMark />}
             >
               {title ?? "Bez tytułu"}
             </Button>

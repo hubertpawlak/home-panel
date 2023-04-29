@@ -8,7 +8,7 @@ import {
   Tooltip,
 } from "@mantine/core";
 import type { ContextModalProps } from "@mantine/modals";
-import { Check, Copy } from "tabler-icons-react";
+import { IconCheck, IconCopy } from "@tabler/icons-react";
 
 type ShowTokenProps = ContextModalProps<{ token: string }>;
 
@@ -30,7 +30,7 @@ export const ShowTokenModal = ({ innerProps }: ShowTokenProps) => {
                 position="right"
               >
                 <ActionIcon color={copied ? "teal.8" : "dark.0"} onClick={copy}>
-                  {copied ? <Check /> : <Copy />}
+                  {copied ? <IconCheck /> : <IconCopy />}
                 </ActionIcon>
               </Tooltip>
             )}

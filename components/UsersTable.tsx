@@ -1,9 +1,9 @@
 // Licensed under the Open Software License version 3.0
 import { Text } from "@mantine/core";
 import { openConfirmModal, openContextModal } from "@mantine/modals";
+import { IconBan, IconEdit, IconTrash } from "@tabler/icons-react";
 import { DataTable } from "mantine-datatable";
 import { useEffect, useMemo, useState } from "react";
-import { Ban, Edit, Trash } from "tabler-icons-react";
 import type { DisplayedUser } from "../types/DisplayedUser";
 import { useMutationStatusNotification } from "../utils/notifications";
 import { trpc } from "../utils/trpc";
@@ -90,7 +90,7 @@ export const UsersTable = ({ showEmails }: IUsersTable) => {
           {
             key: "edit",
             title: "Edytuj",
-            icon: <Edit />,
+            icon: <IconEdit />,
             disabled: isDeleting,
             onClick() {
               openContextModal({
@@ -104,7 +104,7 @@ export const UsersTable = ({ showEmails }: IUsersTable) => {
           {
             key: "ban",
             title: "Zablokuj",
-            icon: <Ban />,
+            icon: <IconBan />,
             color: "yellow",
             disabled: isDeleting,
             hidden: true, // TODO: implement account ban
@@ -115,7 +115,7 @@ export const UsersTable = ({ showEmails }: IUsersTable) => {
           {
             key: "delete",
             title: "Usuń",
-            icon: <Trash />,
+            icon: <IconTrash />,
             color: "red",
             disabled: isDeleting,
             onClick() {

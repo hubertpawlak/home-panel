@@ -1,8 +1,8 @@
 // Licensed under the Open Software License version 3.0
 import { Text } from "@mantine/core";
 import { openConfirmModal, openContextModal } from "@mantine/modals";
+import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { DataTable } from "mantine-datatable";
-import { Edit, Trash } from "tabler-icons-react";
 import type { DisplayedSensor } from "../types/DisplayedSensor";
 import { useMutationStatusNotification } from "../utils/notifications";
 import { trpc } from "../utils/trpc";
@@ -48,7 +48,7 @@ export const SensorsTable = () => {
           {
             key: "edit",
             title: "Edytuj",
-            icon: <Edit />,
+            icon: <IconEdit />,
             disabled: isDeleting,
             onClick() {
               openContextModal({
@@ -61,7 +61,7 @@ export const SensorsTable = () => {
           {
             key: "delete",
             title: "Usuń",
-            icon: <Trash />,
+            icon: <IconTrash />,
             color: "red",
             disabled: isDeleting,
             onClick() {

@@ -1,11 +1,11 @@
 // Licensed under the Open Software License version 3.0
 import { ActionIcon, Loader, Menu } from "@mantine/core";
+import { IconLogin, IconLogout, IconUserCircle } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { redirectToAuth } from "supertokens-auth-react";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
 import { signOut } from "supertokens-auth-react/recipe/thirdparty";
-import { Login, Logout, UserCircle } from "tabler-icons-react";
 import { trpc } from "../utils/trpc";
 
 export function AppHeaderSignInBtn() {
@@ -37,12 +37,12 @@ export function AppHeaderSignInBtn() {
               });
             }}
           >
-            {doesSessionExist ? <UserCircle /> : <Login />}
+            {doesSessionExist ? <IconUserCircle /> : <IconLogin />}
           </ActionIcon>
         </Menu.Target>
         <Menu.Dropdown>
           <Menu.Item
-            icon={<Logout />}
+            icon={<IconLogout />}
             disabled={userLoading}
             onClick={async () => {
               setUserLoading(true);

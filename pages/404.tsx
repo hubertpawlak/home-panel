@@ -1,9 +1,9 @@
 // Licensed under the Open Software License version 3.0
 import { Button, Center, Container } from "@mantine/core";
+import { IconFileUnknown } from "@tabler/icons-react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { FileUnknown } from "tabler-icons-react";
 import Layout from "../components/Layout";
 import bg from "../public/404.svg";
 import type { NextPageWithLayout } from "./_app";
@@ -32,7 +32,7 @@ const Custom404: NextPageWithLayout = () => {
 };
 
 Custom404.getLayout = (page) => (
-  <Layout title="Nie odnaleziono strony" icon={<FileUnknown />}>
+  <Layout title="Nie odnaleziono strony" icon={<IconFileUnknown />}>
     {page}
   </Layout>
 );

@@ -10,17 +10,17 @@ import {
   ThemeIcon,
   Title,
 } from "@mantine/core";
+import type { Icon } from "@tabler/icons-react";
+import {
+  IconAddressBook,
+  IconBrandGithub,
+  IconCode,
+  IconEdit,
+  IconHome,
+  IconShield,
+} from "@tabler/icons-react";
 import Balancer from "react-wrap-balancer";
 import { useSessionContext } from "supertokens-auth-react/recipe/session";
-import type { Icon } from "tabler-icons-react";
-import {
-  AddressBook,
-  BrandGithub,
-  Code as CodeIcon,
-  Edit,
-  Home,
-  Shield,
-} from "tabler-icons-react";
 import Layout from "../components/Layout";
 import { trpc } from "../utils/trpc";
 import type { NextPageWithLayout } from "./_app";
@@ -45,7 +45,7 @@ const WelcomePage: NextPageWithLayout = () => {
 };
 
 WelcomePage.getLayout = (page) => (
-  <Layout title="Strona główna" icon={<Home />}>
+  <Layout title="Strona główna" icon={<IconHome />}>
     {page}
   </Layout>
 );
@@ -67,18 +67,18 @@ function WelcomeTitle() {
 function WelcomeList() {
   return (
     <List spacing="xs" mt="sm">
-      <List.Item icon={<ThemedListIcon Icon={Shield} />}>
+      <List.Item icon={<ThemedListIcon Icon={IconShield} />}>
         <Text>
           <b>Bezpieczny</b> - sprawdzone narzędzia czuwają nad poprawnością kodu
         </Text>
       </List.Item>
-      <List.Item icon={<ThemedListIcon Icon={Edit} />}>
+      <List.Item icon={<ThemedListIcon Icon={IconEdit} />}>
         <Text>
           <b>Elastyczny</b> - łatwo zarządzaj dostępem, dzięki przejrzystym
           panelom administracyjnym
         </Text>
       </List.Item>
-      <List.Item icon={<ThemedListIcon Icon={CodeIcon} />}>
+      <List.Item icon={<ThemedListIcon Icon={IconCode} />}>
         <Text>
           <b>Darmowy</b> - kod źródłowy jest publicznie dostępny, każdy może
           uruchomić taki panel dla swojego domu
@@ -98,7 +98,7 @@ function WelcomeButtons() {
         rel="noopener"
         radius="xl"
         variant="gradient"
-        leftIcon={<AddressBook />}
+        leftIcon={<IconAddressBook />}
       >
         O autorze
       </Button>
@@ -110,7 +110,7 @@ function WelcomeButtons() {
         radius="xl"
         color="dark.9"
         variant="filled"
-        leftIcon={<BrandGithub />}
+        leftIcon={<IconBrandGithub />}
       >
         Kod źródłowy
       </Button>

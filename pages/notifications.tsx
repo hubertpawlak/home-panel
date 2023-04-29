@@ -9,9 +9,9 @@ import {
   Title,
 } from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
+import { IconBell } from "@tabler/icons-react";
 import { useCallback, useEffect, useState } from "react";
 import Balancer from "react-wrap-balancer";
-import { Bell } from "tabler-icons-react";
 import Layout from "../components/Layout";
 import { rolePower } from "../types/RolePower";
 import { useMutationStatusNotification } from "../utils/notifications";
@@ -216,7 +216,7 @@ const NotificationsPage: NextPageWithLayout = () => {
 NotificationsPage.getLayout = (page) => (
   <Layout
     title="Powiadomienia"
-    icon={<Bell />}
+    icon={<IconBell />}
     requiredPower={rolePower["user"]}
   >
     {page}

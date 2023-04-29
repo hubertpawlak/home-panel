@@ -1,5 +1,5 @@
 // Licensed under the Open Software License version 3.0
-import { Timeline } from "tabler-icons-react";
+import { IconTimeline } from "@tabler/icons-react";
 import Layout from "../components/Layout";
 import { TemperatureGrid } from "../components/TemperatureGrid";
 import { rolePower } from "../types/RolePower";
@@ -21,7 +21,7 @@ const ControlPanelPage: NextPageWithLayout = () => {
 ControlPanelPage.getLayout = (page) => (
   <Layout
     title="Panel sterowania"
-    icon={<Timeline />}
+    icon={<IconTimeline />}
     requiredPower={rolePower["user"]}
   >
     {page}

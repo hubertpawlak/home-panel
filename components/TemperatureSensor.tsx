@@ -15,7 +15,7 @@ export interface ITemperatureSensor {
 
 function getColor(
   temperature: number,
-  notifyAbove?: number
+  notifyAbove?: number | null
 ): DefaultMantineColor {
   if (notifyAbove === undefined || notifyAbove === null) return "dark.0";
   if (temperature > notifyAbove) return "red";

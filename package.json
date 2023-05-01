@@ -14,10 +14,7 @@
     "test": "jest"
   },
   "standard-version": {
-    "sign": true,
-    "skip": {
-      "changelog": true
-    }
+    "sign": true
   },
   "dependencies": {
     "@emotion/react": "^11.10.8",

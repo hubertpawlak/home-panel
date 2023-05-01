@@ -5,47 +5,47 @@ import type { ContextModalProps } from "@mantine/modals";
 import { useMutationStatusNotification } from "../utils/notifications";
 import { trpc } from "../utils/trpc";
 
-type EditSensorProps = ContextModalProps<{
+type EditUpsProps = ContextModalProps<{
   id: string;
   name: string;
 }>;
 
-interface IEditSensor {
+interface IEditUps {
   id: string;
   name: string;
 }
 
-export const EditSensorModal = ({ innerProps }: EditSensorProps) => {
+export const EditUpsModal = ({ innerProps }: EditUpsProps) => {
   // No need for a network call
   // Pass name from table
   const { id, name } = innerProps;
-  const form = useForm<IEditSensor>({
+  const form = useForm<IEditUps>({
     initialValues: {
       id,
       name,
     },
   });
 
-  const { refetch: refetchSensors } = trpc.admin.uds.getSensors.useQuery();
+  const { refetch: refetchUpses } = trpc.admin.uds.getUpses.useQuery();
   const mutateOpts = useMutationStatusNotification({
     onSuccess() {
-      refetchSensors();
+      refetchUpses();
     },
   });
-  const { mutate: editSensor, isLoading: isSubmitting } =
-    trpc.admin.uds.renameSensor.useMutation(mutateOpts);
+  const { mutate: editUps, isLoading: isSubmitting } =
+    trpc.admin.uds.renameUps.useMutation(mutateOpts);
 
   return (
     <>
       <form
         onSubmit={form.onSubmit((values) => {
-          editSensor(values);
+          editUps(values);
         })}
       >
         <Stack spacing="sm">
           <TextInput
             {...form.getInputProps("id")}
-            label="ID sprzętowe sensora"
+            label="ID sprzętowe UPSa"
             readOnly
           />
           <TextInput {...form.getInputProps("name")} label="Nazwa" />
@@ -58,4 +58,4 @@ export const EditSensorModal = ({ innerProps }: EditSensorProps) => {
   );
 };
 
-export default EditSensorModal;
+export default EditUpsModal;

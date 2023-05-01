@@ -32,6 +32,7 @@ if (typeof window !== "undefined") {
 const modals: Record<string, any> = {
   editUser: dynamic(() => import("../components/EditUserModal")),
   editSensor: dynamic(() => import("../components/EditSensorModal")),
+  editUps: dynamic(() => import("../components/EditUpsModal")),
   showToken: dynamic(() => import("../components/ShowTokenModal")),
 } as Record<string, ComponentType<ContextModalProps<any>>>;
 

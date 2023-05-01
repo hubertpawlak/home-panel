@@ -1,10 +1,6 @@
 // Licensed under the Open Software License version 3.0
 import { useId } from "@mantine/hooks";
-import {
-  hideNotification,
-  showNotification,
-  updateNotification,
-} from "@mantine/notifications";
+import { notifications } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons-react";
 import type { TRPCClientError } from "@trpc/client";
 import type { UseTRPCMutationOptions } from "@trpc/react-query/shared";
@@ -15,6 +11,9 @@ interface UseStatusNotificationOptions {
   failureMessage?: string;
 }
 
+const successIcon = <IconCheck />;
+const failureIcon = <IconX />;
+
 /**
  * Easy way to display status
  */
@@ -24,8 +23,8 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
   const { mutatingMessage, successMessage, failureMessage } = options ?? {};
 
   const showMutating = (message?: string) => {
-    hideNotification(id);
-    showNotification({
+    notifications.hide(id);
+    notifications.show({
       id,
       color: "blue",
       title: "Zapisywanie zmian",
@@ -40,12 +39,12 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
   };
 
   const showSuccess = (message?: string) => {
-    updateNotification({
+    notifications.update({
       id,
       title: "Zmiany zostały zapisane",
       message: message ?? successMessage,
       color: "green",
-      icon: IconCheck({}), // It has to be called like that in order to work here
+      icon: successIcon,
       loading: false,
       autoClose: 2000,
       withCloseButton: false,
@@ -53,12 +52,12 @@ const useStatusNotification = (options?: UseStatusNotificationOptions) => {
   };
 
   const showFailure = (message?: string) => {
-    updateNotification({
+    notifications.update({
       id,
       title: "Coś poszło nie tak",
       message: message ?? failureMessage,
       color: "red",
-      icon: IconX({}),
+      icon: failureIcon,
       loading: false,
       autoClose: 8000,
       withCloseButton: false,

@@ -1,5 +1,7 @@
 // Licensed under the Open Software License version 3.0
-import { temperatureRouter } from "./m2m/temperature";
-import { t } from "./trpc";
+import { udsRouter } from "./m2m/uds";
+import { router } from "./trpc";
 
-export const m2mRouter = t.mergeRouters(temperatureRouter);
+export const m2mRouter = router({
+  uds: udsRouter,
+});

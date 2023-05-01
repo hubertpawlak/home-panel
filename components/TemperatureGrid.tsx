@@ -3,12 +3,12 @@ import { SimpleGrid } from "@mantine/core";
 import type { ITemperatureSensor } from "./TemperatureSensor";
 import { TemperatureSensor } from "./TemperatureSensor";
 
-interface ITemperatureGrid {
-  temps?: ITemperatureSensor[] | null;
+interface TemperatureGridProps {
+  temperatureSensors?: ITemperatureSensor[] | null;
 }
 
-export function TemperatureGrid({ temps }: ITemperatureGrid) {
-  if (!temps) return null;
+export function TemperatureGrid({ temperatureSensors }: TemperatureGridProps) {
+  if (!temperatureSensors) return null;
 
   return (
     <SimpleGrid
@@ -32,8 +32,8 @@ export function TemperatureGrid({ temps }: ITemperatureGrid) {
         },
       ]}
     >
-      {temps.map((t) => (
-        <TemperatureSensor key={t.hw_id} {...t} />
+      {temperatureSensors.map((t) => (
+        <TemperatureSensor key={t.id} {...t} />
       ))}
     </SimpleGrid>
   );

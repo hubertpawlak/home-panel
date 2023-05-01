@@ -7,22 +7,22 @@ import type { UniversalTableRow } from "../types/UniversalTableRow";
 import { useMutationStatusNotification } from "../utils/notifications";
 import { trpc } from "../utils/trpc";
 
-export const SensorsTable = () => {
+export const UpsesTable = () => {
   // Actions
   const {
     data,
-    isLoading: isLoadingSensors,
-    refetch: refetchSensors,
-  } = trpc.admin.uds.getSensors.useQuery();
+    isLoading: isLoadingUpses,
+    refetch: refetchUpses,
+  } = trpc.admin.uds.getUpses.useQuery();
   const records = data ?? [];
   const opts = useMutationStatusNotification({
-    successMessage: "Czujnik został usunięty",
+    successMessage: "Zasilacz został usunięty",
     onSuccess() {
-      refetchSensors();
+      refetchUpses();
     },
   });
-  const { mutateAsync: deleteSensor, isLoading: isDeleting } =
-    trpc.admin.uds.deleteSensor.useMutation(opts);
+  const { mutateAsync: deleteUps, isLoading: isDeleting } =
+    trpc.admin.uds.deleteUps.useMutation(opts);
 
   return (
     <DataTable<UniversalTableRow>
@@ -31,7 +31,7 @@ export const SensorsTable = () => {
       columns={[
         {
           accessor: "id",
-          title: "ID czujnika",
+          title: "ID zasilacza",
         },
         {
           accessor: "name",
@@ -42,7 +42,7 @@ export const SensorsTable = () => {
           title: "Źródło",
         },
       ]}
-      fetching={isLoadingSensors}
+      fetching={isLoadingUpses}
       // Actions
       rowContextMenu={{
         items: ({ id, name }) => [
@@ -53,8 +53,8 @@ export const SensorsTable = () => {
             disabled: isDeleting,
             onClick() {
               openContextModal({
-                modal: "editSensor",
-                title: "Edytowanie czujnika",
+                modal: "editUps",
+                title: "Edytowanie UPSa",
                 innerProps: { id, name },
               });
             },
@@ -67,20 +67,20 @@ export const SensorsTable = () => {
             disabled: isDeleting,
             onClick() {
               openConfirmModal({
-                title: "Czy na pewno chcesz usunąć ten czujnik?",
+                title: "Czy na pewno chcesz usunąć tego UPSa?",
                 children: (
                   <Text size="sm">
                     Informacje o nim zostaną usunięte z bazy danych, jednak
                     ponowne wykrycie przez źródło danych spowoduje automatycznie
-                    ponowne dodanie czujnika.
+                    ponowne dodanie UPSa.
                   </Text>
                 ),
                 labels: {
-                  confirm: "Tak, usuń czujnik",
+                  confirm: "Tak, usuń zasilacz",
                   cancel: "Nie, anuluj",
                 },
                 confirmProps: { color: "red" },
-                onConfirm: () => deleteSensor({ id }),
+                onConfirm: () => deleteUps({ id }),
               });
             },
           },

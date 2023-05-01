@@ -1,30 +1,20 @@
 // Licensed under the Open Software License version 3.0
-import type { DefaultMantineColor } from "@mantine/core";
 import { Card, Text, Tooltip } from "@mantine/core";
 import { intlFormat, isToday, parseISO } from "date-fns";
+import { getColorBasedOnThreshold } from "../utils/getColorBasedOnThreshold";
 import { trpc } from "../utils/trpc";
 
 export interface ITemperatureSensor {
-  hw_id: string;
+  id: string;
   temperature?: number | null;
   resolution?: number | null;
   updated_at: string;
-  name?: string | null;
+  name: string;
   updated_by?: string | null;
 }
 
-function getColor(
-  temperature: number,
-  notifyAbove?: number | null
-): DefaultMantineColor {
-  if (notifyAbove === undefined || notifyAbove === null) return "dark.0";
-  if (temperature > notifyAbove) return "red";
-  if (temperature > notifyAbove - 5) return "yellow";
-  return "dark.0";
-}
-
 export function TemperatureSensor({
-  hw_id,
+  id,
   temperature,
   resolution,
   updated_at,
@@ -53,9 +43,21 @@ export function TemperatureSensor({
 
   return (
     <Card>
-      <Text align="center" size={24}>
-        {name ?? hw_id}
-      </Text>
+      <Tooltip
+        withArrow
+        arrowSize={8}
+        openDelay={500}
+        color="dark.9"
+        position="bottom"
+        transitionProps={{
+          transition: "slide-up",
+        }}
+        label={`ID: ${id}`}
+      >
+        <Text align="center" size={24}>
+          {name}
+        </Text>
+      </Tooltip>
       <Tooltip
         withArrow
         arrowSize={8}
@@ -72,7 +74,13 @@ export function TemperatureSensor({
           size={55}
           inline
           weight={900}
-          color={getColor(temperature, edgeConfig?.pushNotifyAbove)}
+          color={getColorBasedOnThreshold({
+            value: temperature,
+            criticalThresholdAbove: edgeConfig?.pushNotifyAbove,
+            warningThresholdAbove: edgeConfig?.pushNotifyAbove
+              ? edgeConfig.pushNotifyAbove - 5
+              : undefined,
+          })}
         >
           {`${temperature.toFixed(1)}°C`}
         </Text>

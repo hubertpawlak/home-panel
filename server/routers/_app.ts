@@ -7,14 +7,13 @@ import { pushRouter } from "./push";
 import { rootRouter } from "./root";
 import { seedRouter } from "./seed";
 import { selfServiceRouter } from "./self";
-import { sensorsRouter } from "./sensors";
 import { telemetryRouter } from "./telemetry";
 import { router } from "./trpc";
+import { udsRouter } from "./uds";
 
 export const appRouter = router({
   seed: seedRouter,
   m2m: m2mRouter,
-  sensors: sensorsRouter,
   push: pushRouter,
   self: selfServiceRouter,
   root: rootRouter,
@@ -22,6 +21,7 @@ export const appRouter = router({
   log: telemetryRouter,
   edgeConfig: edgeConfigRouter,
   health: appHealthRouter,
+  uds: udsRouter,
 });
 
 export type AppRouter = typeof appRouter;

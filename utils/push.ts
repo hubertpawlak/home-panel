@@ -1,5 +1,7 @@
 // Licensed under the Open Software License version 3.0
 import webPush from "web-push";
+import { redis } from "./redis";
+import supabase from "./supabase";
 
 export function getVapidDetails() {
   const subject = process.env.VAPID_SUBJECT;
@@ -17,7 +19,7 @@ interface FlatPushSubscription {
   auth: webPush.PushSubscription["keys"]["auth"];
 }
 
-interface NotificationPayload {
+export interface NotificationPayload {
   title: string;
   body?: string;
   timestamp?: number;
@@ -43,4 +45,53 @@ export async function sendPush(
     vapidDetails,
     ...options,
   });
+}
+
+export async function sendPushToAll(
+  subscriptions: FlatPushSubscription[],
+  payload: NotificationPayload,
+  options?: webPush.RequestOptions
+) {
+  return Promise.all(
+    subscriptions.map((sub) =>
+      // Send push notification
+      // Delete subscription if it fails
+      sendPush(sub, payload, options).catch(deleteSubscription(sub.endpoint))
+    )
+  );
+}
+
+export async function getAllPushSubscriptions() {
+  const { data: subscriptions } = await supabase
+    .from("push")
+    .select("endpoint,p256dh,auth");
+  return subscriptions ?? [];
+}
+
+export async function shouldPushBeSent() {
+  // Get previous state and bump in one request
+  const pushAlreadySent = await redis.set<boolean>("notified", true, {
+    ex: 60, // Prevent spam for 60 seconds from last sensors update
+    get: true, // Get previous state or null
+  });
+  if (pushAlreadySent === true) return false;
+  return true;
+}
+
+export const deleteSubscription = (endpoint: string) => {
+  return async () =>
+    await supabase.from("push").delete().eq("endpoint", endpoint);
+};
+
+export async function autoSendPushToAll(
+  payload: NotificationPayload,
+  options?: webPush.RequestOptions
+) {
+  // Check if push was already sent
+  const shouldSend = await shouldPushBeSent();
+  if (!shouldSend) return;
+  // Get subscriptions
+  const subscriptions = await getAllPushSubscriptions();
+  // Send push notifications to all subscriptions
+  return sendPushToAll(subscriptions, payload, options);
 }

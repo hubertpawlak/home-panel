@@ -5,6 +5,7 @@ import Balancer from "react-wrap-balancer";
 import { AddSourceForm } from "../components/AddSourceForm";
 import Layout from "../components/Layout";
 import { SensorsTable } from "../components/SensorsTable";
+import { UpsesTable } from "../components/UpsesTable";
 import { rolePower } from "../types/RolePower";
 import type { NextPageWithLayout } from "./_app";
 
@@ -24,9 +25,12 @@ const SourcesPage: NextPageWithLayout = () => {
             jak&nbsp;nazwa. Każde źródło powinno mieć swój token.
           </Balancer>
         </Text>
-        {/* List of all known temperature sensors */}
-        <Title align="center">Czujniki temperatury</Title>
+        {/* List of all known sensors */}
+        <Title align="center">Czujniki</Title>
         <SensorsTable />
+        {/* List of all known UPSes */}
+        <Title align="center">Zasilacze awaryjne</Title>
+        <UpsesTable />
       </Stack>
     </Container>
   );

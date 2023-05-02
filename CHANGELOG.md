@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/hubertpawlak/home-panel/compare/v3.0.1...v3.0.2) (2023-05-02)
+
+
+### Bug Fixes
+
+* Changed copyright year ([c8e37c1](https://github.com/hubertpawlak/home-panel/commit/c8e37c182262566b97e906b57c6beddc88fc8b6a))
+* Changed Text to Title ([6d0601e](https://github.com/hubertpawlak/home-panel/commit/6d0601e0c7b6194f9cd67a582e5b8a1e96bd2802))
+
 ### [3.0.1](https://github.com/hubertpawlak/home-panel/compare/v3.0.0...v3.0.1) (2023-05-02)
 
 

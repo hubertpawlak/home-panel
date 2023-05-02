@@ -1,5 +1,5 @@
 // Licensed under the Open Software License version 3.0
-import { Card, Text, Tooltip } from "@mantine/core";
+import { Card, Text, Title, Tooltip } from "@mantine/core";
 import { intlFormat, isToday, parseISO } from "date-fns";
 import { getColorBasedOnThreshold } from "../utils/getColorBasedOnThreshold";
 import { trpc } from "../utils/trpc";
@@ -54,9 +54,9 @@ export function TemperatureSensor({
         }}
         label={`ID: ${id}`}
       >
-        <Text align="center" size={24}>
+        <Title order={2} align="center">
           {name}
-        </Text>
+        </Title>
       </Tooltip>
       <Tooltip
         withArrow

@@ -65,7 +65,7 @@ export const AppNavbar = ({ navOpened, setNavOpened }: AppNavbarProps) => {
       <Navbar.Section>
         <Divider
           labelPosition="center"
-          label="Hubert Pawlak 💻 2022"
+          label="Hubert Pawlak 💻 2022 - 2023"
           labelProps={{
             component: "a",
             href: "https://hubertpawlak.dev",

@@ -1,7 +1,7 @@
 // Licensed under the Open Software License version 3.0
 import { Box, Container, Loader, Skeleton, Switch, Text } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
-import { Users } from "@tabler/icons-react";
+import { IconUsers } from "@tabler/icons-react";
 import { Suspense } from "react";
 import Layout from "../../components/Layout";
 import { UsersTable } from "../../components/UsersTable";
@@ -45,7 +45,7 @@ const UsersPage: NextPageWithLayout = () => {
 UsersPage.getLayout = (page) => (
   <Layout
     title="Użytkownicy"
-    icon={<Users />}
+    icon={<IconUsers />}
     requiredPower={rolePower["root"]}
   >
     {page}

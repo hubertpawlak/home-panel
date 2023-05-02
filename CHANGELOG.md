@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/hubertpawlak/home-panel/compare/v3.0.0...v3.0.1) (2023-05-02)
+
+
+### Bug Fixes
+
+* Compilation error because of wrong Icon name ([8fa43be](https://github.com/hubertpawlak/home-panel/commit/8fa43be6bb50da5942d065139ebc5b095520be0c))
+
 ## [3.0.0](https://github.com/hubertpawlak/home-panel/compare/v2.2.1...v3.0.0) (2023-05-01)
 
 

@@ -19,6 +19,22 @@
 				"npx -y supabase@latest gen types typescript --local --schema public > types/supabase.ts"
 			],
 			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "supabase:start",
+			"command": [
+				"npx -y supabase@latest start"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "supabase:stop",
+			"command": [
+				"npx -y supabase@latest stop"
+			],
+			"problemMatcher": []
 		}
 	]
 }

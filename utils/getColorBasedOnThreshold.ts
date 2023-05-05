@@ -9,6 +9,9 @@ export interface GetColorBasedOnThresholdProps {
   warningThresholdBelow?: number | null;
 }
 
+export const CRITICAL_COLOR: DefaultMantineColor = "red";
+export const WARNING_COLOR: DefaultMantineColor = "yellow";
+
 /**
  * Returns color based on value and inclusive thresholds
  * @param value - number to compare with thresholds
@@ -38,25 +41,25 @@ export function getColorBasedOnThreshold({
     typeof criticalThresholdAbove === "number" &&
     value >= criticalThresholdAbove
   )
-    return "red";
+    return CRITICAL_COLOR;
   // Below critical
   if (
     typeof criticalThresholdBelow === "number" &&
     value <= criticalThresholdBelow
   )
-    return "red";
+    return CRITICAL_COLOR;
   // Above warning
   if (
     typeof warningThresholdAbove === "number" &&
     value >= warningThresholdAbove
   )
-    return "yellow";
+    return WARNING_COLOR;
   // Below warning
   if (
     typeof warningThresholdBelow === "number" &&
     value <= warningThresholdBelow
   )
-    return "yellow";
+    return WARNING_COLOR;
   // Use default color, value is within thresholds
   return undefined;
 }

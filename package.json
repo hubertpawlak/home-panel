@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "bump": "standard-version",
+    "release": "standard-version",
+    "gen:attribution": "generate-attribution",
     "test": "jest"
   },
   "standard-version": {

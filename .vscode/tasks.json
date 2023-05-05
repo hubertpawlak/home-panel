@@ -3,6 +3,7 @@
 	"tasks": [
 		{
 			"type": "eslint",
+			"label": "lint: eslint",
 			"presentation": {
 				"reveal": "silent",
 				"clear": true
@@ -10,7 +11,6 @@
 			"problemMatcher": [
 				"$eslint-stylish"
 			],
-			"label": "eslint"
 		},
 		{
 			"type": "shell",
@@ -35,6 +35,20 @@
 				"npx -y supabase@latest stop"
 			],
 			"problemMatcher": []
+		},
+		{
+			"type": "npm",
+			"script": "gen:attribution",
+			"problemMatcher": [],
+			"label": "build: generate attribution",
+			"detail": "generate-attribution",
+		},
+		{
+			"type": "npm",
+			"script": "release",
+			"problemMatcher": [],
+			"label": "build: release",
+			"detail": "standard-version",
 		}
 	]
 }

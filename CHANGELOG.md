@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/hubertpawlak/home-panel/compare/v3.1.0...v3.1.1) (2023-05-05)
+
+
+### Bug Fixes
+
+* Removed unnecessary getStaticProps ([092a9a0](https://github.com/hubertpawlak/home-panel/commit/092a9a04b1ffa5e923be48f753e816b972d9a3df))
+* SuperTokens changed UI route handling ([c5ca244](https://github.com/hubertpawlak/home-panel/commit/c5ca24499025b8d7372b1e18a5e68d6e205b1463))
+
 ## [3.1.0](https://github.com/hubertpawlak/home-panel/compare/v3.0.2...v3.1.0) (2023-05-05)
 
 

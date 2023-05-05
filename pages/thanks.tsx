@@ -1,25 +1,12 @@
 // Licensed under the Open Software License version 3.0
 import { Accordion, Anchor, Stack, Text, Title } from "@mantine/core";
 import { IconHeart } from "@tabler/icons-react";
-import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Balancer from "react-wrap-balancer";
 import Layout from "../components/Layout";
 import licenseInfos from "../oss-attribution/licenseInfos.json";
 import type { NextPageWithLayout } from "./_app";
 
-export const getStaticProps: GetStaticProps<{
-  dependencies: typeof licenseInfos;
-}> = async () => {
-  return {
-    props: {
-      dependencies: licenseInfos,
-    },
-  };
-};
-
-const SpecialThanksPage: NextPageWithLayout<
-  InferGetStaticPropsType<typeof getStaticProps>
-> = ({ dependencies }) => {
+const SpecialThanksPage: NextPageWithLayout = () => {
   return (
     <Stack>
       <Title align="center">Podziękowania</Title>
@@ -32,7 +19,7 @@ const SpecialThanksPage: NextPageWithLayout<
         </Balancer>
       </Text>
       <Accordion multiple variant="contained">
-        {dependencies.map(({ authors, license, licenseText, name, url }) => {
+        {licenseInfos.map(({ authors, license, licenseText, name, url }) => {
           return (
             <Accordion.Item key={name} value={name}>
               <Accordion.Control>
@@ -40,9 +27,11 @@ const SpecialThanksPage: NextPageWithLayout<
               </Accordion.Control>
               <Accordion.Panel>
                 <Text italic>{authors}</Text>
-                <Anchor href={url} target="_blank" rel="noopener noreferrer">
-                  {url}
-                </Anchor>
+                {url && (
+                  <Anchor href={url} target="_blank" rel="noopener noreferrer">
+                    {url}
+                  </Anchor>
+                )}
                 <pre>{licenseText}</pre>
               </Accordion.Panel>
             </Accordion.Item>

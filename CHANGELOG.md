@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/hubertpawlak/home-panel/compare/v3.0.2...v3.1.0) (2023-05-05)
+
+
+### Features
+
+* Generate attribution page ([430a0b1](https://github.com/hubertpawlak/home-panel/commit/430a0b11aa3fae141c8a95aa572e4190ae96e00d))
+
+
+### Bug Fixes
+
+* Handle getEdgeConfigValues edge case ([6d4ee2e](https://github.com/hubertpawlak/home-panel/commit/6d4ee2ee2437e9819233b93ddb1b4e7ea3a7ab39))
+
 ### [3.0.2](https://github.com/hubertpawlak/home-panel/compare/v3.0.1...v3.0.2) (2023-05-02)
 
 

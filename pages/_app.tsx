@@ -14,7 +14,7 @@ import SuperTokensReact, { SuperTokensWrapper } from "supertokens-auth-react";
 import { frontendConfig } from "../config/frontendConfig";
 import { trpc } from "../utils/trpc";
 
-export type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout<T = unknown> = NextPage<T> & {
   // eslint-disable-next-line no-unused-vars
   getLayout?: (page: ReactElement) => ReactNode;
 };

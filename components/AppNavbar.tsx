@@ -3,6 +3,7 @@ import { Divider, Navbar, ScrollArea } from "@mantine/core";
 import {
   IconBell,
   IconDatabaseImport,
+  IconHeart,
   IconHome,
   IconTimeline,
   IconUsers,
@@ -42,6 +43,11 @@ const links: IAppNavbarLink[] = [
     Icon: IconUsers,
     title: "Użytkownicy",
     requiredPower: rolePower["root"],
+  },
+  {
+    href: "/thanks",
+    Icon: IconHeart,
+    title: "Podziękowania",
   },
 ];
 

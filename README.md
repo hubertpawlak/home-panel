@@ -49,5 +49,15 @@ Make sure to at least run `seed.createDefaultRoles`, log in, give yourself root 
 # How to contribute?
 If you want to contribute, please fork this repository, create a new branch and submit a pull request. It will be reviewed and merged if it's a good fit. You may also create an issue if you find a bug or have a feature request.
 
+# Special thanks
+...to everyone involved in the development of all the dependencies used in this project.
+
+Check out:
+- [attribution.txt](oss-attribution/attribution.txt)
+- [package.json](package.json)
+- special `/thanks` page in the app
+
+to find out more.
+
 # License
 This project is licensed under the Open Software License version 3.0 - see the [LICENSE](LICENSE) file for details.

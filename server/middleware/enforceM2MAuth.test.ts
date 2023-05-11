@@ -1,6 +1,5 @@
 // Licensed under the Open Software License version 3.0
 import { beforeEach, test } from "@jest/globals";
-import { nanoid } from "nanoid/non-secure";
 import type { Context } from "../context";
 import { enforceM2MAuth } from "./enforceM2MAuth";
 
@@ -48,7 +47,7 @@ describe("with public key", () => {
 
   test("throws with random string in authorization header", async () => {
     const ctx = {
-      authorization: `${nanoid()}`,
+      authorization: "random string",
     } as Context;
     const middlewarePromise = enforceM2MAuth._middlewares[0]({
       next,
@@ -62,7 +61,7 @@ describe("with public key", () => {
 
   test("throws with random string as bearer token", async () => {
     const ctx = {
-      authorization: `Bearer ${nanoid()}`,
+      authorization: `Bearer random_string`,
     } as Context;
     const middlewarePromise = enforceM2MAuth._middlewares[0]({
       next,

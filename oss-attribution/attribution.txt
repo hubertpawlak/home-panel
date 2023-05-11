@@ -195,7 +195,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @emotion/babel-plugin
-11.10.8 <https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin>
+11.11.0 <https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -222,7 +222,7 @@ SOFTWARE.
 ******************************
 
 @emotion/cache
-11.10.8 <https://github.com/emotion-js/emotion/tree/main/packages/cache>
+11.11.0 <https://github.com/emotion-js/emotion/tree/main/packages/cache>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -249,7 +249,7 @@ SOFTWARE.
 ******************************
 
 @emotion/hash
-0.9.0 <https://github.com/emotion-js/emotion/tree/main/packages/hash>
+0.9.1 <https://github.com/emotion-js/emotion/tree/main/packages/hash>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -276,7 +276,7 @@ SOFTWARE.
 ******************************
 
 @emotion/memoize
-0.8.0 <https://github.com/emotion-js/emotion/tree/main/packages/memoize>
+0.8.1 <https://github.com/emotion-js/emotion/tree/main/packages/memoize>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -303,7 +303,7 @@ SOFTWARE.
 ******************************
 
 @emotion/react
-11.10.8 <https://github.com/emotion-js/emotion/tree/main/packages/react>
+11.11.0 <https://github.com/emotion-js/emotion/tree/main/packages/react>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -330,7 +330,7 @@ SOFTWARE.
 ******************************
 
 @emotion/serialize
-1.1.1 <https://github.com/emotion-js/emotion/tree/main/packages/serialize>
+1.1.2 <https://github.com/emotion-js/emotion/tree/main/packages/serialize>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -357,7 +357,7 @@ SOFTWARE.
 ******************************
 
 @emotion/server
-11.10.0 <https://github.com/emotion-js/emotion/tree/main/packages/server>
+11.11.0 <https://github.com/emotion-js/emotion/tree/main/packages/server>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -384,7 +384,7 @@ SOFTWARE.
 ******************************
 
 @emotion/sheet
-1.2.1 <https://github.com/emotion-js/emotion/tree/main/packages/sheet>
+1.2.2 <https://github.com/emotion-js/emotion/tree/main/packages/sheet>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -411,7 +411,7 @@ SOFTWARE.
 ******************************
 
 @emotion/unitless
-0.8.0 <https://github.com/emotion-js/emotion/tree/main/packages/unitless>
+0.8.1 <https://github.com/emotion-js/emotion/tree/main/packages/unitless>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -438,7 +438,7 @@ SOFTWARE.
 ******************************
 
 @emotion/use-insertion-effect-with-fallbacks
-1.0.0 <https://github.com/emotion-js/emotion/tree/main/packages/use-insertion-effect-with-fallbacks>
+1.0.1 <https://github.com/emotion-js/emotion/tree/main/packages/use-insertion-effect-with-fallbacks>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -465,7 +465,7 @@ SOFTWARE.
 ******************************
 
 @emotion/utils
-1.2.0 <https://github.com/emotion-js/emotion/tree/main/packages/utils>
+1.2.1 <https://github.com/emotion-js/emotion/tree/main/packages/utils>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -492,7 +492,7 @@ SOFTWARE.
 ******************************
 
 @emotion/weak-memoize
-0.3.0 <https://github.com/emotion-js/emotion/tree/main/packages/weak-memoize>
+0.3.1 <https://github.com/emotion-js/emotion/tree/main/packages/weak-memoize>
 MIT License
 
 Copyright (c) Emotion team and other contributors
@@ -1428,7 +1428,7 @@ limitations under the License.
 ******************************
 
 @tabler/icons
-2.17.0 <https://github.com/tabler/tabler-icons>
+2.18.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1455,7 +1455,7 @@ SOFTWARE.
 ******************************
 
 @tabler/icons-react
-2.17.0 <https://github.com/tabler/tabler-icons>
+2.18.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1536,7 +1536,7 @@ SOFTWARE.
 ******************************
 
 @trpc/client
-10.25.0 <https://github.com/trpc/trpc>
+10.25.1 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1563,7 +1563,7 @@ SOFTWARE.
 ******************************
 
 @trpc/next
-10.25.0 <https://github.com/trpc/trpc>
+10.25.1 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1590,7 +1590,7 @@ SOFTWARE.
 ******************************
 
 @trpc/react-query
-10.25.0 <https://github.com/trpc/trpc>
+10.25.1 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1617,7 +1617,7 @@ SOFTWARE.
 ******************************
 
 @trpc/server
-10.25.0 <https://github.com/trpc/trpc>
+10.25.1 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1833,7 +1833,7 @@ SOFTWARE.
 ******************************
 
 @types/node
-18.16.3 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+20.1.2 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -1995,7 +1995,7 @@ SOFTWARE.
 ******************************
 
 @types/react
-18.2.5 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+18.2.6 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -2156,7 +2156,7 @@ SOFTWARE.
 ******************************
 
 @vercel/edge-config
-0.1.9 <https://github.com/vercel/storage>
+0.1.10 <https://github.com/vercel/storage>
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -5803,7 +5803,7 @@ SOFTWARE.
 ******************************
 
 mantine-datatable
-2.4.15 <https://github.com/icflorescu/mantine-datatable>
+2.4.16 <https://github.com/icflorescu/mantine-datatable>
 MIT License
 
 Copyright (c) 2022-2023 Ionuț-Cristian Florescu
@@ -6965,7 +6965,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************
 
 react-wrap-balancer
-0.4.1 <>
+0.5.0 <>
 MIT License
 
 Copyright (c) 2022 Shu Ding
@@ -7702,7 +7702,7 @@ SOFTWARE.
 ******************************
 
 stylis
-4.1.4 <https://github.com/thysultan/stylis.js>
+4.2.0 <https://github.com/thysultan/stylis.js>
 MIT License
 
 Copyright (c) 2016-present Sultan Tarimo

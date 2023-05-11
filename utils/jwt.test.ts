@@ -1,7 +1,6 @@
 // Licensed under the Open Software License version 3.0
 import { expect, test } from "@jest/globals";
 import { generateKeyPair } from "jose";
-import { nanoid } from "nanoid/non-secure";
 import { JwtAlg } from "../types/JwtAlg";
 import {
   base64ToJwtPrivateKey,
@@ -29,8 +28,8 @@ test("encodes and decodes JWT keys", async () => {
 });
 
 test("fails to decode random strings", async () => {
-  const encodedPublicKey = nanoid();
-  const encodedPrivateKey = nanoid();
+  const encodedPublicKey = "random string";
+  const encodedPrivateKey = "random string";
 
   const decodedPublicKey = await base64ToJwtPublicKey(encodedPublicKey).catch(
     () => {}

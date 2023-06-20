@@ -2,6 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "npm:dev",
+      "command": "npm run dev",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
       "name": "npm:debug",
       "request": "launch",
       "runtimeArgs": [

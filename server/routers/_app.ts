@@ -7,7 +7,6 @@ import { pushRouter } from "./push";
 import { rootRouter } from "./root";
 import { seedRouter } from "./seed";
 import { selfServiceRouter } from "./self";
-import { telemetryRouter } from "./telemetry";
 import { router } from "./trpc";
 import { udsRouter } from "./uds";
 
@@ -18,7 +17,6 @@ export const appRouter = router({
   self: selfServiceRouter,
   root: rootRouter,
   admin: adminRouter,
-  log: telemetryRouter,
   edgeConfig: edgeConfigRouter,
   health: appHealthRouter,
   uds: udsRouter,

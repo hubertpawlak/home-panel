@@ -1,27 +1,25 @@
 // Licensed under the Open Software License version 3.0
-import { getAll } from "@vercel/edge-config";
 import type { EdgeConfig, EdgeFlag } from "../types/EdgeConfig";
-import { EdgeFlagEnv, defaultEdgeConfigValues } from "../types/EdgeConfig";
+import { defaultEdgeConfigValues } from "../types/EdgeConfig";
+import { redis } from "./redis";
 
 /**
- * Easily get edge config values (fallback to hardcoded values)
+ * Easily get Edge Config values
  */
 export async function getEdgeConfigValues(
   flagsToGet: EdgeFlag[]
 ): Promise<EdgeConfig> {
   // Return empty object if no flags requested
   if (flagsToGet.length === 0) return {};
-  // Get all requested flags
-  const flagsWithValues =
-    (await getAll(flagsToGet.map((flag) => `${EdgeFlagEnv}_${flag}`))) ?? {};
-  // Remove EdgeFlagEnv prefix (rename keys)
-  for (const flag of flagsToGet) {
-    // Fallback to default value
-    flagsWithValues[flag] =
-      flagsWithValues[`${EdgeFlagEnv}_${flag}`] ??
-      defaultEdgeConfigValues[flag];
-    delete flagsWithValues[`${EdgeFlagEnv}_${flag}`];
-  }
-  // Return object with renamed keys
-  return flagsWithValues;
+  const config = await redis.hmget<Record<string, any>>(
+    "config",
+    ...flagsToGet
+  );
+  // Return default values if config doesn't exist
+  if (!config) return defaultEdgeConfigValues;
+  // Fallback to default values for missing flags
+  flagsToGet.forEach((flag) => {
+    config[flag] = config[flag] ?? defaultEdgeConfigValues[flag];
+  });
+  return config;
 }

@@ -1,22 +1,24 @@
 // Licensed under the Open Software License version 3.0
 import { beforeEach, test } from "@jest/globals";
-import { EdgeFlagEnv } from "../../types/EdgeConfig";
 import { enforceConfigFlag } from "./enforceConfigFlag";
 
-jest.mock("@vercel/edge-config", () => ({
-  get: async (key: string) => {
-    switch (key) {
-      case `${EdgeFlagEnv}_trueFlag`:
-        return true;
-      case `${EdgeFlagEnv}_falseFlag`:
-        return false;
-      case `${EdgeFlagEnv}_numericFlagZero`:
-        return 0;
-      case `${EdgeFlagEnv}_numericFlagOne`:
-        return 1;
-      default:
-        return undefined;
-    }
+jest.mock("../../utils/redis", () => ({
+  redis: {
+    hget: async (key: string, field: string) => {
+      if (key !== "flags") return null;
+      switch (field) {
+        case `trueFlag`:
+          return true;
+        case `falseFlag`:
+          return false;
+        case `numericFlagZero`:
+          return 0;
+        case `numericFlagOne`:
+          return 1;
+        default:
+          return null;
+      }
+    },
   },
 }));
 
@@ -24,10 +26,6 @@ const next = jest.fn();
 
 beforeEach(() => {
   next.mockReset();
-});
-
-test(`EdgeFlagEnv === "test"`, async () => {
-  expect(EdgeFlagEnv).toStrictEqual("test");
 });
 
 test("calls next() if flag is true", async () => {

@@ -7,10 +7,30 @@ import { z } from "zod";
 import { JwtAlg } from "../../types/JwtAlg";
 import { SharedMax } from "../../types/SharedMax";
 import { jwtPrivateKeyToBase64, jwtPublicKeyToBase64 } from "../../utils/jwt";
+import { redis } from "../../utils/redis";
 import { enforceConfigFlag } from "../middleware/enforceConfigFlag";
 import { publicProcedure, router } from "./trpc";
 
 export const seedRouter = router({
+  initRedis: publicProcedure
+    .use(
+      enforceConfigFlag({
+        flag: "seedRouter_initRedis",
+        defaultFlagValue: true,
+      })
+    )
+    .mutation(async () => {
+      await redis.hset("flags", {
+        seedRouter_initRedis: false,
+        seedRouter_generateVapidKeys: true,
+        seedRouter_generateKeys: true,
+        seedRouter_createDefaultRoles: true,
+        seedRouter_addRootRole: true,
+      });
+      return {
+        success: true,
+      };
+    }),
   generateVapidKeys: publicProcedure
     .use(
       enforceConfigFlag({
@@ -61,13 +81,15 @@ export const seedRouter = router({
         "admin",
         []
       );
-      if (adminResponse.createdNewRole === false) return false;
       const rootResponse = await UserRoles.createNewRoleOrAddPermissions(
         "root",
         []
       );
       // Get all existing roles
       const roles = (await UserRoles.getAllRoles()).roles;
+      await redis.hset("flags", {
+        seedRouter_createDefaultRoles: false,
+      });
       return {
         roles,
         created: {
@@ -100,11 +122,15 @@ export const seedRouter = router({
         };
       }
       // There may be users with root perms already
-      if (rootUsers.users.length > 0)
+      if (rootUsers.users.length > 0) {
+        await redis.hset("flags", {
+          seedRouter_addRootRole: false,
+        });
         return {
           success: false,
           status: "ROOT_ACCOUNT_EXISTS",
         };
+      }
       const { id } = input;
       // Check if user exists
       const userWithProvidedId = await getUserById(id);
@@ -116,6 +142,9 @@ export const seedRouter = router({
       }
       // Add role
       const addRoleResponse = await UserRoles.addRoleToUser(id, "root");
+      await redis.hset("flags", {
+        seedRouter_addRootRole: false,
+      });
       return {
         success: addRoleResponse.status === "OK",
         status: addRoleResponse.status,

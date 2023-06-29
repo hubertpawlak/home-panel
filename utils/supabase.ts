@@ -11,4 +11,7 @@ export default createClient<Database>(SUPABASE_URL, SUPABASE_KEY, {
   db: {
     schema: "public",
   },
+  auth: {
+    persistSession: false,
+  },
 });

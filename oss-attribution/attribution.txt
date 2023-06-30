@@ -679,63 +679,63 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 ******************************
 
 @mantine/core
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/form
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/hooks
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/modals
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/next
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/notifications
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/ssr
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/styles
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 ******************************
 
 @mantine/utils
-6.0.14 <https://github.com/mantinedev/mantine>
+6.0.15 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
@@ -1428,7 +1428,7 @@ limitations under the License.
 ******************************
 
 @tabler/icons
-2.22.0 <https://github.com/tabler/tabler-icons>
+2.23.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1455,7 +1455,7 @@ SOFTWARE.
 ******************************
 
 @tabler/icons-react
-2.22.0 <https://github.com/tabler/tabler-icons>
+2.23.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1482,7 +1482,7 @@ SOFTWARE.
 ******************************
 
 @tanstack/query-core
-4.29.15 <https://github.com/tanstack/query>
+4.29.19 <https://github.com/tanstack/query>
 MIT License
 
 Copyright (c) 2021-present Tanner Linsley
@@ -1509,7 +1509,7 @@ SOFTWARE.
 ******************************
 
 @tanstack/react-query
-4.29.15 <https://github.com/tanstack/query>
+4.29.19 <https://github.com/tanstack/query>
 MIT License
 
 Copyright (c) 2021-present Tanner Linsley
@@ -1536,7 +1536,7 @@ SOFTWARE.
 ******************************
 
 @trpc/client
-10.32.0 <https://github.com/trpc/trpc>
+10.33.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1563,7 +1563,7 @@ SOFTWARE.
 ******************************
 
 @trpc/next
-10.32.0 <https://github.com/trpc/trpc>
+10.33.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1590,7 +1590,7 @@ SOFTWARE.
 ******************************
 
 @trpc/react-query
-10.32.0 <https://github.com/trpc/trpc>
+10.33.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1617,7 +1617,7 @@ SOFTWARE.
 ******************************
 
 @trpc/server
-10.32.0 <https://github.com/trpc/trpc>
+10.33.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1833,7 +1833,7 @@ SOFTWARE.
 ******************************
 
 @types/node
-20.3.1 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+20.3.3 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -2130,7 +2130,7 @@ SOFTWARE.
 ******************************
 
 @upstash/redis
-1.21.0 <https://github.com/upstash/upstash-redis>
+1.22.0 <https://github.com/upstash/upstash-redis>
 The MIT License (MIT)
 
 Copyright (c) 2021 Upstash, Inc.
@@ -5638,7 +5638,7 @@ SOFTWARE.
 ******************************
 
 mantine-datatable
-2.6.4 <https://github.com/icflorescu/mantine-datatable>
+2.7.2 <https://github.com/icflorescu/mantine-datatable>
 MIT License
 
 Copyright (c) 2022-2023 Ionuț-Cristian Florescu

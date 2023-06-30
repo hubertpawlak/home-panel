@@ -236,7 +236,7 @@
   {
     "ignore": false,
     "name": "@mantine/core",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -245,7 +245,7 @@
   {
     "ignore": false,
     "name": "@mantine/form",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -254,7 +254,7 @@
   {
     "ignore": false,
     "name": "@mantine/hooks",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -263,7 +263,7 @@
   {
     "ignore": false,
     "name": "@mantine/modals",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -272,7 +272,7 @@
   {
     "ignore": false,
     "name": "@mantine/next",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -281,7 +281,7 @@
   {
     "ignore": false,
     "name": "@mantine/notifications",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -290,7 +290,7 @@
   {
     "ignore": false,
     "name": "@mantine/ssr",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -299,7 +299,7 @@
   {
     "ignore": false,
     "name": "@mantine/styles",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -308,7 +308,7 @@
   {
     "ignore": false,
     "name": "@mantine/utils",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -511,7 +511,7 @@
   {
     "ignore": false,
     "name": "@tabler/icons-react",
-    "version": "2.22.0",
+    "version": "2.23.0",
     "authors": "codecalm",
     "url": "https://github.com/tabler/tabler-icons",
     "license": "MIT",
@@ -520,7 +520,7 @@
   {
     "ignore": false,
     "name": "@tabler/icons",
-    "version": "2.22.0",
+    "version": "2.23.0",
     "authors": "codecalm",
     "url": "https://github.com/tabler/tabler-icons",
     "license": "MIT",
@@ -529,7 +529,7 @@
   {
     "ignore": false,
     "name": "@tanstack/query-core",
-    "version": "4.29.15",
+    "version": "4.29.19",
     "authors": "tannerlinsley",
     "url": "https://github.com/tanstack/query",
     "license": "MIT",
@@ -538,7 +538,7 @@
   {
     "ignore": false,
     "name": "@tanstack/react-query",
-    "version": "4.29.15",
+    "version": "4.29.19",
     "authors": "tannerlinsley",
     "url": "https://github.com/tanstack/query",
     "license": "MIT",
@@ -547,7 +547,7 @@
   {
     "ignore": false,
     "name": "@trpc/client",
-    "version": "10.32.0",
+    "version": "10.33.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -556,7 +556,7 @@
   {
     "ignore": false,
     "name": "@trpc/next",
-    "version": "10.32.0",
+    "version": "10.33.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -565,7 +565,7 @@
   {
     "ignore": false,
     "name": "@trpc/react-query",
-    "version": "10.32.0",
+    "version": "10.33.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -574,7 +574,7 @@
   {
     "ignore": false,
     "name": "@trpc/server",
-    "version": "10.32.0",
+    "version": "10.33.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -646,7 +646,7 @@
   {
     "ignore": false,
     "name": "@types/node",
-    "version": "20.3.1",
+    "version": "20.3.3",
     "authors": "Microsoft TypeScript <https://github.com/Microsoft>, DefinitelyTyped <https://github.com/DefinitelyTyped>, Alberto Schiabel <https://github.com/jkomyno>, Alvis HT Tang <https://github.com/alvis>, Andrew Makarov <https://github.com/r3nya>, Benjamin Toueg <https://github.com/btoueg>, Chigozirim C. <https://github.com/smac89>, David Junger <https://github.com/touffy>, Deividas Bakanas <https://github.com/DeividasBakanas>, Eugene Y. Q. Shen <https://github.com/eyqs>, Hannes Magnusson <https://github.com/Hannes-Magnusson-CK>, Huw <https://github.com/hoo29>, Kelvin Jin <https://github.com/kjin>, Klaus Meinhardt <https://github.com/ajafff>, Lishude <https://github.com/islishude>, Mariusz Wiktorczyk <https://github.com/mwiktorczyk>, Mohsen Azimi <https://github.com/mohsen1>, Nicolas Even <https://github.com/n-e>, Nikita Galkin <https://github.com/galkin>, Parambir Singh <https://github.com/parambirs>, Sebastian Silbermann <https://github.com/eps1lon>, Simon Schick <https://github.com/SimonSchick>, Thomas den Hollander <https://github.com/ThomasdenH>, Wilco Bakker <https://github.com/WilcoBakker>, wwwy3y3 <https://github.com/wwwy3y3>, Samuel Ainsworth <https://github.com/samuela>, Kyle Uehlein <https://github.com/kuehlein>, Thanik Bhongbhibhat <https://github.com/bhongy>, Marcin Kopacz <https://github.com/chyzwar>, Trivikram Kamat <https://github.com/trivikr>, Junxiao Shi <https://github.com/yoursunny>, Ilia Baryshnikov <https://github.com/qwelias>, ExE Boss <https://github.com/ExE-Boss>, Piotr Błażejewicz <https://github.com/peterblazejewicz>, Anna Henningsen <https://github.com/addaleax>, Victor Perin <https://github.com/victorperin>, Yongsheng Zhang <https://github.com/ZYSzys>, NodeJS Contributors <https://github.com/NodeJS>, Linus Unnebäck <https://github.com/LinusU>, wafuwafu13 <https://github.com/wafuwafu13>, Matteo Collina <https://github.com/mcollina>, Dmitry Semigradsky <https://github.com/Semigradsky>",
     "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "license": "MIT",
@@ -745,7 +745,7 @@
   {
     "ignore": false,
     "name": "@upstash/redis",
-    "version": "1.21.0",
+    "version": "1.22.0",
     "authors": "Andreas Thomas <dev@chronark.com>",
     "url": "https://github.com/upstash/upstash-redis",
     "license": "MIT",
@@ -1881,7 +1881,7 @@
   {
     "ignore": false,
     "name": "mantine-datatable",
-    "version": "2.6.4",
+    "version": "2.7.2",
     "authors": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
     "url": "https://github.com/icflorescu/mantine-datatable",
     "license": "MIT",

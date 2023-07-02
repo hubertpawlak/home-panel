@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/hubertpawlak/home-panel/compare/v3.1.1...v4.0.0) (2023-07-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Edge Config values are no longer used, everything is stored in Redis
+
+### Features
+
+* Dynamic configuration with Redis ([1283efc](https://github.com/hubertpawlak/home-panel/commit/1283efc41d2a2d2e143112d592101af36a1c293b))
+* Switch from Edge Config to Upstash ([c2762c2](https://github.com/hubertpawlak/home-panel/commit/c2762c29f25ad03d00bb5bed7a6176aa343a5010))
+
+
+### Bug Fixes
+
+* Disable Supabase server session persistence ([50f6784](https://github.com/hubertpawlak/home-panel/commit/50f6784fcbb21362f6540f369c36438bcd5d42ee))
+
 ### [3.1.1](https://github.com/hubertpawlak/home-panel/compare/v3.1.0...v3.1.1) (2023-05-05)
 
 

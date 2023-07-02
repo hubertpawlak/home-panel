@@ -20,7 +20,7 @@ describe("Default/No values in EdgeConfig", () => {
     expect(edgeConfig.pushNotifyAbove).toBe(
       defaultEdgeConfigValues.pushNotifyAbove
     );
-    expect(hmget).toBeCalledWith("config", "pushNotifyAbove");
+    expect(hmget).toBeCalledWith("numericOptions", "pushNotifyAbove");
   });
 
   test("pushTTLSeconds returns default value if requested", async () => {
@@ -28,7 +28,7 @@ describe("Default/No values in EdgeConfig", () => {
     expect(edgeConfig.pushTTLSeconds).toBe(
       defaultEdgeConfigValues.pushTTLSeconds
     );
-    expect(hmget).toBeCalledWith("config", "pushTTLSeconds");
+    expect(hmget).toBeCalledWith("numericOptions", "pushTTLSeconds");
   });
 
   test("pushNotifyAbove returns undefined if not requested", async () => {
@@ -56,7 +56,7 @@ describe("Custom values in EdgeConfig", () => {
     const edgeConfig = await getEdgeConfigValues(["pushNotifyAbove"]);
     expect(edgeConfig.pushNotifyAbove).toBe(99);
     expect(edgeConfig.pushTTLSeconds).toBeUndefined();
-    expect(hmget).toBeCalledWith("config", "pushNotifyAbove");
+    expect(hmget).toBeCalledWith("numericOptions", "pushNotifyAbove");
   });
 
   test("pushTTLSeconds returns correct value if requested", async () => {
@@ -66,7 +66,7 @@ describe("Custom values in EdgeConfig", () => {
     const edgeConfig = await getEdgeConfigValues(["pushTTLSeconds"]);
     expect(edgeConfig.pushTTLSeconds).toBe(999);
     expect(edgeConfig.pushNotifyAbove).toBeUndefined();
-    expect(hmget).toBeCalledWith("config", "pushTTLSeconds");
+    expect(hmget).toBeCalledWith("numericOptions", "pushTTLSeconds");
   });
 
   test("pushNotifyAbove returns undefined if not requested", async () => {

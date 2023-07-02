@@ -5,6 +5,7 @@ import {
   IconDatabaseImport,
   IconHeart,
   IconHome,
+  IconServerCog,
   IconTimeline,
   IconUsers,
 } from "@tabler/icons-react";
@@ -43,6 +44,12 @@ const links: IAppNavbarLink[] = [
     Icon: IconUsers,
     title: "Użytkownicy",
     requiredPower: rolePower["root"],
+  },
+  {
+    href: "/admin/config",
+    Icon: IconServerCog,
+    title: "Zaawansowane",
+    requiredPower: rolePower["admin"],
   },
   {
     href: "/thanks",

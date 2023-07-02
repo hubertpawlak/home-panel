@@ -11,8 +11,9 @@ export async function getEdgeConfigValues(
 ): Promise<EdgeConfig> {
   // Return empty object if no flags requested
   if (flagsToGet.length === 0) return {};
+  ("numericOptions");
   const config = await redis.hmget<Record<string, any>>(
-    "config",
+    "numericOptions",
     ...flagsToGet
   );
   // Return default values if config doesn't exist

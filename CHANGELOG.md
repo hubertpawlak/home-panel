@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://github.com/hubertpawlak/home-panel/compare/v4.0.1...v4.0.2) (2023-07-11)
+
+
+### Bug Fixes
+
+* Added missing type ([ac68212](https://github.com/hubertpawlak/home-panel/commit/ac68212eedbb7ae18f069b8d3a9af9bb94648b0d))
+
 ### [4.0.1](https://github.com/hubertpawlak/home-panel/compare/v4.0.0...v4.0.1) (2023-07-11)
 
 ## [4.0.0](https://github.com/hubertpawlak/home-panel/compare/v3.1.1...v4.0.0) (2023-07-02)

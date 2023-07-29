@@ -690,21 +690,21 @@ authors: Vitaly Rtishchev <rtivital@gmail.com>
 ******************************
 
 @next/env
-13.4.10 <https://github.com/vercel/next.js>
+13.4.12 <https://github.com/vercel/next.js>
 license: MIT
 authors: Next.js Team <support@vercel.com>
 
 ******************************
 
 @next/swc-linux-x64-gnu
-13.4.10 <https://github.com/vercel/next.js>
+13.4.12 <https://github.com/vercel/next.js>
 license: MIT
 authors: undefined
 
 ******************************
 
 @next/swc-linux-x64-musl
-13.4.10 <https://github.com/vercel/next.js>
+13.4.12 <https://github.com/vercel/next.js>
 license: MIT
 authors: undefined
 
@@ -815,7 +815,7 @@ SOFTWARE.
 ******************************
 
 @supabase/gotrue-js
-2.31.0 <https://github.com/supabase/gotrue-js>
+2.46.1 <https://github.com/supabase/gotrue-js>
 MIT License
 
 Copyright (c) 2020 Supabase
@@ -1104,7 +1104,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @supabase/supabase-js
-2.26.0 <https://github.com/supabase/supabase-js>
+2.31.0 <https://github.com/supabase/supabase-js>
 MIT License
 
 Copyright (c) 2020 Supabase
@@ -1337,7 +1337,7 @@ limitations under the License.
 ******************************
 
 @tabler/icons
-2.26.0 <https://github.com/tabler/tabler-icons>
+2.30.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1364,7 +1364,7 @@ SOFTWARE.
 ******************************
 
 @tabler/icons-react
-2.26.0 <https://github.com/tabler/tabler-icons>
+2.30.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1391,7 +1391,7 @@ SOFTWARE.
 ******************************
 
 @tanstack/query-core
-4.29.25 <https://github.com/tanstack/query>
+4.32.0 <https://github.com/tanstack/query>
 MIT License
 
 Copyright (c) 2021-present Tanner Linsley
@@ -1418,7 +1418,7 @@ SOFTWARE.
 ******************************
 
 @tanstack/react-query
-4.29.25 <https://github.com/tanstack/query>
+4.32.0 <https://github.com/tanstack/query>
 MIT License
 
 Copyright (c) 2021-present Tanner Linsley
@@ -1445,7 +1445,7 @@ SOFTWARE.
 ******************************
 
 @trpc/client
-10.34.0 <https://github.com/trpc/trpc>
+10.36.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1472,7 +1472,7 @@ SOFTWARE.
 ******************************
 
 @trpc/next
-10.34.0 <https://github.com/trpc/trpc>
+10.36.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1499,7 +1499,7 @@ SOFTWARE.
 ******************************
 
 @trpc/react-query
-10.34.0 <https://github.com/trpc/trpc>
+10.36.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1526,7 +1526,7 @@ SOFTWARE.
 ******************************
 
 @trpc/server
-10.34.0 <https://github.com/trpc/trpc>
+10.36.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1553,7 +1553,7 @@ SOFTWARE.
 ******************************
 
 @types/node
-20.4.2 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+20.4.5 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -1661,7 +1661,7 @@ SOFTWARE.
 ******************************
 
 @types/react
-18.2.15 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+18.2.17 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -4885,7 +4885,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ******************************
 
 mantine-datatable
-2.8.5 <https://github.com/icflorescu/mantine-datatable>
+2.9.1 <https://github.com/icflorescu/mantine-datatable>
 MIT License
 
 Copyright (c) 2022-2023 Ionuț-Cristian Florescu
@@ -5102,7 +5102,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 next
-13.4.10 <https://github.com/vercel/next.js>
+13.4.12 <https://github.com/vercel/next.js>
 The MIT License (MIT)
 
 Copyright (c) 2023 Vercel, Inc.
@@ -8258,7 +8258,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 web-push
-3.6.3 <https://github.com/web-push-libs/web-push>
+3.6.4 <https://github.com/web-push-libs/web-push>
 Copyright 2015 Marco Castelluccio
 
 This Source Code Form is subject to the terms of the Mozilla Public

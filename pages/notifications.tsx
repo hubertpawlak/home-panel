@@ -44,6 +44,12 @@ const NotificationsPage: NextPageWithLayout = () => {
 
   // Prepare a function to update state
   const checkState = useCallback(async () => {
+    const isSupported =
+      "window" in globalThis &&
+      "navigator" in globalThis &&
+      "serviceWorker" in navigator &&
+      "Notification" in window;
+    setIsTechSupported(isSupported);
     setSwState(navigator.serviceWorker.controller?.state);
     setNotifyPerm(Notification.permission);
     const registration = await navigator.serviceWorker.getRegistration();
@@ -60,27 +66,19 @@ const NotificationsPage: NextPageWithLayout = () => {
     setNotifyPerm,
     setPushPerm,
     setSubscription,
+    setIsTechSupported,
   ]);
 
   // Check notification state in case the user changes browser settings
-  const checker = useInterval(() => {
-    checkState();
-  }, 3000);
+  const checker = useInterval(() => checkState(), 3000);
 
-  // Execute checks on supported clients
+  // This is intended to start the interval only on mount and stop it on unmount
   useEffect(() => {
-    const isSupported =
-      "window" in globalThis &&
-      "navigator" in globalThis &&
-      "serviceWorker" in navigator &&
-      "Notification" in window;
-    if (applicationServerKey && isSupported) {
-      setIsTechSupported(isSupported);
-      checker.start();
-      checkState();
-    }
+    checkState(); // Don't wait for the interval
+    checker.start();
     return checker.stop();
-  }, [checkState, applicationServerKey, checker]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const opts = useMutationStatusNotification();
   // Prepare mutations to update subscription on the server
@@ -121,7 +119,11 @@ const NotificationsPage: NextPageWithLayout = () => {
               await registerSub({
                 endpoint,
                 keys: { p256dh: keys.p256dh, auth: keys.auth },
-              }).catch(() => {});
+              })
+                .then(() => {
+                  checkState();
+                })
+                .catch(() => {});
             }}
           >
             Subskrybuj
@@ -145,7 +147,11 @@ const NotificationsPage: NextPageWithLayout = () => {
                   keys: { p256dh: keys.p256dh, auth: keys.auth },
                 },
                 newSubscription: null,
-              }).catch(() => {});
+              })
+                .then(() => {
+                  checkState();
+                })
+                .catch(() => {});
               sub.unsubscribe();
             }}
           >

@@ -281,7 +281,7 @@
   {
     "ignore": false,
     "name": "@next/env",
-    "version": "13.4.10",
+    "version": "13.4.12",
     "authors": "Next.js Team <support@vercel.com>",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
@@ -290,7 +290,7 @@
   {
     "ignore": false,
     "name": "@next/swc-linux-x64-gnu",
-    "version": "13.4.10",
+    "version": "13.4.12",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
     "licenseText": ""
@@ -298,7 +298,7 @@
   {
     "ignore": false,
     "name": "@next/swc-linux-x64-musl",
-    "version": "13.4.10",
+    "version": "13.4.12",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
     "licenseText": ""
@@ -403,7 +403,7 @@
   {
     "ignore": false,
     "name": "@supabase/gotrue-js",
-    "version": "2.31.0",
+    "version": "2.46.1",
     "authors": "Supabase",
     "url": "https://github.com/supabase/gotrue-js",
     "license": "MIT",
@@ -439,7 +439,7 @@
   {
     "ignore": false,
     "name": "@supabase/supabase-js",
-    "version": "2.26.0",
+    "version": "2.31.0",
     "authors": "Supabase",
     "url": "https://github.com/supabase/supabase-js",
     "license": "MIT",
@@ -457,7 +457,7 @@
   {
     "ignore": false,
     "name": "@tabler/icons-react",
-    "version": "2.26.0",
+    "version": "2.30.0",
     "authors": "codecalm",
     "url": "https://github.com/tabler/tabler-icons",
     "license": "MIT",
@@ -466,7 +466,7 @@
   {
     "ignore": false,
     "name": "@tabler/icons",
-    "version": "2.26.0",
+    "version": "2.30.0",
     "authors": "codecalm",
     "url": "https://github.com/tabler/tabler-icons",
     "license": "MIT",
@@ -475,7 +475,7 @@
   {
     "ignore": false,
     "name": "@tanstack/query-core",
-    "version": "4.29.25",
+    "version": "4.32.0",
     "authors": "tannerlinsley",
     "url": "https://github.com/tanstack/query",
     "license": "MIT",
@@ -484,7 +484,7 @@
   {
     "ignore": false,
     "name": "@tanstack/react-query",
-    "version": "4.29.25",
+    "version": "4.32.0",
     "authors": "tannerlinsley",
     "url": "https://github.com/tanstack/query",
     "license": "MIT",
@@ -493,7 +493,7 @@
   {
     "ignore": false,
     "name": "@trpc/client",
-    "version": "10.34.0",
+    "version": "10.36.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -502,7 +502,7 @@
   {
     "ignore": false,
     "name": "@trpc/next",
-    "version": "10.34.0",
+    "version": "10.36.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -511,7 +511,7 @@
   {
     "ignore": false,
     "name": "@trpc/react-query",
-    "version": "10.34.0",
+    "version": "10.36.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -520,7 +520,7 @@
   {
     "ignore": false,
     "name": "@trpc/server",
-    "version": "10.34.0",
+    "version": "10.36.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -529,7 +529,7 @@
   {
     "ignore": false,
     "name": "@types/node",
-    "version": "20.4.2",
+    "version": "20.4.5",
     "authors": "Microsoft TypeScript <https://github.com/Microsoft>, DefinitelyTyped <https://github.com/DefinitelyTyped>, Alberto Schiabel <https://github.com/jkomyno>, Alvis HT Tang <https://github.com/alvis>, Andrew Makarov <https://github.com/r3nya>, Benjamin Toueg <https://github.com/btoueg>, Chigozirim C. <https://github.com/smac89>, David Junger <https://github.com/touffy>, Deividas Bakanas <https://github.com/DeividasBakanas>, Eugene Y. Q. Shen <https://github.com/eyqs>, Hannes Magnusson <https://github.com/Hannes-Magnusson-CK>, Huw <https://github.com/hoo29>, Kelvin Jin <https://github.com/kjin>, Klaus Meinhardt <https://github.com/ajafff>, Lishude <https://github.com/islishude>, Mariusz Wiktorczyk <https://github.com/mwiktorczyk>, Mohsen Azimi <https://github.com/mohsen1>, Nicolas Even <https://github.com/n-e>, Nikita Galkin <https://github.com/galkin>, Parambir Singh <https://github.com/parambirs>, Sebastian Silbermann <https://github.com/eps1lon>, Simon Schick <https://github.com/SimonSchick>, Thomas den Hollander <https://github.com/ThomasdenH>, Wilco Bakker <https://github.com/WilcoBakker>, wwwy3y3 <https://github.com/wwwy3y3>, Samuel Ainsworth <https://github.com/samuela>, Kyle Uehlein <https://github.com/kuehlein>, Thanik Bhongbhibhat <https://github.com/bhongy>, Marcin Kopacz <https://github.com/chyzwar>, Trivikram Kamat <https://github.com/trivikr>, Junxiao Shi <https://github.com/yoursunny>, Ilia Baryshnikov <https://github.com/qwelias>, ExE Boss <https://github.com/ExE-Boss>, Piotr Błażejewicz <https://github.com/peterblazejewicz>, Anna Henningsen <https://github.com/addaleax>, Victor Perin <https://github.com/victorperin>, Yongsheng Zhang <https://github.com/ZYSzys>, NodeJS Contributors <https://github.com/NodeJS>, Linus Unnebäck <https://github.com/LinusU>, wafuwafu13 <https://github.com/wafuwafu13>, Matteo Collina <https://github.com/mcollina>, Dmitry Semigradsky <https://github.com/Semigradsky>",
     "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "license": "MIT",
@@ -565,7 +565,7 @@
   {
     "ignore": false,
     "name": "@types/react",
-    "version": "18.2.15",
+    "version": "18.2.17",
     "authors": "Asana <https://asana.com>, AssureSign <http://www.assuresign.com>, Microsoft <https://microsoft.com>, John Reilly <https://github.com/johnnyreilly>, Benoit Benezech <https://github.com/bbenezech>, Patricio Zavolinsky <https://github.com/pzavolinsky>, Eric Anderson <https://github.com/ericanderson>, Dovydas Navickas <https://github.com/DovydasNavickas>, Josh Rutherford <https://github.com/theruther4d>, Guilherme Hübner <https://github.com/guilhermehubner>, Ferdy Budhidharma <https://github.com/ferdaber>, Johann Rakotoharisoa <https://github.com/jrakotoharisoa>, Olivier Pascal <https://github.com/pascaloliv>, Martin Hochel <https://github.com/hotell>, Frank Li <https://github.com/franklixuefei>, Jessica Franco <https://github.com/Jessidhia>, Saransh Kataria <https://github.com/saranshkataria>, Kanitkorn Sujautra <https://github.com/lukyth>, Sebastian Silbermann <https://github.com/eps1lon>, Kyle Scully <https://github.com/zieka>, Cong Zhang <https://github.com/dancerphil>, Dimitri Mitropoulos <https://github.com/dimitropoulos>, JongChan Choi <https://github.com/disjukr>, Victor Magalhães <https://github.com/vhfmag>, Dale Tan <https://github.com/hellatan>, Priyanshu Rav <https://github.com/priyanshurav>, Dmitry Semigradsky <https://github.com/Semigradsky>",
     "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "license": "MIT",
@@ -1594,7 +1594,7 @@
   {
     "ignore": false,
     "name": "mantine-datatable",
-    "version": "2.8.5",
+    "version": "2.9.1",
     "authors": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
     "url": "https://github.com/icflorescu/mantine-datatable",
     "license": "MIT",
@@ -1698,7 +1698,7 @@
   {
     "ignore": false,
     "name": "next",
-    "version": "13.4.10",
+    "version": "13.4.12",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
     "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2023 Vercel, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
@@ -2509,7 +2509,7 @@
   {
     "ignore": false,
     "name": "web-push",
-    "version": "3.6.3",
+    "version": "3.6.4",
     "authors": "Marco Castelluccio",
     "url": "https://github.com/web-push-libs/web-push",
     "license": "MPL-2.0",

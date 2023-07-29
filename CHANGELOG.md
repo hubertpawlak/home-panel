@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.4](https://github.com/hubertpawlak/home-panel/compare/v4.0.3...v4.0.4) (2023-07-29)
+
+
+### Bug Fixes
+
+* Children with the same key ([9944042](https://github.com/hubertpawlak/home-panel/commit/9944042c2dab8671aae939b740495d56505ded32))
+* Maximum update depth exceeded ([471e5b3](https://github.com/hubertpawlak/home-panel/commit/471e5b3780a9b2a7c99086b688cf96a5bd6ce350))
+
 ### [4.0.3](https://github.com/hubertpawlak/home-panel/compare/v4.0.2...v4.0.3) (2023-07-20)
 
 ### [4.0.2](https://github.com/hubertpawlak/home-panel/compare/v4.0.1...v4.0.2) (2023-07-11)

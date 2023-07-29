@@ -19,24 +19,30 @@ const SpecialThanksPage: NextPageWithLayout = () => {
         </Balancer>
       </Text>
       <Accordion multiple variant="contained">
-        {licenseInfos.map(({ authors, license, licenseText, name, url }) => {
-          return (
-            <Accordion.Item key={name} value={name}>
-              <Accordion.Control>
-                {name} ({license})
-              </Accordion.Control>
-              <Accordion.Panel>
-                <Text italic>{authors}</Text>
-                {url && (
-                  <Anchor href={url} target="_blank" rel="noopener noreferrer">
-                    {url}
-                  </Anchor>
-                )}
-                <pre>{licenseText}</pre>
-              </Accordion.Panel>
-            </Accordion.Item>
-          );
-        })}
+        {licenseInfos.map(
+          ({ authors, license, licenseText, name, url, version }) => {
+            return (
+              <Accordion.Item key={name + version} value={name}>
+                <Accordion.Control>
+                  {name} - {version} ({license})
+                </Accordion.Control>
+                <Accordion.Panel>
+                  <Text italic>{authors}</Text>
+                  {url && (
+                    <Anchor
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {url}
+                    </Anchor>
+                  )}
+                  <pre>{licenseText}</pre>
+                </Accordion.Panel>
+              </Accordion.Item>
+            );
+          }
+        )}
       </Accordion>
     </Stack>
   );

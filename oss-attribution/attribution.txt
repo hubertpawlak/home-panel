@@ -1,5 +1,5 @@
 @babel/code-frame
-7.22.5 <https://github.com/babel/babel>
+7.22.13 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -83,7 +83,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/helper-validator-identifier
-7.22.5 <https://github.com/babel/babel>
+7.22.20 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -111,7 +111,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/highlight
-7.22.5 <https://github.com/babel/babel>
+7.22.20 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -167,7 +167,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/types
-7.22.5 <https://github.com/babel/babel>
+7.23.0 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -655,7 +655,7 @@ authors: Vitaly Rtishchev <rtivital@gmail.com>
 ******************************
 
 @mantine/next
-6.0.17 <https://github.com/mantinedev/mantine>
+6.0.21 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
@@ -669,7 +669,7 @@ authors: Vitaly Rtishchev <rtivital@gmail.com>
 ******************************
 
 @mantine/ssr
-6.0.17 <https://github.com/mantinedev/mantine>
+6.0.21 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
@@ -677,6 +677,13 @@ authors: Vitaly Rtishchev <rtivital@gmail.com>
 
 @mantine/styles
 6.0.17 <https://github.com/mantinedev/mantine>
+license: MIT
+authors: Vitaly Rtishchev <rtivital@gmail.com>
+
+******************************
+
+@mantine/styles
+6.0.21 <https://github.com/mantinedev/mantine>
 license: MIT
 authors: Vitaly Rtishchev <rtivital@gmail.com>
 
@@ -690,21 +697,21 @@ authors: Vitaly Rtishchev <rtivital@gmail.com>
 ******************************
 
 @next/env
-13.4.12 <https://github.com/vercel/next.js>
+13.5.6 <https://github.com/vercel/next.js>
 license: MIT
 authors: Next.js Team <support@vercel.com>
 
 ******************************
 
 @next/swc-linux-x64-gnu
-13.4.12 <https://github.com/vercel/next.js>
+13.5.6 <https://github.com/vercel/next.js>
 license: MIT
 authors: undefined
 
 ******************************
 
 @next/swc-linux-x64-musl
-13.4.12 <https://github.com/vercel/next.js>
+13.5.6 <https://github.com/vercel/next.js>
 license: MIT
 authors: undefined
 
@@ -788,7 +795,7 @@ authors: undefined
 ******************************
 
 @supabase/functions-js
-2.1.1 <https://github.com/supabase/functions-js>
+2.1.5 <https://github.com/supabase/functions-js>
 MIT License
 
 Copyright (c) 2020 Supabase
@@ -815,7 +822,7 @@ SOFTWARE.
 ******************************
 
 @supabase/gotrue-js
-2.46.1 <https://github.com/supabase/gotrue-js>
+2.57.0 <https://github.com/supabase/gotrue-js>
 MIT License
 
 Copyright (c) 2020 Supabase
@@ -841,8 +848,36 @@ SOFTWARE.
 
 ******************************
 
+@supabase/node-fetch
+2.6.14 <https://github.com/supabase/node-fetch>
+The MIT License (MIT)
+
+Copyright (c) 2016 David Frank
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
+******************************
+
 @supabase/postgrest-js
-1.7.1 <https://github.com/supabase/postgrest-js>
+1.8.5 <https://github.com/supabase/postgrest-js>
 MIT License
 
 Copyright (c) 2020 Supabase
@@ -869,7 +904,7 @@ SOFTWARE.
 ******************************
 
 @supabase/realtime-js
-2.7.3 <https://github.com/supabase/realtime-js>
+2.8.1 <https://github.com/supabase/realtime-js>
 # MIT License
 
 Copyright (c) 2020 Supabase
@@ -897,7 +932,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @supabase/storage-js
-2.5.1 <https://github.com/supabase/storage-js>
+2.5.4 <https://github.com/supabase/storage-js>
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -1104,7 +1139,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @supabase/supabase-js
-2.31.0 <https://github.com/supabase/supabase-js>
+2.38.2 <https://github.com/supabase/supabase-js>
 MIT License
 
 Copyright (c) 2020 Supabase
@@ -1131,7 +1166,7 @@ SOFTWARE.
 ******************************
 
 @swc/helpers
-0.5.1 <https://github.com/swc-project/swc>
+0.5.2 <https://github.com/swc-project/swc>
                               Apache License
                         Version 2.0, January 2004
                      http://www.apache.org/licenses/
@@ -1337,7 +1372,7 @@ limitations under the License.
 ******************************
 
 @tabler/icons
-2.30.0 <https://github.com/tabler/tabler-icons>
+2.39.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1364,7 +1399,7 @@ SOFTWARE.
 ******************************
 
 @tabler/icons-react
-2.30.0 <https://github.com/tabler/tabler-icons>
+2.39.0 <https://github.com/tabler/tabler-icons>
 MIT License
 
 Copyright (c) 2020-2023 Paweł Kuna
@@ -1445,7 +1480,7 @@ SOFTWARE.
 ******************************
 
 @trpc/client
-10.36.0 <https://github.com/trpc/trpc>
+10.41.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1472,7 +1507,7 @@ SOFTWARE.
 ******************************
 
 @trpc/next
-10.36.0 <https://github.com/trpc/trpc>
+10.41.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1499,7 +1534,7 @@ SOFTWARE.
 ******************************
 
 @trpc/react-query
-10.36.0 <https://github.com/trpc/trpc>
+10.41.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1526,7 +1561,7 @@ SOFTWARE.
 ******************************
 
 @trpc/server
-10.36.0 <https://github.com/trpc/trpc>
+10.41.0 <https://github.com/trpc/trpc>
 MIT License
 
 Copyright (c) 2023 Alex Johansson
@@ -1553,7 +1588,7 @@ SOFTWARE.
 ******************************
 
 @types/node
-20.4.5 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+20.8.7 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -1607,7 +1642,7 @@ SOFTWARE.
 ******************************
 
 @types/phoenix
-1.6.0 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+1.6.3 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -1661,7 +1696,7 @@ SOFTWARE.
 ******************************
 
 @types/react
-18.2.17 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+18.2.31 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -1715,7 +1750,7 @@ SOFTWARE.
 ******************************
 
 @types/websocket
-1.0.5 <https://github.com/DefinitelyTyped/DefinitelyTyped>
+1.0.8 <https://github.com/DefinitelyTyped/DefinitelyTyped>
     MIT License
 
     Copyright (c) Microsoft Corporation.
@@ -1742,7 +1777,7 @@ SOFTWARE.
 ******************************
 
 @upstash/redis
-1.22.0 <https://github.com/upstash/upstash-redis>
+1.23.4 <https://github.com/upstash/upstash-redis>
 The MIT License (MIT)
 
 Copyright (c) 2021 Upstash, Inc.
@@ -2166,7 +2201,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 call-bind
-1.0.2 <https://github.com/ljharb/call-bind>
+1.0.5 <https://github.com/ljharb/call-bind>
 MIT License
 
 Copyright (c) 2020 Jordan Harband
@@ -3080,6 +3115,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ******************************
 
+define-data-property
+1.1.1 <https://github.com/ljharb/define-data-property>
+MIT License
+
+Copyright (c) 2023 Jordan Harband
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+******************************
+
 depd
 2.0.0 <https://github.com/dougwilson/nodejs-depd>
 (The MIT License)
@@ -3801,7 +3863,7 @@ the licensed code:
 ******************************
 
 function-bind
-1.1.1 <https://github.com/Raynos/function-bind>
+1.1.2 <https://github.com/Raynos/function-bind>
 Copyright (c) 2013 Raynos.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -3827,7 +3889,7 @@ THE SOFTWARE.
 ******************************
 
 get-intrinsic
-1.2.0 <https://github.com/ljharb/get-intrinsic>
+1.2.1 <https://github.com/ljharb/get-intrinsic>
 MIT License
 
 Copyright (c) 2020 Jordan Harband
@@ -3914,6 +3976,33 @@ authors: Nick Fitzgerald <fitzgen@gmail.com>
 
 ******************************
 
+gopd
+1.0.1 <https://github.com/ljharb/gopd>
+MIT License
+
+Copyright (c) 2022 Jordan Harband
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+******************************
+
 graceful-fs
 4.2.10 <https://github.com/isaacs/node-graceful-fs>
 The ISC License
@@ -3974,6 +4063,60 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+has-property-descriptors
+1.0.0 <https://github.com/inspect-js/has-property-descriptors>
+MIT License
+
+Copyright (c) 2022 Inspect JS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+******************************
+
+has-proto
+1.0.1 <https://github.com/inspect-js/has-proto>
+MIT License
+
+Copyright (c) 2022 Inspect JS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 ******************************
@@ -4395,7 +4538,7 @@ THE SOFTWARE.
 ******************************
 
 is-core-module
-2.11.0 <https://github.com/inspect-js/is-core-module>
+2.13.0 <https://github.com/inspect-js/is-core-module>
 The MIT License (MIT)
 
 Copyright (c) 2014 Dave Justice
@@ -4485,7 +4628,7 @@ SOFTWARE.
 ******************************
 
 jose
-4.14.4 <https://github.com/panva/jose>
+4.15.4 <https://github.com/panva/jose>
 The MIT License (MIT)
 
 Copyright (c) 2018 Filip Skokan
@@ -5076,7 +5219,7 @@ authors: Kevin Smithson <ksmithson@sazze.com>
 ******************************
 
 nanoid
-3.3.4 <https://github.com/ai/nanoid>
+3.3.6 <https://github.com/ai/nanoid>
 The MIT License (MIT)
 
 Copyright 2017 Andrey Sitnik <andrey@sitnik.ru>
@@ -5102,7 +5245,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 next
-13.4.12 <https://github.com/vercel/next.js>
+13.5.6 <https://github.com/vercel/next.js>
 The MIT License (MIT)
 
 Copyright (c) 2023 Vercel, Inc.
@@ -5482,7 +5625,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ******************************
 
 postcss
-8.4.14 <https://github.com/postcss/postcss>
+8.4.31 <https://github.com/postcss/postcss>
 The MIT License (MIT)
 
 Copyright 2013 Andrey Sitnik <andrey@sitnik.ru>
@@ -5911,7 +6054,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************
 
 react-wrap-balancer
-1.0.0 <https://github.com/shuding/react-wrap-balancer>
+1.1.0 <https://github.com/shuding/react-wrap-balancer>
 MIT License
 
 Copyright (c) 2022 Shu Ding
@@ -6288,6 +6431,33 @@ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+******************************
+
+set-function-length
+1.1.1 <https://github.com/ljharb/set-function-length>
+MIT License
+
+Copyright (c) Jordan Harband and contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 ******************************
@@ -7745,6 +7915,13 @@ THE SOFTWARE.
 
 ******************************
 
+undici-types
+5.25.3 <https://github.com/nodejs/undici>
+license: MIT
+authors: Daniele Belardi <https://github.com/dnlup>, Ethan Arrowood <https://github.com/ethan-arrowood>, Matteo Collina <https://github.com/mcollina>, Matthew Aitken <https://github.com/KhafraDev>, Robert Nagy <https://github.com/ronag>, Szymon Marczak <https://github.com/szmarczak>, Tomas Della Vedova <https://github.com/delvedor>
+
+******************************
+
 unload
 2.2.0 <https://github.com/pubkey/unload>
 Apache License
@@ -8258,7 +8435,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 web-push
-3.6.4 <https://github.com/web-push-libs/web-push>
+3.6.6 <https://github.com/web-push-libs/web-push>
 Copyright 2015 Marco Castelluccio
 
 This Source Code Form is subject to the terms of the Mozilla Public
@@ -8645,7 +8822,7 @@ THIS SOFTWARE.
 ******************************
 
 zod
-3.21.4 <https://github.com/colinhacks/zod>
+3.22.4 <https://github.com/colinhacks/zod>
 MIT License
 
 Copyright (c) 2020 Colin McDonnell

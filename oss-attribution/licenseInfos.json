@@ -2,7 +2,7 @@
   {
     "ignore": false,
     "name": "@babel/code-frame",
-    "version": "7.22.5",
+    "version": "7.22.13",
     "authors": "The Babel Team (https://babel.dev/team)",
     "url": "https://github.com/babel/babel",
     "license": "MIT",
@@ -29,7 +29,7 @@
   {
     "ignore": false,
     "name": "@babel/helper-validator-identifier",
-    "version": "7.22.5",
+    "version": "7.22.20",
     "authors": "The Babel Team (https://babel.dev/team)",
     "url": "https://github.com/babel/babel",
     "license": "MIT",
@@ -38,7 +38,7 @@
   {
     "ignore": false,
     "name": "@babel/highlight",
-    "version": "7.22.5",
+    "version": "7.22.20",
     "authors": "The Babel Team (https://babel.dev/team)",
     "url": "https://github.com/babel/babel",
     "license": "MIT",
@@ -56,7 +56,7 @@
   {
     "ignore": false,
     "name": "@babel/types",
-    "version": "7.22.5",
+    "version": "7.23.0",
     "authors": "The Babel Team (https://babel.dev/team)",
     "url": "https://github.com/babel/babel",
     "license": "MIT",
@@ -236,7 +236,7 @@
   {
     "ignore": false,
     "name": "@mantine/next",
-    "version": "6.0.17",
+    "version": "6.0.21",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -254,7 +254,7 @@
   {
     "ignore": false,
     "name": "@mantine/ssr",
-    "version": "6.0.17",
+    "version": "6.0.21",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -264,6 +264,15 @@
     "ignore": false,
     "name": "@mantine/styles",
     "version": "6.0.17",
+    "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
+    "url": "https://github.com/mantinedev/mantine",
+    "license": "MIT",
+    "licenseText": ""
+  },
+  {
+    "ignore": false,
+    "name": "@mantine/styles",
+    "version": "6.0.21",
     "authors": "Vitaly Rtishchev <rtivital@gmail.com>",
     "url": "https://github.com/mantinedev/mantine",
     "license": "MIT",
@@ -281,7 +290,7 @@
   {
     "ignore": false,
     "name": "@next/env",
-    "version": "13.4.12",
+    "version": "13.5.6",
     "authors": "Next.js Team <support@vercel.com>",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
@@ -290,7 +299,7 @@
   {
     "ignore": false,
     "name": "@next/swc-linux-x64-gnu",
-    "version": "13.4.12",
+    "version": "13.5.6",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
     "licenseText": ""
@@ -298,7 +307,7 @@
   {
     "ignore": false,
     "name": "@next/swc-linux-x64-musl",
-    "version": "13.4.12",
+    "version": "13.5.6",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
     "licenseText": ""
@@ -394,7 +403,7 @@
   {
     "ignore": false,
     "name": "@supabase/functions-js",
-    "version": "2.1.1",
+    "version": "2.1.5",
     "authors": "Supabase",
     "url": "https://github.com/supabase/functions-js",
     "license": "MIT",
@@ -403,7 +412,7 @@
   {
     "ignore": false,
     "name": "@supabase/gotrue-js",
-    "version": "2.46.1",
+    "version": "2.57.0",
     "authors": "Supabase",
     "url": "https://github.com/supabase/gotrue-js",
     "license": "MIT",
@@ -411,8 +420,17 @@
   },
   {
     "ignore": false,
+    "name": "@supabase/node-fetch",
+    "version": "2.6.14",
+    "authors": "David Frank",
+    "url": "https://github.com/supabase/node-fetch",
+    "license": "MIT",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2016 David Frank\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n"
+  },
+  {
+    "ignore": false,
     "name": "@supabase/postgrest-js",
-    "version": "1.7.1",
+    "version": "1.8.5",
     "authors": "Supabase",
     "url": "https://github.com/supabase/postgrest-js",
     "license": "MIT",
@@ -421,7 +439,7 @@
   {
     "ignore": false,
     "name": "@supabase/realtime-js",
-    "version": "2.7.3",
+    "version": "2.8.1",
     "authors": "Supabase",
     "url": "https://github.com/supabase/realtime-js",
     "license": "MIT",
@@ -430,7 +448,7 @@
   {
     "ignore": false,
     "name": "@supabase/storage-js",
-    "version": "2.5.1",
+    "version": "2.5.4",
     "authors": "Supabase",
     "url": "https://github.com/supabase/storage-js",
     "license": "MIT",
@@ -439,7 +457,7 @@
   {
     "ignore": false,
     "name": "@supabase/supabase-js",
-    "version": "2.31.0",
+    "version": "2.38.2",
     "authors": "Supabase",
     "url": "https://github.com/supabase/supabase-js",
     "license": "MIT",
@@ -448,7 +466,7 @@
   {
     "ignore": false,
     "name": "@swc/helpers",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "authors": "강동윤 <kdy1997.dev@gmail.com>",
     "url": "https://github.com/swc-project/swc",
     "license": "Apache-2.0",
@@ -457,7 +475,7 @@
   {
     "ignore": false,
     "name": "@tabler/icons-react",
-    "version": "2.30.0",
+    "version": "2.39.0",
     "authors": "codecalm",
     "url": "https://github.com/tabler/tabler-icons",
     "license": "MIT",
@@ -466,7 +484,7 @@
   {
     "ignore": false,
     "name": "@tabler/icons",
-    "version": "2.30.0",
+    "version": "2.39.0",
     "authors": "codecalm",
     "url": "https://github.com/tabler/tabler-icons",
     "license": "MIT",
@@ -493,7 +511,7 @@
   {
     "ignore": false,
     "name": "@trpc/client",
-    "version": "10.36.0",
+    "version": "10.41.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -502,7 +520,7 @@
   {
     "ignore": false,
     "name": "@trpc/next",
-    "version": "10.36.0",
+    "version": "10.41.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -511,7 +529,7 @@
   {
     "ignore": false,
     "name": "@trpc/react-query",
-    "version": "10.36.0",
+    "version": "10.41.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -520,7 +538,7 @@
   {
     "ignore": false,
     "name": "@trpc/server",
-    "version": "10.36.0",
+    "version": "10.41.0",
     "authors": "KATT",
     "url": "https://github.com/trpc/trpc",
     "license": "MIT",
@@ -529,8 +547,8 @@
   {
     "ignore": false,
     "name": "@types/node",
-    "version": "20.4.5",
-    "authors": "Microsoft TypeScript <https://github.com/Microsoft>, DefinitelyTyped <https://github.com/DefinitelyTyped>, Alberto Schiabel <https://github.com/jkomyno>, Alvis HT Tang <https://github.com/alvis>, Andrew Makarov <https://github.com/r3nya>, Benjamin Toueg <https://github.com/btoueg>, Chigozirim C. <https://github.com/smac89>, David Junger <https://github.com/touffy>, Deividas Bakanas <https://github.com/DeividasBakanas>, Eugene Y. Q. Shen <https://github.com/eyqs>, Hannes Magnusson <https://github.com/Hannes-Magnusson-CK>, Huw <https://github.com/hoo29>, Kelvin Jin <https://github.com/kjin>, Klaus Meinhardt <https://github.com/ajafff>, Lishude <https://github.com/islishude>, Mariusz Wiktorczyk <https://github.com/mwiktorczyk>, Mohsen Azimi <https://github.com/mohsen1>, Nicolas Even <https://github.com/n-e>, Nikita Galkin <https://github.com/galkin>, Parambir Singh <https://github.com/parambirs>, Sebastian Silbermann <https://github.com/eps1lon>, Simon Schick <https://github.com/SimonSchick>, Thomas den Hollander <https://github.com/ThomasdenH>, Wilco Bakker <https://github.com/WilcoBakker>, wwwy3y3 <https://github.com/wwwy3y3>, Samuel Ainsworth <https://github.com/samuela>, Kyle Uehlein <https://github.com/kuehlein>, Thanik Bhongbhibhat <https://github.com/bhongy>, Marcin Kopacz <https://github.com/chyzwar>, Trivikram Kamat <https://github.com/trivikr>, Junxiao Shi <https://github.com/yoursunny>, Ilia Baryshnikov <https://github.com/qwelias>, ExE Boss <https://github.com/ExE-Boss>, Piotr Błażejewicz <https://github.com/peterblazejewicz>, Anna Henningsen <https://github.com/addaleax>, Victor Perin <https://github.com/victorperin>, Yongsheng Zhang <https://github.com/ZYSzys>, NodeJS Contributors <https://github.com/NodeJS>, Linus Unnebäck <https://github.com/LinusU>, wafuwafu13 <https://github.com/wafuwafu13>, Matteo Collina <https://github.com/mcollina>, Dmitry Semigradsky <https://github.com/Semigradsky>",
+    "version": "20.8.7",
+    "authors": "Microsoft TypeScript <https://github.com/Microsoft>, Alberto Schiabel <https://github.com/jkomyno>, Alvis HT Tang <https://github.com/alvis>, Andrew Makarov <https://github.com/r3nya>, Benjamin Toueg <https://github.com/btoueg>, Chigozirim C. <https://github.com/smac89>, David Junger <https://github.com/touffy>, Deividas Bakanas <https://github.com/DeividasBakanas>, Eugene Y. Q. Shen <https://github.com/eyqs>, Hannes Magnusson <https://github.com/Hannes-Magnusson-CK>, Huw <https://github.com/hoo29>, Kelvin Jin <https://github.com/kjin>, Klaus Meinhardt <https://github.com/ajafff>, Lishude <https://github.com/islishude>, Mariusz Wiktorczyk <https://github.com/mwiktorczyk>, Mohsen Azimi <https://github.com/mohsen1>, Nicolas Even <https://github.com/n-e>, Nikita Galkin <https://github.com/galkin>, Parambir Singh <https://github.com/parambirs>, Sebastian Silbermann <https://github.com/eps1lon>, Thomas den Hollander <https://github.com/ThomasdenH>, Wilco Bakker <https://github.com/WilcoBakker>, wwwy3y3 <https://github.com/wwwy3y3>, Samuel Ainsworth <https://github.com/samuela>, Kyle Uehlein <https://github.com/kuehlein>, Thanik Bhongbhibhat <https://github.com/bhongy>, Marcin Kopacz <https://github.com/chyzwar>, Trivikram Kamat <https://github.com/trivikr>, Junxiao Shi <https://github.com/yoursunny>, Ilia Baryshnikov <https://github.com/qwelias>, ExE Boss <https://github.com/ExE-Boss>, Piotr Błażejewicz <https://github.com/peterblazejewicz>, Anna Henningsen <https://github.com/addaleax>, Victor Perin <https://github.com/victorperin>, Yongsheng Zhang <https://github.com/ZYSzys>, NodeJS Contributors <https://github.com/NodeJS>, Linus Unnebäck <https://github.com/LinusU>, wafuwafu13 <https://github.com/wafuwafu13>, Matteo Collina <https://github.com/mcollina>, Dmitry Semigradsky <https://github.com/Semigradsky>",
     "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "license": "MIT",
     "licenseText": "    MIT License\n\n    Copyright (c) Microsoft Corporation.\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the Software is\n    furnished to do so, subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in all\n    copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n    SOFTWARE\n"
@@ -547,7 +565,7 @@
   {
     "ignore": false,
     "name": "@types/phoenix",
-    "version": "1.6.0",
+    "version": "1.6.3",
     "authors": "Mirosław Ciastek <https://github.com/mciastek>, John Goff <https://github.com/John-Goff>, Po Chen <https://github.com/princemaple>",
     "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "license": "MIT",
@@ -565,7 +583,7 @@
   {
     "ignore": false,
     "name": "@types/react",
-    "version": "18.2.17",
+    "version": "18.2.31",
     "authors": "Asana <https://asana.com>, AssureSign <http://www.assuresign.com>, Microsoft <https://microsoft.com>, John Reilly <https://github.com/johnnyreilly>, Benoit Benezech <https://github.com/bbenezech>, Patricio Zavolinsky <https://github.com/pzavolinsky>, Eric Anderson <https://github.com/ericanderson>, Dovydas Navickas <https://github.com/DovydasNavickas>, Josh Rutherford <https://github.com/theruther4d>, Guilherme Hübner <https://github.com/guilhermehubner>, Ferdy Budhidharma <https://github.com/ferdaber>, Johann Rakotoharisoa <https://github.com/jrakotoharisoa>, Olivier Pascal <https://github.com/pascaloliv>, Martin Hochel <https://github.com/hotell>, Frank Li <https://github.com/franklixuefei>, Jessica Franco <https://github.com/Jessidhia>, Saransh Kataria <https://github.com/saranshkataria>, Kanitkorn Sujautra <https://github.com/lukyth>, Sebastian Silbermann <https://github.com/eps1lon>, Kyle Scully <https://github.com/zieka>, Cong Zhang <https://github.com/dancerphil>, Dimitri Mitropoulos <https://github.com/dimitropoulos>, JongChan Choi <https://github.com/disjukr>, Victor Magalhães <https://github.com/vhfmag>, Dale Tan <https://github.com/hellatan>, Priyanshu Rav <https://github.com/priyanshurav>, Dmitry Semigradsky <https://github.com/Semigradsky>",
     "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "license": "MIT",
@@ -583,7 +601,7 @@
   {
     "ignore": false,
     "name": "@types/websocket",
-    "version": "1.0.5",
+    "version": "1.0.8",
     "authors": "Paul Loyd <https://github.com/loyd>, Kay Schecker <https://github.com/flynetworks>, Zhao Lei <https://github.com/zhaoleimxd>, Sheng Chen <https://github.com/jdneo>, Matthew Peveler <https://github.com/MasterOdin>",
     "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "license": "MIT",
@@ -592,7 +610,7 @@
   {
     "ignore": false,
     "name": "@upstash/redis",
-    "version": "1.22.0",
+    "version": "1.23.4",
     "authors": "Andreas Thomas <dev@chronark.com>",
     "url": "https://github.com/upstash/upstash-redis",
     "license": "MIT",
@@ -762,7 +780,7 @@
   {
     "ignore": false,
     "name": "call-bind",
-    "version": "1.0.2",
+    "version": "1.0.5",
     "authors": "Jordan Harband <ljharb@gmail.com>",
     "url": "https://github.com/ljharb/call-bind",
     "license": "MIT",
@@ -963,6 +981,15 @@
     "url": "https://github.com/debug-js/debug",
     "license": "MIT",
     "licenseText": "(The MIT License)\n\nCopyright (c) 2014-2017 TJ Holowaychuk <tj@vision-media.ca>\nCopyright (c) 2018-2021 Josh Junon\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software\nand associated documentation files (the 'Software'), to deal in the Software without restriction,\nincluding without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,\nand/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial\nportions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT\nLIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nWHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n"
+  },
+  {
+    "ignore": false,
+    "name": "define-data-property",
+    "version": "1.1.1",
+    "authors": "Jordan Harband <ljharb@gmail.com>",
+    "url": "https://github.com/ljharb/define-data-property",
+    "license": "MIT",
+    "licenseText": "MIT License\n\nCopyright (c) 2023 Jordan Harband\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
   },
   {
     "ignore": false,
@@ -1174,7 +1201,7 @@
   {
     "ignore": false,
     "name": "function-bind",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "authors": "Raynos <raynos2@gmail.com>",
     "url": "https://github.com/Raynos/function-bind",
     "license": "MIT",
@@ -1183,7 +1210,7 @@
   {
     "ignore": false,
     "name": "get-intrinsic",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "authors": "Jordan Harband <ljharb@gmail.com>",
     "url": "https://github.com/ljharb/get-intrinsic",
     "license": "MIT",
@@ -1218,6 +1245,15 @@
   },
   {
     "ignore": false,
+    "name": "gopd",
+    "version": "1.0.1",
+    "authors": "Jordan Harband <ljharb@gmail.com>",
+    "url": "https://github.com/ljharb/gopd",
+    "license": "MIT",
+    "licenseText": "MIT License\n\nCopyright (c) 2022 Jordan Harband\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  {
+    "ignore": false,
     "name": "graceful-fs",
     "version": "4.2.10",
     "url": "https://github.com/isaacs/node-graceful-fs",
@@ -1232,6 +1268,24 @@
     "url": "https://github.com/sindresorhus/has-flag",
     "license": "MIT",
     "licenseText": "MIT License\n\nCopyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  {
+    "ignore": false,
+    "name": "has-property-descriptors",
+    "version": "1.0.0",
+    "authors": "Jordan Harband <ljharb@gmail.com>",
+    "url": "https://github.com/inspect-js/has-property-descriptors",
+    "license": "MIT",
+    "licenseText": "MIT License\n\nCopyright (c) 2022 Inspect JS\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  {
+    "ignore": false,
+    "name": "has-proto",
+    "version": "1.0.1",
+    "authors": "Jordan Harband <ljharb@gmail.com>",
+    "url": "https://github.com/inspect-js/has-proto",
+    "license": "MIT",
+    "licenseText": "MIT License\n\nCopyright (c) 2022 Inspect JS\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
   },
   {
     "ignore": false,
@@ -1414,7 +1468,7 @@
   {
     "ignore": false,
     "name": "is-core-module",
-    "version": "2.11.0",
+    "version": "2.13.0",
     "authors": "Jordan Harband <ljharb@gmail.com>",
     "url": "https://github.com/inspect-js/is-core-module",
     "license": "MIT",
@@ -1459,7 +1513,7 @@
   {
     "ignore": false,
     "name": "jose",
-    "version": "4.14.4",
+    "version": "4.15.4",
     "authors": "Filip Skokan <panva.ip@gmail.com>",
     "url": "https://github.com/panva/jose",
     "license": "MIT",
@@ -1680,7 +1734,7 @@
   {
     "ignore": false,
     "name": "nanoid",
-    "version": "3.3.4",
+    "version": "3.3.6",
     "authors": "Andrey Sitnik <andrey@sitnik.ru>",
     "url": "https://github.com/ai/nanoid",
     "license": "MIT",
@@ -1698,7 +1752,7 @@
   {
     "ignore": false,
     "name": "next",
-    "version": "13.4.12",
+    "version": "13.5.6",
     "url": "https://github.com/vercel/next.js",
     "license": "MIT",
     "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2023 Vercel, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
@@ -1841,7 +1895,7 @@
   {
     "ignore": false,
     "name": "postcss",
-    "version": "8.4.14",
+    "version": "8.4.31",
     "authors": "Andrey Sitnik <andrey@sitnik.ru>",
     "url": "https://github.com/postcss/postcss",
     "license": "MIT",
@@ -1988,7 +2042,7 @@
   {
     "ignore": false,
     "name": "react-wrap-balancer",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "authors": "Shu Ding <g@shud.in>",
     "url": "https://github.com/shuding/react-wrap-balancer",
     "license": "MIT",
@@ -2117,6 +2171,15 @@
     "url": "https://github.com/npm/node-semver",
     "license": "ISC",
     "licenseText": "The ISC License\n\nCopyright (c) Isaac Z. Schlueter and Contributors\n\nPermission to use, copy, modify, and/or distribute this software for any\npurpose with or without fee is hereby granted, provided that the above\ncopyright notice and this permission notice appear in all copies.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\nWITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\nMERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR\nANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\nWHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\nACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\nIN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n"
+  },
+  {
+    "ignore": false,
+    "name": "set-function-length",
+    "version": "1.1.1",
+    "authors": "Jordan Harband <ljharb@gmail.com>",
+    "url": "https://github.com/ljharb/set-function-length",
+    "license": "MIT",
+    "licenseText": "MIT License\n\nCopyright (c) Jordan Harband and contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
   },
   {
     "ignore": false,
@@ -2386,6 +2449,15 @@
   },
   {
     "ignore": false,
+    "name": "undici-types",
+    "version": "5.25.3",
+    "authors": "Daniele Belardi <https://github.com/dnlup>, Ethan Arrowood <https://github.com/ethan-arrowood>, Matteo Collina <https://github.com/mcollina>, Matthew Aitken <https://github.com/KhafraDev>, Robert Nagy <https://github.com/ronag>, Szymon Marczak <https://github.com/szmarczak>, Tomas Della Vedova <https://github.com/delvedor>",
+    "url": "https://github.com/nodejs/undici",
+    "license": "MIT",
+    "licenseText": ""
+  },
+  {
+    "ignore": false,
     "name": "unload",
     "version": "2.2.0",
     "authors": "pubkey",
@@ -2509,7 +2581,7 @@
   {
     "ignore": false,
     "name": "web-push",
-    "version": "3.6.4",
+    "version": "3.6.6",
     "authors": "Marco Castelluccio",
     "url": "https://github.com/web-push-libs/web-push",
     "license": "MPL-2.0",
@@ -2607,7 +2679,7 @@
   {
     "ignore": false,
     "name": "zod",
-    "version": "3.21.4",
+    "version": "3.22.4",
     "authors": "Colin McDonnell <colin@colinhacks.com>",
     "url": "https://github.com/colinhacks/zod",
     "license": "MIT",
